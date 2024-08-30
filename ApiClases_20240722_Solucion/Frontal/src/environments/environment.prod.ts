@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://backend-estadistica-g6afbvbagbe3d6gr.spaincentral-01.azurewebsites.net/api/usuarios'
+    apiUrl: 'cleancashcourierapi-fdg9f7d4chb4gshy.spaincentral-01.azurewebsites.net/api'
   };
