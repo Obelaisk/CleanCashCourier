@@ -1,4 +1,4 @@
-
+ï»¿
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -79,27 +79,35 @@ builder.Services.AddAuthentication(x =>
 });
 
 
-//Añadir Autommaper
+//AÃ±adir Autommaper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
-// Configuración CORS
+// Configuraciï¿½n de CORS para permitir solicitudes desde orï¿½genes especï¿½ficos.
 builder.Services.AddCors(options =>
-    {
-        options.AddPolicy("AllowAllOrigins",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
+{
+    options.AddPolicy("AllowLocalhost",
+        builder => builder
+            .WithOrigins("http://localhost:4200")  // Permite solicitudes desde localhost:4200.
+            .AllowAnyHeader()  // Permite cualquier encabezado.
+            .AllowAnyMethod()  // Permite cualquier mï¿½todo HTTP.
+            .AllowCredentials());  // Permite el uso de credenciales.
 
-        });
-    });
+    options.AddPolicy("AllowAzureHost",
+        builder => builder
+            .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net")  // Permite solicitudes desde el host de Azure.
+            .AllowAnyHeader()  // Permite cualquier encabezado.
+            .AllowAnyMethod()  // Permite cualquier mï¿½todo HTTP.
+            .AllowCredentials());  // Permite el uso de credenciales.
+});
 
 
 
-//Agregar servicios a la aplicación
+//Agregar servicios a la aplicaciÃ³n
 var app = builder.Build();
+
+// Aplica las migraciones de base de datos.
+ApplyMigrations(app);
 
 app.UseCors("AllowAllOrigins");
 
@@ -123,17 +131,24 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    // Allow Development
+    app.UseCors("AllowLocalHost");
 }
-//Redirección a https
+else
+{
+    // Allow Production
+    app.UseCors("AllowAzureHost");
+}
+//RedirecciÃ³n a https
 app.UseHttpsRedirection();
 
-// Middleware de autenticación
+// Middleware de autenticaciÃ³n
 app.UseAuthentication();
 
-//Middleweare de autorización 
+//Middleweare de autorizaciÃ³n 
 app.UseAuthorization();
 
-//Middleweare de enrutamiento --> determina que acción y controlador se utilizara en función de la url solicitada
+//Middleweare de enrutamiento --> determina que acciÃ³n y controlador se utilizara en funciÃ³n de la url solicitada
 app.MapControllers();
 
 
@@ -162,6 +177,28 @@ async Task CreateRoles(WebApplication app)
             {
                 roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
             }
+        }
+    }
+
+    // Mï¿½todo para aplicar las migraciones de base de datos.
+    
+}
+static void ApplyMigrations(WebApplication app)
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            // Obtiene el contexto de base de datos y aplica las migraciones.
+            var context = services.GetRequiredService<Contexto>();
+            context.Database.Migrate();
+        }
+        catch (Exception ex)
+        {
+            // Registra cualquier error que ocurra durante la aplicaciï¿½n de migraciones.
+            var logger = services.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred while migrating the database.");
         }
     }
 }
