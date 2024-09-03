@@ -1,12 +1,12 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
-En este repositorio desarrollaremos una aplicación que nos permitirá enviar dinero a diferentes usuarios
+En este repositorio desplegaremos la aplicación que nos permitirá simular el proceso de envío de dinero a diferentes usuarios
 
 Desarrolladores:
     - Amaia Vertiz
     - Iñigo Varela
     - Miguel Tapiz
     - Obed Rodas 
+    - Sergio Melero (despliegue)
 
 
 # Getting Started
