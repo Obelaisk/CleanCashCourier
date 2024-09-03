@@ -134,14 +134,14 @@ async Task CreateRoles(WebApplication app)
         string[] roleNames = { "Cliente", "Administrador" };
         IdentityResult roleResult;
 
-        foreach (var roleName in roleNames)
-        {
-            var roleExist = await roleManager.RoleExistsAsync(roleName);
-            if (!roleExist)
-            {
-                roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
-            }
-        }
+        //foreach (var roleName in roleNames)
+        //{
+        //    var roleExist = await roleManager.RoleExistsAsync(roleName);
+        //    if (!roleExist)
+        //    {
+        //        roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
+        //    }
+        //}
     }
 
     // M�todo para aplicar las migraciones de base de datos.
