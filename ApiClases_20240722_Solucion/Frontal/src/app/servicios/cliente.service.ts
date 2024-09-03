@@ -3,12 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { ICliente } from "../interfaces/cliente";
 import { ActualizarPerfilCliente, InicioSesionCliente, RegistroCliente } from "../interfaces/registroCliente";
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
-  private clientesUrl = 'https://localhost:7138/api/Clientes';
+  // Teneis que actualizar vuestras referencias al back para que usen las variables de entorno de environment:
+  // Antes:
+  //private clientesUrl = 'https://localhost:7138/api/Clientes';
+  // Después:
+  private apiUrl = environment.apiUrl;
+  private clientesUrl = `${this.apiUrl}/clientes`;
+
+  // Fin de ejemplo
   
   constructor(private http: HttpClient) { }
   
