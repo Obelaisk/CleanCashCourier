@@ -16,7 +16,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<UsuarioAplicacion> _userManager;
         private readonly SignInManager<UsuarioAplicacion> _signInManager;
-        private readonly IMediator _mediator;
+        //private readonly IMediator _mediator;
 
         public ClientesController(
             IRepositorioGenerico<Cliente> clienteRepositorio,
@@ -26,7 +26,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
             IMapper mapper,
             UserManager<UsuarioAplicacion> userManager,
             SignInManager<UsuarioAplicacion> signInManager,
-            IMediator mediator)
+            /*IMediator mediator*/)
         {
             _clienteRepositorio = clienteRepositorio;
             _paisRepositorio = paisRepositorio;
@@ -35,7 +35,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _userManager = userManager;
             _signInManager = signInManager;
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            //_mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpGet]
@@ -114,19 +114,19 @@ namespace ApiClases_20270722_Proyecto.Controllers
                 }
 
                 // Enviar los datos del cliente utilizando el mediador
-                var resultado = await _mediator.Send(new SignalRRequest
-                {
-                    MandamosCliente = new ClienteBaseDto
-                    {
-                        Nombre = cliente.Nombre,
-                        Apellido = cliente.Apellido,
-                        FechaNacimiento = cliente.FechaNacimiento,
-                        Empleo = cliente.Empleo,
-                        PaisId = cliente.PaisId,
-                        Email = cliente.Email
-                    },
-                    TipoAcceso = "Login"
-                });
+                //var resultado = await _mediator.Send(new SignalRRequest
+                //{
+                //    MandamosCliente = new ClienteBaseDto
+                //    {
+                //        Nombre = cliente.Nombre,
+                //        Apellido = cliente.Apellido,
+                //        FechaNacimiento = cliente.FechaNacimiento,
+                //        Empleo = cliente.Empleo,
+                //        PaisId = cliente.PaisId,
+                //        Email = cliente.Email
+                //    },
+                //    TipoAcceso = "Login"
+                //});
 
                 return Ok(new { Token = token });
             }
@@ -161,9 +161,6 @@ namespace ApiClases_20270722_Proyecto.Controllers
             if (!result.Succeeded) //Actualmente no deberia llegar a esta situación (con lo actualmente planteado),
                                    //por lo que deberia replantearse la logica en este lugar
             {
-<<<<<<< Updated upstream
-                return BadRequest("1");
-=======
                 foreach (var error in result.Errors)
                 {
                     //System.Diagnostics.Debug.WriteLine($"Código de Error: {error.Code}, Descripción: {error.Description}");
@@ -175,7 +172,6 @@ namespace ApiClases_20270722_Proyecto.Controllers
                     }
                 }
                 return BadRequest(new { Message = result.Errors });
->>>>>>> Stashed changes
             }
 
             var cliente = _mapper.Map<Cliente>(modelo);
@@ -187,11 +183,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             if (!addClienteResult)
             {
-<<<<<<< Updated upstream
-                return BadRequest("2");
-=======
                 return BadRequest(new { Message = "Error al guardar en la tabla Clientes" });
->>>>>>> Stashed changes
             }
 
             var addRoleResult = await _userManager.AddToRoleAsync(usuario, "Cliente");
@@ -202,20 +194,20 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             var token = _servicioToken.GenerateJwtToken(usuario);
 
-            var resultado = await _mediator.Send(new SignalRRequest
-            {
-                MandamosCliente = new ClienteBaseDto
-                {
-                    Nombre = usuario.Nombre,
-                    Apellido = usuario.Apellido,
-                    Usuario = usuario.UserName,
-                    Email = usuario.Email,
-                    FechaNacimiento = usuario.FechaNacimiento,
-                    Empleo = usuario.Empleo,
-                    PaisId = usuario.PaisId
-                },
-                TipoAcceso = "Registro"
-            });
+            //var resultado = await _mediator.Send(new SignalRRequest
+            //{
+            //    MandamosCliente = new ClienteBaseDto
+            //    {
+            //        Nombre = usuario.Nombre,
+            //        Apellido = usuario.Apellido,
+            //        Usuario = usuario.UserName,
+            //        Email = usuario.Email,
+            //        FechaNacimiento = usuario.FechaNacimiento,
+            //        Empleo = usuario.Empleo,
+            //        PaisId = usuario.PaisId
+            //    },
+            //    TipoAcceso = "Registro"
+            //});
 
             // Obtener el Id del cliente recién creado
             var clienteRecienCreado = _clienteRepositorio.ObtenerPorNombre(cliente.Usuario);
