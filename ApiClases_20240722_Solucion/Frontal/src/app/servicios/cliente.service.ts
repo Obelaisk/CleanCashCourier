@@ -16,12 +16,14 @@ export class ClienteService {
   // Después:
   private apiUrl = environment.apiUrl;
   private clientesUrl = `${this.apiUrl}/Clientes`;
+  
 
   // Fin de ejemplo
   
   constructor(private http: HttpClient) { }
   
   getClientes(): Observable<ICliente[]> {
+    console.log(this.clientesUrl)
     return this.http.get<ICliente[]>(this.clientesUrl).pipe(
       tap(data => data),
       catchError(this.handleError)

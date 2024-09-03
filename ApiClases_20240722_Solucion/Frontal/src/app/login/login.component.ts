@@ -28,6 +28,8 @@ export class LoginComponent {
       }
     });
   }
-  
+  ngOnInit(): void {
+    this.clienteService.getClientes();
+  }
   
 }
