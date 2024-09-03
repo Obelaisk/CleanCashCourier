@@ -2,13 +2,23 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, tap, throwError } from "rxjs";
 import { ITransaccion, Transaccion } from "../interfaces/transaccion";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransaccionService {
   // private clientesUrl = 'api/clientes/clientes.json';
-  private url = 'https://localhost:7138/api/Clientes';
+
+  // Teneis que actualizar vuestras referencias al back para que usen las variables de entorno de environment:
+  // Antes:
+   //private url = 'https://localhost:7138/api/Clientes';
+  // Después:
+  private apiUrl = environment.apiUrl;
+  private url = `${this.apiUrl}/Clientes`;
+
+  // Fin de ejemplo
+ 
   private urlConversor = 'https://api.getgeoapi.com/v2/currency/convert?api_key=fa412676602886da01c7aab7dc3ffc8645840ace&from='
   constructor(private http: HttpClient) { }
 
