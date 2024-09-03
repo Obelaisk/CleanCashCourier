@@ -18,6 +18,7 @@ export class LoginComponent {
   constructor(private clienteService: ClienteService, private route: Router) { }
 
   authentication() {
+
     this.clienteService.autenticarUsuario(this.email, this.contrase, true).subscribe(response => {
       if (response && response.token) {
         localStorage.setItem('token', response.token);
@@ -28,8 +29,8 @@ export class LoginComponent {
       }
     });
   }
-  ngOnInit(): void {
-    this.clienteService.getClientes();
-  }
+
+  
+  
   
 }

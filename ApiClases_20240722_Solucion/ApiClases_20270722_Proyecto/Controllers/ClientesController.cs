@@ -115,7 +115,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
             var result = await _userManager.CreateAsync(usuario, modelo.Contrasena);
             if (!result.Succeeded)
             {
-                return BadRequest();
+                return BadRequest("1");
             }
 
             var cliente = _mapper.Map<Cliente>(modelo);
@@ -127,7 +127,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             if (!addClienteResult)
             {
-                return BadRequest();
+                return BadRequest("2");
             }
 
             var addRoleResult = await _userManager.AddToRoleAsync(usuario, "Cliente");
