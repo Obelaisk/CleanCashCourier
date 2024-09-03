@@ -115,7 +115,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
             var result = await _userManager.CreateAsync(usuario, modelo.Contrasena);
             if (!result.Succeeded)
             {
-                return BadRequest(result.Errors);
+                return BadRequest();
             }
 
             var cliente = _mapper.Map<Cliente>(modelo);
@@ -127,7 +127,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             if (!addClienteResult)
             {
-                return BadRequest("Error al guardar en la tabla Clientes");
+                return BadRequest();
             }
 
             var addRoleResult = await _userManager.AddToRoleAsync(usuario, "Cliente");
@@ -152,7 +152,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
             }
             await _contactoRepositorio.GuardarCambios();
 
-            return Ok(new { Token = token });
+            return Ok();
         }
 
         [HttpPut("{id}")]
