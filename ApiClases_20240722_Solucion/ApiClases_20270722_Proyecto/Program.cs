@@ -18,6 +18,7 @@ builder.Services.AddScoped<IServicioToken, ServicioToken>();
 builder.Services.AddScoped<IContarPaisesConClientes, ContarPaisesConClientesRepositorio>();
 builder.Services.AddScoped<IContarTransaccionesUltimos10AniosRepositorio, ContarTransaccionesUltimos10AniosRepositorio>();
 builder.Services.AddScoped<IVistaContactoRepositorio<VContacto>, VistaContactosRepositorio>();
+builder.Services.AddScoped<ContactosRepositorioBBDD<Contacto>>();
 
 // Agregar BBDD (SQLServer)
 builder.Services.AddDbContext<Contexto>(options =>
@@ -134,19 +135,20 @@ async Task CreateRoles(WebApplication app)
         string[] roleNames = { "Cliente", "Administrador" };
         IdentityResult roleResult;
 
-        //foreach (var roleName in roleNames)
-        //{
-        //    var roleExist = await roleManager.RoleExistsAsync(roleName);
-        //    if (!roleExist)
-        //    {
-        //        roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
-        //    }
-        //}
+        foreach (var roleName in roleNames)
+        {
+            var roleExist = await roleManager.RoleExistsAsync(roleName);
+            if (!roleExist)
+            {
+                roleResult = await roleManager.CreateAsync(new IdentityRole(roleName));
+            }
+        }
     }
 
-    // M�todo para aplicar las migraciones de base de datos.
-    
+
+
 }
+// M�todo para aplicar las migraciones de base de datos.
 void ApplyMigrations(WebApplication app)
 {
     using (var scope = app.Services.CreateScope())

@@ -10,12 +10,9 @@ namespace ApiClases_20270722_Proyecto.Entidades
         public int ClienteOrigenId { get; set; }
         [ForeignKey(nameof(ClienteOrigenId))]
         public Cliente ClienteOrigen { get; set; }
-
         [Required]
         public int ClienteDestinoId { get; set; }
         [ForeignKey(nameof(ClienteDestinoId))]
         public Cliente ClienteDestino { get; set; }
-
-
     }
 }

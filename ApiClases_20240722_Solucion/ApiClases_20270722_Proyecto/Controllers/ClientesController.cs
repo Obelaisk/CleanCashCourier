@@ -16,6 +16,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<UsuarioAplicacion> _userManager;
         private readonly SignInManager<UsuarioAplicacion> _signInManager;
+        private readonly IMediator _mediator;
 
         public ClientesController(
             IRepositorioGenerico<Cliente> clienteRepositorio,
@@ -24,7 +25,8 @@ namespace ApiClases_20270722_Proyecto.Controllers
             IServicioToken servicioToken,
             IMapper mapper,
             UserManager<UsuarioAplicacion> userManager,
-            SignInManager<UsuarioAplicacion> signInManager)
+            SignInManager<UsuarioAplicacion> signInManager,
+            IMediator mediator)
         {
             _clienteRepositorio = clienteRepositorio;
             _paisRepositorio = paisRepositorio;
@@ -33,6 +35,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _userManager = userManager;
             _signInManager = signInManager;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpGet]
@@ -46,14 +49,14 @@ namespace ApiClases_20270722_Proyecto.Controllers
         [HttpGet("{id:int}", Name = "getClienteId")]
         public async Task<ActionResult<ClienteGetDto>> Get(int id)
         {
-            var cliente =  _clienteRepositorio.ObtenerPorId(id);
+            var cliente = _clienteRepositorio.ObtenerPorId(id);
             if (cliente == null) return NotFound();
 
             var finalClienteDto = _mapper.Map<ClienteGetDto>(cliente);
             return Ok(finalClienteDto);
         }
 
-       
+
         [HttpGet("{valor}", Name = "getCliente")]
         public async Task<ActionResult<ClienteGetDto>> Get(string valor)
         {
@@ -66,22 +69,31 @@ namespace ApiClases_20270722_Proyecto.Controllers
                 var jwtToken = handler.ReadJwtToken(valor);
                 nombre = jwtToken.Claims.First(claim => claim.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value;
             }
-            catch(ArgumentException)
+            catch (ArgumentException)
             {
                 // Si no es un token JWT válido, asumir que es un nombre
                 nombre = valor;
             }
 
-            var cliente =  _clienteRepositorio.ObtenerPorNombre(nombre.ToString());
+            var cliente = _clienteRepositorio.ObtenerPorNombre(nombre.ToString());
             if (cliente == null) return NotFound();
 
             var finalClienteDto = _mapper.Map<ClienteGetDto>(cliente);
             return Ok(finalClienteDto);
         }
 
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] ClienteInicioSesion modelo)
         {
+            // Verificar si el usuario existe en el servidor
+            var searchInServer = await _userManager.FindByNameAsync(modelo.Usuario);
+            if (searchInServer == null)
+            {
+                return NotFound(); // Usuario no encontrado
+            }
+
+            // Intentar iniciar sesión
             var result = await _signInManager.PasswordSignInAsync(
                 modelo.Usuario,
                 modelo.Contrasena,
@@ -90,17 +102,49 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             if (result.Succeeded)
             {
+                // Obtener el usuario
                 var user = await _userManager.FindByNameAsync(modelo.Usuario);
                 var token = _servicioToken.GenerateJwtToken(user);
+
+                // Obtener el cliente desde el repositorio
+                var cliente = _clienteRepositorio.ObtenerPorNombre(modelo.Usuario);
+                if (cliente == null)
+                {
+                    return NotFound("Cliente no encontrado.");
+                }
+
+                // Enviar los datos del cliente utilizando el mediador
+                var resultado = await _mediator.Send(new SignalRRequest
+                {
+                    MandamosCliente = new ClienteBaseDto
+                    {
+                        Nombre = cliente.Nombre,
+                        Apellido = cliente.Apellido,
+                        FechaNacimiento = cliente.FechaNacimiento,
+                        Empleo = cliente.Empleo,
+                        PaisId = cliente.PaisId,
+                        Email = cliente.Email
+                    },
+                    TipoAcceso = "Login"
+                });
+
                 return Ok(new { Token = token });
             }
 
-            return Unauthorized();
+            return Unauthorized(); // Contraseña incorrecta
         }
+
+
+
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] ClienteRegistro modelo)
         {
+            var searchInServer = await _userManager.FindByEmailAsync(modelo.Email);
+            if (searchInServer != null)
+            {
+                return Conflict(new { Message = "DuplicateUserName" }); // El username es el mismo que la primera parte del email
+            }
             var usuario = new UsuarioAplicacion
             {
                 Nombre = modelo.Nombre,
@@ -112,14 +156,30 @@ namespace ApiClases_20270722_Proyecto.Controllers
                 PaisId = modelo.PaisId,
             };
 
+
             var result = await _userManager.CreateAsync(usuario, modelo.Contrasena);
-            if (!result.Succeeded)
+            if (!result.Succeeded) //Actualmente no deberia llegar a esta situación (con lo actualmente planteado),
+                                   //por lo que deberia replantearse la logica en este lugar
             {
+<<<<<<< Updated upstream
                 return BadRequest("1");
+=======
+                foreach (var error in result.Errors)
+                {
+                    //System.Diagnostics.Debug.WriteLine($"Código de Error: {error.Code}, Descripción: {error.Description}");
+                    if (error.Code.Equals("DuplicateUserName"))
+                    { // Solo deberia existir este caso (username duplicado), pero en caso de ser necesario dejo el bad Request
+                        System.Diagnostics.Debug.WriteLine("LLEGO AQUI");
+                        return Conflict(new { Message = "DuplicateUserName" });
+
+                    }
+                }
+                return BadRequest(new { Message = result.Errors });
+>>>>>>> Stashed changes
             }
 
             var cliente = _mapper.Map<Cliente>(modelo);
-            cliente.Email = modelo.Email;  // Mapeo adicional de email
+            cliente.Email = modelo.Email;
             cliente.Usuario = modelo.Email.Split('@')[0];
 
             _clienteRepositorio.Agregar(cliente);
@@ -127,7 +187,11 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             if (!addClienteResult)
             {
+<<<<<<< Updated upstream
                 return BadRequest("2");
+=======
+                return BadRequest(new { Message = "Error al guardar en la tabla Clientes" });
+>>>>>>> Stashed changes
             }
 
             var addRoleResult = await _userManager.AddToRoleAsync(usuario, "Cliente");
@@ -138,22 +202,51 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             var token = _servicioToken.GenerateJwtToken(usuario);
 
+            var resultado = await _mediator.Send(new SignalRRequest
+            {
+                MandamosCliente = new ClienteBaseDto
+                {
+                    Nombre = usuario.Nombre,
+                    Apellido = usuario.Apellido,
+                    Usuario = usuario.UserName,
+                    Email = usuario.Email,
+                    FechaNacimiento = usuario.FechaNacimiento,
+                    Empleo = usuario.Empleo,
+                    PaisId = usuario.PaisId
+                },
+                TipoAcceso = "Registro"
+            });
+
+            // Obtener el Id del cliente recién creado
+            var clienteRecienCreado = _clienteRepositorio.ObtenerPorNombre(cliente.Usuario);
+            if (clienteRecienCreado == null)
+            {
+                return BadRequest(new { Message = "Error al obtener el cliente recién creado" });
+            }
 
             var numClientes = (await _clienteRepositorio.Obtener()).Count();
             Random random = new Random();
             for (var i = 0; i <= 6; i++)
             {
+                var clienteDestinoId = random.Next(1, numClientes + 1);
+                var clienteDestino = _clienteRepositorio.ObtenerPorId(clienteDestinoId);
+                if (clienteDestino == null)
+                {
+                    continue; // Si el cliente destino no existe, saltar esta iteración
+                }
+
                 _contactoRepositorio.Agregar(new Contacto
                 {
                     Id = 0,
-                    ClienteOrigenId = numClientes,
-                    ClienteDestinoId = random.Next(1, numClientes),
+                    ClienteOrigenId = clienteRecienCreado.Id,
+                    ClienteDestinoId = clienteDestinoId,
                 });
             }
             await _contactoRepositorio.GuardarCambios();
 
-            return Ok();
+            return Ok(new { Token = token });
         }
+
 
         [HttpPut("{id}")]
         public async Task<ActionResult> PutAsync(int id, ClientePutDto clienteDto)

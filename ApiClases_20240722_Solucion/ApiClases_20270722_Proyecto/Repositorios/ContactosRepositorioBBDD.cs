@@ -47,5 +47,10 @@ namespace ApiClases_20270722_Proyecto.Repositorios
         {
             throw new NotImplementedException();
         }
+        public T ObtenerPorIds(int id1, int id2)
+        {
+
+            return _contexto.Set<T>().FirstOrDefault(c => c.ClienteOrigenId == id1 && c.ClienteDestinoId == id2);
+        }
     }
 }

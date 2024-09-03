@@ -8,6 +8,26 @@
             _contexto = contexto;
         }
 
+        public async Task<bool> CheckIfExistsInView(int? idCliente, string nombreUsuarioClienteABuscar)
+        {
+            var query = _contexto.VContactos.AsQueryable();
+            if (!idCliente.HasValue || string.IsNullOrEmpty(nombreUsuarioClienteABuscar))
+            {
+                return false;
+            }
+            query = query = query.Where(v => v.IdCliente == idCliente);
+            query = query.Where(v => v.NombreUsuarioContacto == nombreUsuarioClienteABuscar);
+            var nuevaConsulta = query.Select(v => new VContacto
+            {
+                IdCliente = v.IdCliente,
+                NombreUsuarioContacto = v.NombreUsuarioContacto,
+                Pais = v.Pais,
+            });
+            var datos = new List<VContacto>();
+            datos = await nuevaConsulta.ToListAsync();
+            return datos.Any();
+        }
+
         public async Task<(IEnumerable<VContacto> Data, int TotalCount)> GetVContactosAsync(VContactoParametrosFiltradoDto parametrosfiltro)
         {
             var query = _contexto.VContactos.AsQueryable();

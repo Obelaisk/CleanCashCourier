@@ -389,6 +389,3 @@ public class Contexto: IdentityDbContext<UsuarioAplicacion>{
 
     }
 }
-
-
-
