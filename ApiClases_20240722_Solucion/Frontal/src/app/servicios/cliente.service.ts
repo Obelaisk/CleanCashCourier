@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from "rxjs";
 import { ICliente } from "../interfaces/cliente";
 import { ActualizarPerfilCliente, InicioSesionCliente, RegistroCliente } from "../interfaces/registroCliente";
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
