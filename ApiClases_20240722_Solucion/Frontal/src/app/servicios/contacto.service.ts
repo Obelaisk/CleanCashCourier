@@ -1,55 +1,34 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { Contacto } from '../interfaces/contactos';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactoService{
   
-  private url = 'https://localhost:7138/api/Contactos';
+  private url = 'https://localhost:7138/api/VContactos';
   constructor(private http: HttpClient) { }
-
-  checkIfExists(token: string, nombreClienteABuscar: string): Observable<any> {
-  const modelo : ModeloBusquedaContacto = {
-    tokenCliente: token,
-    NombreUsuarioClienteABuscar: nombreClienteABuscar
-  }
-    return this.http.post<any>(`${this.url}/checkIfExists`, modelo);
-  }
-  getListaContactosPorToken(token: string): Observable<Contacto[]>{
-    return this.http.get<Contacto[]>(`${this.url}/${token}`).pipe(
-      tap(data => console.log(data)),
-      catchError(this.handleError)
-    );
-  }
-
-  getListaContactosPorId(id: number): Observable<Contacto[]> {
-    return this.http.get<Contacto[]>(`${this.url}/getAllContactsByToken/${id}`).pipe(
+  getListaContactosPorId(id: number) : Observable<Contacto[]>{
+    return this.http.get<Contacto[]>(`${this.url}/${id}`).pipe(
       tap(data => data),
       catchError(this.handleError)
     );
   }
 
-  eliminarContacto(nombre: string, token: string) {
-
-    const url = `${this.url}?nombreAEliminar=${nombre}&token=${token}`;
-    return this.http.delete<void>(url).pipe(
-      tap(() => console.log(`Contacto eliminado: ${nombre}`)),
-      catchError(this.handleError)
-    );
-  }
-
-  aniadirContacto(nombreNuevoContacto: string, token: string) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
-
-    const body = { nombreNuevoContacto,token };
-    return this.http.post<void>(this.url, body, {headers}).pipe(
-      tap(() => console.log(`Contacto añadido: ${nombreNuevoContacto}`)),
-      catchError(this.handleError)
-    );
-  }
+  //getListaContactosPorFiltro(id: number): Observable<IVistaContacto> {
+  //  const parametrosFiltro: FiltroParametrosVistaContacto = {
+  //    IdCliente: id,
+  //    NombreUsuarioContacto: null,
+  //    Pais: null,
+  //    NumeroPaginas: 1,
+  //    TamanoPagina: 30
+  //  };
+  //  return this.http.post<IVistaContacto>(`${this.url}/${id}`).pipe(
+  //    tap(data => data),
+  //    catchError(this.handleError)
+  //  );
+  //}
 
 
   private handleError(err: HttpErrorResponse) {
@@ -69,7 +48,19 @@ export class ContactoService{
   }
 
 }
-export interface ModeloBusquedaContacto {
-  tokenCliente: string;
-  NombreUsuarioClienteABuscar: string;
+
+export interface FiltroParametrosVistaContacto {
+  IdCliente: number;
+  NombreUsuarioContacto: string | null;
+  Pais: string | null;
+  NumeroPaginas: number;
+  TamanoPagina: number;
+}
+
+export interface Contacto {
+
+  constructor(): void;
+  IdCliente: number;
+  NombreUsuarioContacto: string;
+  Pais: string;
 }

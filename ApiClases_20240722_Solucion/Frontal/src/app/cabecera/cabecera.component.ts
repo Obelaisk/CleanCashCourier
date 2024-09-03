@@ -1,11 +1,10 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'cabecera',
   templateUrl: './cabecera.component.html',
-  styleUrl: './cabecera.component.css',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './cabecera.component.css'
 })
 export class CabeceraComponent {
   constructor(private router: Router) { }

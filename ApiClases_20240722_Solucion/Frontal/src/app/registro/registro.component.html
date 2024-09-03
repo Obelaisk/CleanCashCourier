@@ -1,9 +1,9 @@
-<div class="tw-max-w-4xl tw-mx-auto tw-font-[sans-serif] tw-p-6">
-  <div class="tw-text-center tw-mb-16">
+<div class="max-w-4xl mx-auto font-[sans-serif] p-6">
+  <div class="text-center mb-16">
     <a href="javascript:void(0)">
-      <img src="assets/Logo.png" alt="logo" class='tw-w-52 tw-inline-block' />
+      <img src="https://readymadeui.com/readymadeui.svg" alt="logo" class='w-52 inline-block' />
     </a>
-    <h4 class="tw-text-gray-800 tw-text-base tw-font-semibold tw-mt-6">Sign up into your account</h4>
+    <h4 class="text-gray-800 text-base font-semibold mt-6">Sign up into your account</h4>
   </div>
 
   <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
@@ -12,36 +12,36 @@
       {{ errorMessage }}
     </div>
 
-    <div class="tw-grid sm:tw-grid-cols-2 tw-gap-8">
+    <div class="grid sm:grid-cols-2 gap-8">
       <div>
-        <label for="nombre" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Nombre</label>
-        <input id="nombre" name="name" type="text" formControlName="Nombre" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Enter name" />
-        <div *ngIf="registroForm.get('Nombre')?.invalid && (registroForm.get('Nombre')?.touched || registroForm.get('Nombre')?.dirty)" class="tw-text-red-500 tw-text-sm">
-          <div *ngIf="registroForm.get('Nombre')?.errors?.['required']">El nombre es obligatorio.</div>
-          <div *ngIf="registroForm.get('Nombre')?.errors?.['minlength']">El nombre tiene que tener al menos 2 letras.</div>
+        <label for="nombre" class="text-gray-800 text-sm mb-2 block">Nombre</label>
+        <input id="nombre" name="name" type="text" formControlName="Nombre" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter name" />
+        <div *ngIf="registroForm.get('Nombre')?.invalid && (registroForm.get('Nombre')?.touched || registroForm.get('Nombre')?.dirty)" class="text-red-500 text-sm">
+          <div *ngIf="registroForm.get('Nombre')?.errors?.['required']">First Name is required.</div>
+          <div *ngIf="registroForm.get('Nombre')?.errors?.['minlength']">First Name must be at least 2 characters long.</div>
         </div>
       </div>
       <div>
-        <label for="Apellido" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Apellido</label>
-        <input id="Apellido" name="lname" type="text" formControlName="Apellido" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Enter last name" />
-        <div *ngIf="registroForm.get('Apellido')?.invalid && (registroForm.get('Apellido')?.touched || registroForm.get('Apellido')?.dirty)" class="tw-text-red-500 tw-text-sm">
-          <div *ngIf="registroForm.get('Apellido')?.errors?.['required']">El apellido es obligatorio.</div>
-          <div *ngIf="registroForm.get('Apellido')?.errors?.['minlength']">El apellido tiene que tener al menos 2 letras.</div>
+        <label for="Apellido" class="text-gray-800 text-sm mb-2 block">Apellido</label>
+        <input id="Apellido" name="lname" type="text" formControlName="Apellido" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter last name" />
+        <div *ngIf="registroForm.get('Apellido')?.invalid && (registroForm.get('Apellido')?.touched || registroForm.get('Apellido')?.dirty)" class="text-red-500 text-sm">
+          <div *ngIf="registroForm.get('Apellido')?.errors?.['required']">Last Name is required.</div>
+          <div *ngIf="registroForm.get('Apellido')?.errors?.['minlength']">Last Name must be at least 2 characters long.</div>
         </div>
       </div>
       <div>
-        <label for="Email" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Correo</label>
-        <input id="Email" name="Email" type="email" formControlName="Correo" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu correo" />
-        <div *ngIf="registroForm.get('Correo')?.invalid && (registroForm.get('Correo')?.touched || registroForm.get('Correo')?.dirty)" class="tw-text-red-500 tw-text-sm">
-          <div *ngIf="registroForm.get('Correo')?.errors?.['required']">El email es obligatorio.</div>
-          <div *ngIf="registroForm.get('Correo')?.errors?.['email']">El formato del correo es invalido.</div>
+        <label for="Email" class="text-gray-800 text-sm mb-2 block">Correo</label>
+        <input id="Email" name="Email" type="email" formControlName="Correo" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Introduce tu correo" />
+        <div *ngIf="registroForm.get('Correo')?.invalid && (registroForm.get('Correo')?.touched || registroForm.get('Correo')?.dirty)" class="text-red-500 text-sm">
+          <div *ngIf="registroForm.get('Correo')?.errors?.['required']">Email is required.</div>
+          <div *ngIf="registroForm.get('Correo')?.errors?.['email']">Invalid email format.</div>
         </div>
       </div>
 
       <div>
-        <label for="password" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Contraseña</label>
-        <input id="password" name="password" type="password" formControlName="Contraseña" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu contraseña" />
-        <div *ngIf="registroForm.get('Contraseña')?.invalid && (registroForm.get('Contraseña')?.touched || registroForm.get('Contraseña')?.dirty)" class="tw-text-red-500 tw-text-sm">
+        <label for="password" class="text-gray-800 text-sm mb-2 block">Contraseña</label>
+        <input id="password" name="password" type="password" formControlName="Contraseña" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter password" />
+        <div *ngIf="registroForm.get('Contraseña')?.invalid && (registroForm.get('Contraseña')?.touched || registroForm.get('Contraseña')?.dirty)" class="text-red-500 text-sm">
           <div *ngIf="registroForm.get('Contraseña')?.errors?.['required']">Password is required.</div>
           <div *ngIf="registroForm.get('Contraseña')?.errors?.['minlength']">Password must be at least 6 characters long.</div>
           <div *ngIf="registroForm.get('Contraseña')?.errors?.['passwordRequiresNonAlphanumeric']">Password must contain at least one non-alphanumeric character.</div>
@@ -51,25 +51,25 @@
       </div>
 
       <div>
-        <label for="cpassword" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Confirmar Contraseña</label>
-        <input id="cpassword" name="cpassword" type="password" formControlName="Contraseña2" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Confirma tu contraseña" />
-        <div *ngIf="registroForm.errors?.['mismatch'] && (registroForm.get('Contraseña')?.touched || registroForm.get('Contraseña2')?.touched)" class="tw-text-red-500 tw-text-sm">
-          Las contraseñas no coinciden
+        <label for="cpassword" class="text-gray-800 text-sm mb-2 block">Confirmar Contraseña</label>
+        <input id="cpassword" name="cpassword" type="password" formControlName="Contraseña2" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Confirm password" />
+        <div *ngIf="registroForm.errors?.['mismatch'] && (registroForm.get('Contraseña')?.touched || registroForm.get('Contraseña2')?.touched)" class="text-red-500 text-sm">
+          Passwords do not match.
         </div>
       </div>
 
       <!-- Campos adicionales -->
-      <div class="tw-relative tw-w-full tw-max-w-sm">
-        <label for="pais" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Pais</label>
-        <input id="pais" name="pais" type="text" formControlName="PaisNombre" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu pais" (focus)="showDropdown()" (input)="filterPaises($event)" />
+      <div class="relative w-full max-w-sm">
+        <label for="pais" class="text-gray-800 text-sm mb-2 block">Pais</label>
+        <input id="pais" name="pais" type="text" formControlName="PaisNombre" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Introduce tu pais" (focus)="showDropdown()" (input)="filterPaises($event)" />
         <ul *ngIf="isDropdownVisible" id="dropdownMenu"
-            class='tw-absolute tw-block tw-shadow-lg tw-bg-white tw-py-2 tw-px-2 tw-z-[1000] tw-min-w-full tw-w-max tw-rounded tw-max-h-96 tw-overflow-auto'>
+            class='absolute block shadow-lg bg-white py-2 px-2 z-[1000] min-w-full w-max rounded max-h-96 overflow-auto'>
 
 
           <li *ngFor="let pais of paisesFiltrado; let i = index" [attr.data-index]="i"
-              class='tw-py-2.5 tw-px-4 hover:tw-bg-blue-50 tw-rounded tw-text-black tw-text-sm tw-cursor-pointer' (click)="selectPais(pais.nombre)">
-            <div class="tw-flex tw-items-center" #paisItem>
-              <!--<img [src]="'https://flagcdn.com/16x12/' + pais.iso3 + '.png'" class="tw-w-6 tw-mr-3" />-->
+              class='py-2.5 px-4 hover:bg-blue-50 rounded text-black text-sm cursor-pointer' (click)="selectPais(pais.nombre)">
+            <div class="flex items-center" #paisItem>
+              <!--<img [src]="'https://flagcdn.com/16x12/' + pais.iso3 + '.png'" class="w-6 mr-3" />-->
               {{ pais.nombre }}
             </div>
           </li>
@@ -78,13 +78,13 @@
 
 
       <div>
-        <label for="empleo" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Empleo</label>
-        <input id="empleo" name="empleo" type="text" formControlName="Empleo" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu ocupacion" />
+        <label for="empleo" class="text-gray-800 text-sm mb-2 block">Empleo</label>
+        <input id="empleo" name="empleo" type="text" formControlName="Empleo" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Introduce tu ocupacion" />
       </div>
       <div>
-        <label for="fecha" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Fecha de nacimiento</label>
-        <input id="fecha" name="fecha" type="date" formControlName="FechaNac" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Enter date of birth" />
-        <div *ngIf="registroForm.get('FechaNac')?.invalid && (registroForm.get('FechaNac')?.touched || registroForm.get('FechaNac')?.dirty)" class="tw-text-red-500 tw-text-sm">
+        <label for="fecha" class="text-gray-800 text-sm mb-2 block">Fecha de nacimiento</label>
+        <input id="fecha" name="fecha" type="date" formControlName="FechaNac" class="bg-gray-100 w-full text-gray-800 text-sm px-4 py-3.5 rounded-md focus:bg-transparent outline-blue-500 transition-all" placeholder="Enter date of birth" />
+        <div *ngIf="registroForm.get('FechaNac')?.invalid && (registroForm.get('FechaNac')?.touched || registroForm.get('FechaNac')?.dirty)" class="text-red-500 text-sm">
           <div *ngIf="registroForm.get('FechaNac')?.errors?.['required']">Fecha de nacimiento es requerida.</div>
         </div>
       </div>
@@ -95,8 +95,8 @@
 
     <input type="hidden" formControlName="Rol" value="Client">
 
-    <div class="!tw-mt-12">
-      <button type="submit" class="action-button">
+    <div class="!mt-12">
+      <button type="submit" class="py-3.5 px-7 text-sm font-semibold tracking-wider rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
         Registrarse
       </button>
     </div>

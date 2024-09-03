@@ -8,7 +8,6 @@ import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
-import { ContactsTableComponent } from './contacts-table/contacts-table.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
@@ -18,8 +17,7 @@ const routes: Routes = [
   { path: 'send-money', component: SendMoneyComponent },
   { path: 'transaction-history', component: TransaccionComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'welcome', component: WelcomeComponentComponent },
-  { path: 'contactos', component:ContactsTableComponent }
+  {path: 'welcome',component:WelcomeComponentComponent}
 ];
 
 @NgModule({
