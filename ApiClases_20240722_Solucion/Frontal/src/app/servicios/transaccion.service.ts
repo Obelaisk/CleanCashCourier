@@ -79,4 +79,4 @@ export class TransaccionService {
     console.error(errorMessage);
     return throwError(() => errorMessage);
   }
-  }
+}

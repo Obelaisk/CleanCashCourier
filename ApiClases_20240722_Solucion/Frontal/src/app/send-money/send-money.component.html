@@ -6,7 +6,7 @@
   <form (ngSubmit)="sendMoney()">
     <div class="form-group">
       <label for="recipent">Elige destinatario:</label>
-      <input type="text" id="recipent" class="form-control full-width" [(ngModel)]="nombreClienteRecibe"  name="recipientFilter"  (keydown)="prueba()">
+      <input type="text" id="recipent" class="form-control full-width" [(ngModel)]="nombreClienteRecibe" name="recipientFilter" (keydown)="prueba()">
     </div>
 
     <div class="amounts-container">
@@ -52,6 +52,24 @@
         </div>
         <div class="modal-body">
           Por favor, seleccione un destinatario válido.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para usuario inválido -->
+  <div class="modal fade" id="notAContactModal" tabindex="-1" aria-labelledby="notAContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notAContactModalLabel">Error</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Por favor, seleccione uno de sus contactos, por favor
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-secondary" data-bs-dismiss="modal">Cerrar</button>

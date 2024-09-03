@@ -1,1 +1,23 @@
-<p>contacts-table works!</p>
+<cabecera></cabecera>
+<div class="tw-mb-4">
+  <input type="text" [(ngModel)]="nombreNuevoContacto" placeholder="Nombre del nuevo contacto" class="tw-px-4 tw-py-2 tw-border tw-border-gray-300 tw-rounded-md">
+  <button (click)="aniadirContacto()" class="tw-ml-2 tw-px-4 tw-py-2 tw-bg-blue-500 tw-text-white tw-rounded-md hover:tw-bg-blue-700">Añadir Contacto</button>
+</div>
+<table class="tw-min-w-full tw-divide-y tw-divide-gray-200">
+  <thead class="tw-bg-gray-50">
+    <tr>
+      <th scope="col" class="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">Nombre</th>
+      <th scope="col" class="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">País</th>
+      <th scope="col" class="tw-px-6 tw-py-3 tw-text-left tw-text-xs tw-font-medium tw-text-gray-500 tw-uppercase tw-tracking-wider">Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="tw-bg-white tw-divide-y tw-divide-gray-200">
+    <tr *ngFor="let contact of contacts">
+      <td class="tw-px-6 tw-py-4 tw-whitespace-nowrap">{{ contact.nombreUsuarioContacto }}</td>
+      <td class="tw-px-6 tw-py-4 tw-whitespace-nowrap">{{ contact.pais }}</td>
+      <td class="tw-px-6 tw-py-4 tw-whitespace-nowrap">
+        <button class="tw-text-red-600 hover:tw-text-red-900" (click)="deleteContact(contact.nombreUsuarioContacto)">Eliminar Contacto</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

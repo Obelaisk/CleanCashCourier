@@ -11,11 +11,11 @@ body {
   padding: 10px;
 }
 
-.navbar .logo {
-  height: 40px;
-  margin-right: 20px;
-  cursor: pointer;
-}
+  .navbar .logo {
+    height: 40px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
 
 .nav-items {
   display: flex;
@@ -41,9 +41,9 @@ body {
   padding: 5px 15px;
 }
 
-.login-button:hover {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  .login-button:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
 
 .dropbtn {
   background-color: #84BF49;
@@ -66,16 +66,16 @@ body {
   z-index: 1;
 }
 
-.dropdown-content a {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
 
-.dropdown-content a:hover {
-  background-color: #668F36;
-}
+    .dropdown-content a:hover {
+      background-color: #668F36;
+    }
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -90,6 +90,6 @@ body {
   margin-bottom: 20px;
 }
 
-.section h2 {
-  margin-top: 20px;
-}
+  .section h2 {
+    margin-top: 20px;
+  }

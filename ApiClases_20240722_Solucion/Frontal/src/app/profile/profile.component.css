@@ -70,3 +70,19 @@
 .btn-save:hover:not(:disabled) {
   background-color: #218838;
 }
+
+
+.action-button {
+  background-color: #1EA4D9;
+  color: #FFFFFF; /* Color blanco */
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: Arial, sans-serif; /* Fuente Arial */
+  font-weight: bold; /* Texto en negrita */
+}
+
+  .action-button:hover {
+    background-color: #1e9bd9;
+  }
