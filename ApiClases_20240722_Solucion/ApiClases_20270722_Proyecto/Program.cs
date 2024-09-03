@@ -147,23 +147,22 @@ async Task CreateRoles(WebApplication app)
     // M�todo para aplicar las migraciones de base de datos.
     
 }
-
-static void ApplyMigrations(WebApplication app)
+void ApplyMigrations(WebApplication app)
 {
     using (var scope = app.Services.CreateScope())
     {
-        var services = scope.ServiceProvider;
+        var dbContext = scope.ServiceProvider.GetRequiredService<Contexto>();
+
         try
         {
-            // Obtiene el contexto de base de datos y aplica las migraciones.
-            var context = services.GetRequiredService<Contexto>();
-            context.Database.Migrate();
+            // Aplicar todas las migraciones pendientes
+            dbContext.Database.Migrate();
+            Console.WriteLine("Migraciones aplicadas exitosamente.");
         }
         catch (Exception ex)
         {
-            // Registra cualquier error que ocurra durante la aplicaci�n de migraciones.
-            var logger = services.GetRequiredService<ILogger<Program>>();
-            logger.LogError(ex, "An error occurred while migrating the database.");
+            Console.WriteLine($"Error al aplicar las migraciones: {ex.Message}");
+            throw;
         }
     }
 }
