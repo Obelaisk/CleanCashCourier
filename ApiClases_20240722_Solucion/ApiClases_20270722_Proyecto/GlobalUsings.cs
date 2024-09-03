@@ -44,7 +44,7 @@ global using ApiClases_20270722_Proyecto.Modelos.Clientes;
 
 global using ApiClases_20270722_Proyecto.Modelos.Transacciones;
 
-global using ApiClases_20270722_Proyecto.SignalRServicio;
+//global using ApiClases_20270722_Proyecto.SignalRServicio;
 
 global using ApiClases_20270722_Proyecto.Repositorios;
 
