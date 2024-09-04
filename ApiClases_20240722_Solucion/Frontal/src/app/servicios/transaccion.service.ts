@@ -16,7 +16,7 @@ export class TransaccionService {
   // Después:
   private apiUrl = environment.apiUrl;
   //private url = `${this.apiUrl}/Clientes`;
-  private url = environment.apiTransacciones;
+  private url = environment.apiClientes; //luego se le añade el id del cliente respectivo y "Transaccion"
 
   // Fin de ejemplo
  
