@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() {}
+  constructor(private router: Router) { }
 
   // Método para verificar si el usuario está autenticado
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token'); // Comprueba si hay un token en el almacenamiento local
+    const token = localStorage.getItem('token');
+    if (token) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 }

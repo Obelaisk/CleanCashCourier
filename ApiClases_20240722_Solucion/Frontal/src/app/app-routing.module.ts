@@ -9,17 +9,18 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactsTableComponent } from './contacts-table/contacts-table.component';
+import { AuthGuard } from './guardas/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'about', component: AboutComponent },
+  { path: '', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'send-money', component: SendMoneyComponent },
-  { path: 'transaction-history', component: TransaccionComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'welcome', component: WelcomeComponentComponent },
-  { path: 'contactos', component: ContactsTableComponent }
+  { path: 'send-money', component: SendMoneyComponent, canActivate: [AuthGuard] },
+  { path: 'transaction-history', component: TransaccionComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'welcome', component: WelcomeComponentComponent, canActivate: [AuthGuard] },
+  { path: 'contactos', component: ContactsTableComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

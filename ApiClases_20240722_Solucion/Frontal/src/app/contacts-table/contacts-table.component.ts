@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ContactoService } from '../servicios/contacto.service';
 import { Contacto } from '../interfaces/contactos';
 import { switchMap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'pm-contacts-table',
@@ -12,7 +13,7 @@ export class ContactsTableComponent implements OnInit {
   contacts: Contacto[] = [];
   nombreNuevoContacto: string = '';
 
-  constructor(private contactService: ContactoService, private cdr: ChangeDetectorRef) { }
+  constructor(private contactService: ContactoService, private cdr: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit(): void {
     this.contactService.getListaContactosPorToken(localStorage['token']).subscribe(
@@ -53,5 +54,11 @@ export class ContactsTableComponent implements OnInit {
     );
 
   }
-
+  enviarDinero(contacto: Contacto): void {
+    this.router.navigate(['/send-money'], {
+      queryParams: { nombreClienteRecibe: contacto.nombreUsuarioContacto }
+    });
+  }
 }
+
+

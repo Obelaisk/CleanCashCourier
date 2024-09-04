@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../interfaces/usuario';
 import { Router } from '@angular/router';
 import { ClienteService } from '../servicios/cliente.service';
 declare var bootstrap: any;
