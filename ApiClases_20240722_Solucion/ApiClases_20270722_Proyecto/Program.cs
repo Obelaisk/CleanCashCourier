@@ -68,12 +68,20 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()  // Permite cualquier método HTTP.
             .AllowCredentials());  // Permite el uso de credenciales.
 
-    options.AddPolicy("AllowAzureHost",
-        builder => builder
-            .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net")  // Permite solicitudes desde el host de Azure.
-            .AllowAnyHeader()  // Permite cualquier encabezado.
-            .AllowAnyMethod()  // Permite cualquier método HTTP.
-            .AllowCredentials());  // Permite el uso de credenciales.
+    //options.AddPolicy("AllowAzureHost",
+    //    builder => builder
+    //        .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net")  // Permite solicitudes desde el host de Azure.
+    //        .AllowAnyHeader()  // Permite cualquier encabezado.
+    //        .AllowAnyMethod()  // Permite cualquier método HTTP.
+    //        .AllowCredentials());  // Permite el uso de credenciales.
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+
+        });
 });
 
 // Agregar servicios a la aplicación
@@ -108,7 +116,9 @@ if (app.Environment.IsDevelopment())
 else
 {
     // Allow Production
-    app.UseCors("AllowAzureHost");
+    app.UseCors("AllowAllOrigins");
+    //app.UseCors("AllowAzureHost");
+
 }
 
 // Redirección a https
