@@ -4,7 +4,7 @@ import { Transaccion, TransaccionTabla } from '../interfaces/transaccion';
 import { ICliente } from '../interfaces/cliente';
 import { ClienteService } from '../servicios/cliente.service';
 import { format } from 'date-fns';
-import {CabeceraComponent } from '../cabecera/cabecera.component'
+import { CabeceraComponent } from '../cabecera/cabecera.component'
 import { Subscription } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 
@@ -13,7 +13,7 @@ import { jwtDecode } from 'jwt-decode';
   templateUrl: './transaccion.component.html',
   styleUrls: ['./transaccion.component.css']
 })
-export class TransaccionComponent implements OnInit,OnDestroy {
+export class TransaccionComponent implements OnInit, OnDestroy {
   transacciones: Transaccion[] = [];
   transaccionesTabla: TransaccionTabla[] = [];
   fechaInicio: string | null = null;
@@ -52,7 +52,7 @@ export class TransaccionComponent implements OnInit,OnDestroy {
           },
           error => console.error(error)
         );
-        
+
       },
       error: err => this.errorMessage = err
     });
@@ -62,7 +62,7 @@ export class TransaccionComponent implements OnInit,OnDestroy {
     this.subTransaccion?.unsubscribe();
   }
 
- 
+
 
   obtenerIdUsuario(transaccion: Transaccion): Promise<string> {
     var clienteIdAux = transaccion.idRecibe === this.identificaciorCliente ? transaccion.idEnvia : transaccion.idRecibe;
@@ -77,7 +77,7 @@ export class TransaccionComponent implements OnInit,OnDestroy {
         }
       });
     });
-    
+
   }
 
   obtenerCantidad(transaccion: Transaccion): number {
@@ -124,19 +124,28 @@ export class TransaccionComponent implements OnInit,OnDestroy {
     }
   }
   filtrarTransacciones(): void {
-    
     this.subTransaccion = this.transaccionService.getTransaccionesFiltradas({
       fechaInicio: this.fechaInicio,
       fechaFin: this.fechaFin,
       cantidadMin: this.cantidadMin,
       cantidadMax: this.cantidadMax
     }, this.identificaciorCliente).subscribe(
-      (data: Transaccion[]) => this.transacciones = data,
+      async (data: Transaccion[]) => {
+        this.transaccionesTabla = [];
+        await Promise.all(data.map(async (transaccion) => {
+          const transaccionTabla = new TransaccionTabla();
+          transaccionTabla.nombre = await this.obtenerIdUsuario(transaccion);
+          transaccionTabla.cantidad = this.obtenerCantidad(transaccion);
+          transaccionTabla.fecha = this.obtenerFecha(transaccion);
+          transaccionTabla.tipo = this.obtenerTipoTransaccion(transaccion);
+          this.transaccionesTabla.push(transaccionTabla);
+        }));
+      },
       error => console.error(error)
     );
   }
 
 
- 
- 
+
+
 }

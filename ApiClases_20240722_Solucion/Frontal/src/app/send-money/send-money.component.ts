@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 import { PaisService } from '../servicios/pais.service';
 import { CabeceraComponent } from '../cabecera/cabecera.component'
 import { jwtDecode } from 'jwt-decode';
-import { Contacto, ContactoService } from '../servicios/contacto.service';
+import { ContactoService } from '../servicios/contacto.service';
+import { Contacto } from '../interfaces/contactos';
 declare var bootstrap: any;
 
 @Component({
@@ -34,7 +35,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   currencyEnviada: string = '';
   currencyRecibida: string = ''; // Moneda por defecto para recibir
   factorConversion: number = 1.1; // Factor de conversión estático, debería obtenerse dinámicamente
-  tarifaTransferencia: number = 0.00; 
+  tarifaTransferencia: number = 0.00;
   totalTransferencia: string = '0.00';
   private timeout: any;
 
@@ -43,7 +44,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   token: any;
   nombre!: string;
   constructor(private clienteService: ClienteService, private transaccionService: TransaccionService, private paisService: PaisService, private contactoService: ContactoService, private router: Router) { }
-  
+
   ngOnInit(): void {
     this.token = localStorage['token'];
 
@@ -59,24 +60,23 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
       },
       error: err => this.errorMessage = err
     });
-    this.subListaContactos = this.contactoService.getListaContactosPorId(this.identificadorClienteEnvia).subscribe({
+    this.subListaContactos = this.contactoService.getListaContactosPorToken(this.token).subscribe({
       next: contactos => {
         this.listaContactos = contactos
       },
       error: err => this.errorMessage = err
     });
-    console.log(this.listaContactos);  
-    
-    
+
+
   }
   prueba(): void {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
     this.timeout = setTimeout(() => {
-      this.subcliente = this.clienteService.getCliente(this.nombreClienteRecibe).subscribe({
-        next: cliente => {
-          if (cliente) {
+      if (this.nombreClienteRecibe != '') {
+        this.subcliente = this.clienteService.getCliente(this.nombreClienteRecibe).subscribe({
+          next: cliente => {
             this.identificadorClienteRecibe = cliente.id;
             this.subTransaccion = this.paisService.getPaisId(cliente.paisId).subscribe({
               next: pais => {
@@ -84,7 +84,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
                 this.subTransaccion = this.transaccionService.hacerConversion(this.currencyEnviada, this.currencyRecibida).subscribe({
                   next: factor => {
                     this.factorConversion = factor;
-                    this.cantidadRecibida = this.cantidadEnviada?(parseInt( this.cantidadEnviada) * factor).toString():'';
+                    this.cantidadRecibida = this.cantidadEnviada ? (parseInt(this.cantidadEnviada) * factor).toString() : '';
                   },
                   error: err => this.errorMessage = err
                 });
@@ -92,16 +92,20 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
               error: err => this.errorMessage = err
             });
 
-
-          } else {
+          },
+          error: err => {
+            this.errorMessage = err;
+            this.identificadorClienteRecibe = 0;
             this.currencyRecibida = '';
             this.factorConversion = 0;
           }
-        },
-        error: err => this.errorMessage = err
-      });
+        });
 
-     
+      } else {
+        this.currencyRecibida = '';
+        this.factorConversion = 0;
+        this.identificadorClienteRecibe = 0;
+      }
       clearTimeout(this.timeout);
     }, 1000);
   }
@@ -109,6 +113,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     this.subcliente.unsubscribe();
     this.subPais.unsubscribe();
     this.subTransaccion?.unsubscribe();
+    this.subListaContactos.unsubscribe();
   }
 
   validateAmount(event: Event, isEnviada: boolean) {
@@ -148,7 +153,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   calcularCosteAleatorio(min: number, max: number) {
     return (Math.random() * (max - min) + min).toFixed();
   }
-  
+
   crearTransaccion() {
     this.transaccion = new Transaccion();
 
@@ -157,19 +162,24 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     this.transaccion.idEnvia = this.identificadorClienteEnvia;
     this.transaccion.idRecibe = this.identificadorClienteRecibe === null ? 0 : this.identificadorClienteRecibe || 0;
     this.transaccion.fecha = new Date(Date.now()).toJSON();
-    this.transaccion.monedaOrigen= this.currencyEnviada;
+    this.transaccion.monedaOrigen = this.currencyEnviada;
     this.transaccion.monedaDestino = this.currencyRecibida;
     this.transaccion.costeTransaccion = this.tarifaTransferencia;
   }
 
   sendMoney() {
     // Validación de coincidencia exacta del usuario
-    
-
     if (this.identificadorClienteRecibe == 0) {
       this.showInvalidUserModal();
       return;
     }
+
+    if (!this.listaContactos.some(contacto => contacto.nombreUsuarioContacto === this.nombreClienteRecibe)) {
+      this.showNotAContactModal();
+      console.log();
+      return;
+    }
+
     if (this.identificadorClienteRecibe === this.identificadorClienteEnvia) {
       this.showInvalidUserModal();
       return;
@@ -204,6 +214,12 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     modal.show();
   }
 
+  showNotAContactModal() {
+    const modalElement = document.getElementById('notAContactModal');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
+
   showInvalidAmountModal() {
     const modalElement = document.getElementById('invalidAmountModal');
     const modal = new bootstrap.Modal(modalElement);
@@ -226,5 +242,3 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     this.router.navigate(['/transaction-history']);
   }
 }
-
-

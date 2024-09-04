@@ -14,8 +14,8 @@ export class PaisService {
   // Antes:
   //private url = 'https://localhost:7138/api/Paises';
   // Después:
-  private apiUrl = environment.apiUrl;
-  private url = `${this.apiUrl}/Paises`;
+  private url = environment.apiPaises;
+  //private url = `${this.apiUrl}/Paises`;
 
   // Fin de ejemplo
 

@@ -1,0 +1,41 @@
+.text-center {
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+}
+
+.container {
+  padding: 20px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.my-4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gap-3 {
+  gap: 1rem;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+.btn-link {
+  color: #007bff;
+  text-decoration: none;
+}

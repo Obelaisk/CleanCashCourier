@@ -6,7 +6,7 @@ import { IPais, PaisService } from '../servicios/pais.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CabeceraComponent } from '../cabecera/cabecera.component';
-import { jwtDecode }  from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { ActualizarPerfilCliente } from '../interfaces/registroCliente';
 
 @Component({
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     pais: false,
     trabajo: false
   };
-  
+
   trabajos: string[] = [];
   subPaises!: Subscription;
   subClientes!: Subscription;
@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
   nombre!: string;
 
   isLoading: boolean = true;
-  constructor(private fb: FormBuilder, private clienteService: ClienteService,private paisService:PaisService, private datosService: DatosService) { }
+  constructor(private fb: FormBuilder, private clienteService: ClienteService, private paisService: PaisService, private datosService: DatosService) { }
   showDropdownPais() {
     this.isDropdownPaisesVisible = true;
   }
@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit {
     this.empleosFiltrados = this.datosService.getTrabajos();
 
     this.trabajos = this.datosService.getTrabajos();
-    
+
   }
 
   enableEdit(field: keyof ICliente): void {
@@ -129,13 +129,13 @@ export class ProfileComponent implements OnInit {
 
     }
     this.clienteService.updateCliente(this.cliente.id, clieteActualizar).subscribe({
-        next: (data) => {
-          //this.cliente = data;
-          alert('Cambios guardados exitosamente.');
-        },
-        error: (err) => console.error(err)
-      });
-    
+      next: (data) => {
+        //this.cliente = data;
+        alert('Cambios guardados exitosamente.');
+      },
+      error: (err) => console.error(err)
+    });
+
   }
   selectPais(paisNombre: string) {
     this.perfilForm.patchValue({ PaisNombre: paisNombre })

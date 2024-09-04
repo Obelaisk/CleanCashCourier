@@ -15,7 +15,8 @@ export class TransaccionService {
    //private url = 'https://localhost:7138/api/Clientes';
   // Después:
   private apiUrl = environment.apiUrl;
-  private url = `${this.apiUrl}/Clientes`;
+  //private url = `${this.apiUrl}/Clientes`;
+  private url = environment.apiTransacciones;
 
   // Fin de ejemplo
  
