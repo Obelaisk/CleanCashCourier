@@ -25,8 +25,8 @@ namespace ApiClases_20270722_Proyecto.Controllers
             IServicioToken servicioToken,
             IMapper mapper,
             UserManager<UsuarioAplicacion> userManager,
-            SignInManager<UsuarioAplicacion> signInManager
-            /*IMediator mediator*/)
+            SignInManager<UsuarioAplicacion> signInManager/*,
+            IMediator mediator*/)
         {
             _clienteRepositorio = clienteRepositorio;
             _paisRepositorio = paisRepositorio;

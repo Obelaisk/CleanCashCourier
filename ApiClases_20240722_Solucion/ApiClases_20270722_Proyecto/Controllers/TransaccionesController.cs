@@ -14,12 +14,12 @@ public class TransaccionesController : ControllerBase
     private readonly IMediator _mediator;
     public TransaccionesController(
             IRepositorioGenerico<Transaccion> repositorio,
-            IMapper mapper,
-            IMediator mediator)
+            IMapper mapper/*,
+            IMediator mediator*/)
     {
         _repositorio = repositorio;
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        //_mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
     }
 
 
