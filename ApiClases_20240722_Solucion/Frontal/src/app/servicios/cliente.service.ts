@@ -14,9 +14,9 @@ export class ClienteService {
   // Antes:
   //private clientesUrl = 'https://localhost:7138/api/Clientes';
   // Después:
-  private apiUrl = environment.apiClientes;
+  //private apiUrl = 
   //private clientesUrl = `${this.apiUrl}/Clientes`;
-  private clientesUrl = '${this.apiUrl}';
+  private clientesUrl = environment.apiClientes;
   
 
   // Fin de ejemplo
