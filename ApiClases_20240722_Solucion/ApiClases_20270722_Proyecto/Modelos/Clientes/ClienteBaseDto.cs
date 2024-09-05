@@ -21,7 +21,7 @@ public class ClienteBaseDto : IValidatableObject
     public string Email { get; set; }
 
     [Required]
-    public int PaisId { get; set; }
+    public int? PaisId { get; set; }
 
     public string? Usuario { get; set; }
     public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

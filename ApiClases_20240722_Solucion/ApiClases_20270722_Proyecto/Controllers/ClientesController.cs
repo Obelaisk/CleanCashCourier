@@ -145,6 +145,10 @@ namespace ApiClases_20270722_Proyecto.Controllers
             {
                 return Conflict(new { Message = "DuplicateUserName" }); // El username es el mismo que la primera parte del email
             }
+            if (modelo.PaisId is null)
+            {
+                return Conflict(new { Message = "PaisId es nulo" });
+            }
             var usuario = new UsuarioAplicacion
             {
                 Nombre = modelo.Nombre,
@@ -153,7 +157,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
                 Email = modelo.Email,
                 FechaNacimiento = modelo.FechaNacimiento,
                 Empleo = modelo.Empleo,
-                PaisId = modelo.PaisId,
+                PaisId = (int)modelo.PaisId,
             };
 
 
@@ -246,8 +250,17 @@ namespace ApiClases_20270722_Proyecto.Controllers
             var clienteExistente = _clienteRepositorio.ObtenerPorId(id);
             if (clienteExistente == null) return NotFound();
 
-            clienteExistente.PaisId = clienteDto.PaisId;
-            clienteExistente.Empleo = clienteDto.Empleo;
+            // Actualizar PaisId solo si tiene valor en el DTO
+            if (clienteDto.PaisId.HasValue && clienteDto.PaisId.Value != -1)
+            {
+                clienteExistente.PaisId = clienteDto.PaisId.Value;
+            }
+
+            // Actualizar Empleo solo si no es nulo y no está vacío
+            if (!string.IsNullOrWhiteSpace(clienteDto.Empleo))
+            {
+                clienteExistente.Empleo = clienteDto.Empleo;
+            }
 
             _clienteRepositorio.Actualizar(id, clienteExistente);
 

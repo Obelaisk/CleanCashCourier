@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tw-about-content {
+  @apply tw-p-8 tw-bg-white tw-text-gray-800;
+}
+
+  .tw-about-content h1 {
+    @apply tw-text-4xl tw-font-bold tw-mb-8;
+  }
+
+  .tw-about-content .tw-section {
+    @apply tw-mb-8;
+  }
+
+    .tw-about-content .tw-section h2 {
+      @apply tw-text-2xl tw-font-semibold tw-mb-4;
+    }
+
+    .tw-about-content .tw-section p {
+      @apply tw-mb-4;
+    }

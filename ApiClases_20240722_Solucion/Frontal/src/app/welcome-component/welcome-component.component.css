@@ -1,169 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* General styles */
-.responsive {
-  width: 100%;
-  height: auto;
+.tw-responsive {
+  @apply tw-w-full tw-h-auto;
+}
+
+.tw-main-content {
+  @apply tw-w-full;
 }
 
 /* Banner styles */
-.banner {
-  position: relative;
-  text-align: center;
-  color: white;
+.tw-banner {
+  @apply tw-relative tw-text-center tw-text-white;
 }
 
-.banner-image {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
+.tw-banner-image {
+  @apply tw-w-full tw-h-96 tw-object-cover;
 }
 
-.banner-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.tw-banner-text {
+  @apply tw-absolute tw-top-1/2 tw-left-1/2 tw-transform tw--translate-x-1/2 tw--translate-y-1/2;
 }
 
-.banner-text h1 {
-  font-size: 36px;
-  color: #FFFFFF;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  .tw-banner-text h1 {
+    @apply tw-text-4xl tw-text-white tw-shadow-lg;
+  }
+
+  .tw-banner-text p {
+    @apply tw-text-2xl tw-text-white tw-shadow-lg;
+  }
+
+.tw-action-button {
+  @apply tw-bg-cyan-400 tw-text-blue-900 tw-border tw-border-white tw-rounded-full tw-px-5 tw-py-2 tw-mt-2 tw-cursor-pointer;
 }
 
-.banner-text p {
-  font-size: 20px;
-  color: #FFFFFF;
-  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-}
-
-.action-button {
-  background-color: #0fd3ec;
-  color: #1A3540;
-  border: 2px solid white;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.action-button:hover {
-  background-color: #1EA4D9;
-}
+  .tw-action-button:hover {
+    @apply tw-bg-cyan-600;
+  }
 
 /* Service styles */
-.services {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 20px;
-  background-color: #1ea4d9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.tw-services {
+  @apply tw-flex tw-justify-between tw-p-5 tw-m-5 tw-bg-blue-500 tw-rounded-lg tw-shadow-md;
 }
 
-.service {
-  display: flex; /* Habilita Flexbox */
-  flex-direction: column; /* Organiza los elementos en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
-  width: 48%;
-  text-align: center;
+.tw-service {
+  @apply tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-1/2 tw-text-center;
 }
 
-.icon {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
+.tw-icon {
+  @apply tw-w-24 tw-h-auto tw-mb-2;
 }
 
 /* Benefits styles */
-.section-title {
-  font-size: 28px;
-  color: #000000;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 20px;
+.tw-section-title {
+  @apply tw-text-2xl tw-text-black tw-text-center tw-w-full tw-mb-5;
 }
 
-.benefits {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 20px;
-  background-color: #ADD96A;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.tw-benefits {
+  @apply tw-flex tw-flex-wrap tw-justify-between tw-p-5 tw-m-5 tw-bg-green-300 tw-rounded-lg tw-shadow-md;
 }
 
-.benefit {
-  display: flex; /* Habilita Flexbox */
-  flex-direction: column; /* Organiza los elementos en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
-  width: 48%;
-  text-align: center;
-  margin-bottom: 20px;
+.tw-benefit {
+  @apply tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-1/2 tw-text-center tw-mb-5;
 }
 
 /* Testimonial styles */
-.testimonials {
-  padding: 20px;
-  margin: 20px;
-  background-color: #D7D9D7;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.tw-testimonials {
+  @apply tw-p-5 tw-m-5 tw-bg-gray-300 tw-rounded-lg tw-shadow-md tw-text-center;
 }
 
-.testimonial-columns {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+.tw-testimonial-columns {
+  @apply tw-flex tw-justify-around tw-mt-5;
 }
 
-.testimonial {
-  display: flex; /* Habilita Flexbox */
-  flex-direction: column; /* Organiza los elementos en columna */
-  align-items: center; /* Centra los elementos horizontalmente */
-  justify-content: center; /* Centra los elementos verticalmente */
-  width: 48%;
-  text-align: center;
-  margin-bottom: 20px;
+.tw-testimonial {
+  @apply tw-flex tw-flex-col tw-items-center tw-justify-center tw-w-1/2 tw-text-center tw-mb-5;
 }
 
-.testimonial-image {
-  width: 100px;
-  height: auto;
-  border-radius: 50%;
-  margin-bottom: 10px;
+.tw-testimonial-image {
+  @apply tw-w-24 tw-h-auto tw-rounded-full tw-mb-2;
 }
 
 /* CTA styles */
-.cta {
-  padding: 20px;
-  margin: 20px;
-  background-color: #1A3540;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.tw-cta {
+  @apply tw-p-5 tw-m-5 tw-bg-blue-900 tw-rounded-lg tw-shadow-md tw-text-center;
 }
 
-.cta h2,
-.cta p {
-  color: white; /* Cambio de color del texto a blanco */
+  .tw-cta h2,
+  .tw-cta p {
+    @apply tw-text-white;
+  }
+
+.tw-action-button-CTA {
+  @apply tw-bg-green-500 tw-text-black tw-border tw-border-white tw-rounded-full tw-px-5 tw-py-2 tw-mt-2 tw-cursor-pointer;
 }
 
-.action-button-CTA {
-  background-color: #84BF49;
-  color: black;
-  border: 2px solid white;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin: 10px;
-  cursor: pointer;
+  .tw-action-button-CTA:hover {
+    @apply tw-bg-green-300;
+  }
+
+.text-outline {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
-.action-button-CTA:hover {
-  background-color: #ADD96A;
+/* Para alinear los íconos con los números */
+.icon-with-number {
+  display: flex;
+  align-items: center;
 }
+
+  .icon-with-number .number {
+    margin-left: 10px;
+    font-size: 50px;
+    color: black;
+    font-weight: bold;
+  }
