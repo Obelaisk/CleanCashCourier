@@ -704,6 +704,7 @@ namespace ApiClases_20270722_Proyecto.Migrations
             migrationBuilder.DropTable(
                 name: "Paises");
             EliminarVistas(migrationBuilder);
+            
         }
     }
 }

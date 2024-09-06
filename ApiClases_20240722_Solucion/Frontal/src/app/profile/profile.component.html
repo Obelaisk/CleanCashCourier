@@ -1,8 +1,7 @@
 <cabecera></cabecera>
 <div class="tw-max-w-4xl tw-mx-auto tw-font-[sans-serif] tw-p-6" *ngIf="!isLoading">
-  <div class="tw-text-center tw-mb-16">
-
-    <h1 class="tw-text-gray-800 tw-text-base tw-font-semibold tw-mt-6">Perfil del usuario</h1>
+  <div class="tw-text-center tw-mb-8">
+    <h1 class="tw-text-gray-800 tw-text-2xl tw-font-semibold">Perfil del Usuario</h1>
   </div>
 
   <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
@@ -11,58 +10,50 @@
       {{ errorMessage }}
     </div>
 
-    <div class="tw-grid sm:tw-grid-cols-2 tw-gap-8">
-      <div>
-        <label for="nombre" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Nombre: {{cliente.nombre}}</label>
-      </div>
-      <div>
-        <label for="Apellido" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Apellido: {{cliente.apellido}}</label>
-      </div>
-      <div>
-        <label for="Email" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Correo: {{cliente.email}}</label>
-      </div>
-      <div>
-        <label for="fecha" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">
-          Fecha de nacimiento: {{cliente.fechaNacimiento | date:'dd/MM/yyyy'}}
-        </label>
+    <div class="tw-grid sm:tw-grid-cols-2 tw-gap-4">
+      <!-- Nombre -->
+      <div class="perfil-field">
+        <label for="nombre" class="tw-text-gray-800 tw-text-sm tw-font-bold">Nombre</label>
+        <div class="perfil-box">{{ cliente.nombre }}</div>
       </div>
 
-      <!-- Campos adicionales -->
-      <div class="tw-relative tw-w-full tw-max-w-sm">
-        <label for="pais" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Pais</label>
-        <input id="pais" name="pais" type="text" formControlName="PaisNombre" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu pais" (focus)="showDropdownPais()" (input)="filterPaises($event)" />
-        <ul *ngIf="isDropdownPaisesVisible" id="dropdownMenuPais"
-            class='tw-absolute tw-block tw-shadow-lg tw-bg-white tw-py-2 tw-px-2 tw-z-[1000] tw-min-w-full tw-w-max tw-rounded tw-max-h-96 tw-overflow-auto'>
-          <li *ngFor="let pais of paisesFiltrado; let i = index" [attr.data-index]="i"
-              class='tw-py-2.5 tw-px-4 hover:tw-bg-blue-50 tw-rounded tw-text-black tw-text-sm tw-cursor-pointer' (click)="selectPais(pais.nombre)">
-            <div class="tw-flex tw-items-center" #paisItem>
-              <!--<img [src]="'https://flagcdn.com/16x12/' + pais.iso3 + '.png'" class="tw-w-6 tw-mr-3" />-->
-              {{ pais.nombre }}
-            </div>
-          </li>
-        </ul>
+      <!-- Apellido -->
+      <div class="perfil-field">
+        <label for="apellido" class="tw-text-gray-800 tw-text-sm tw-font-bold">Apellido</label>
+        <div class="perfil-box">{{ cliente.apellido }}</div>
       </div>
 
-      <div class="tw-relative tw-w-full tw-max-w-sm">
-        <label for="empleo" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Empleo</label>
-        <input id="empleo" name="empleo" type="text" formControlName="Empleo" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu ocupacion" (focus)="showDropdownEmpleo()" (input)="filterEmpleos($event)" />
-        <ul *ngIf="isDropdownEmpleosVisible" id="dropdownMenuEmpleo"
-            class='tw-absolute tw-block tw-shadow-lg tw-bg-white tw-py-2 tw-px-2 tw-z-[1000] tw-min-w-full tw-w-max tw-rounded tw-max-h-96 tw-overflow-auto'>
-          <li *ngFor="let empleo of empleosFiltrados; let i = index" [attr.data-index]="i"
-              class='tw-py-2.5 tw-px-4 hover:tw-bg-blue-50 tw-rounded tw-text-black tw-text-sm tw-cursor-pointer' (click)="selectEmpleo(empleo)">
-            <div class="tw-flex tw-items-center" #empleoItem>
-              {{ empleo }}
-            </div>
-          </li>
-        </ul>
+      <!-- Correo -->
+      <div class="perfil-field">
+        <label for="email" class="tw-text-gray-800 tw-text-sm tw-font-bold">Correo</label>
+        <div class="perfil-box">{{ cliente.email }}</div>
       </div>
 
+      <!-- Fecha de Nacimiento -->
+      <div class="perfil-field">
+        <label for="fecha" class="tw-text-gray-800 tw-text-sm tw-font-bold">Fecha de Nacimiento</label>
+        <div class="perfil-box">{{ cliente.fechaNacimiento | date: 'dd/MM/yyyy' }}</div>
+      </div>
+
+      <!-- País (Dropdown) -->
+      <div class="perfil-field">
+        <label for="pais" class="tw-text-gray-800 tw-text-sm tw-font-bold">País</label>
+        <select id="pais" formControlName="PaisNombre" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-2 tw-rounded-md tw-border tw-border-gray-300">
+          <option *ngFor="let pais of paises" [value]="pais.nombre">{{ pais.nombre }}</option>
+        </select>
+      </div>
+
+      <!-- Empleo (Dropdown) -->
+      <div class="perfil-field">
+        <label for="empleo" class="tw-text-gray-800 tw-text-sm tw-font-bold">Empleo</label>
+        <select id="empleo" formControlName="Empleo" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-2 tw-rounded-md tw-border tw-border-gray-300">
+          <option *ngFor="let empleo of empleos" [value]="empleo">{{ empleo }}</option>
+        </select>
+      </div>
     </div>
+
     <div class="tw-flex tw-justify-center tw-mt-8">
-      <button type="submit" class="action-button">
-        Modificar datos
-      </button>
+      <button type="submit" class="action-button">Modificar datos</button>
     </div>
   </form>
 </div>
-

@@ -1,72 +1,90 @@
 <cabecera></cabecera>
-<!-- welcome.component.html -->
-<div class="main-content">
+<div class="tw-w-full">
 
   <!-- Banner Principal -->
-  <div class="banner">
-    <img src="assets/Banner.jpg" alt="Banner Image" class="responsive">
-    <div class="banner-text">
-      <h1>Envíe Dinero de Manera Rápida, Segura y Confiable con Clean Cash Courier</h1>
-      <p>Tarifas bajas y transferencias rápidas a más de 100 países</p>
-      <!-- Revisar el link-->
-      <button class="action-button" (click)="navegarAEnvioDinero()">Enviar Dinero</button>
-
+  <div class="tw-relative tw-text-center tw-text-white tw-my-2  tw-rounded-lg">
+    <div class="overlay"></div>
+    <img src="assets/Banner.jpg" alt="Banner Image" class="tw-w-full tw-h-auto tw-rounded-lg">
+    <div class="tw-absolute tw-bottom-0 tw-left-1/2 tw-transform tw--translate-x-1/2 tw-mb-4">
+      <h1 class="tw-font-bold text-outline" style="font-size: 2vw; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">Envíe Dinero de Manera Rápida, Segura y Confiable con Clean Cash Courier</h1>
+      <p class="tw-font-bold text-outline" style="font-size: 1vw; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">Tarifas bajas y transferencias rápidas a más de 100 países</p>
+      <button class="tw-bg-cyan-400 tw-text-white-900 tw-border tw-border-white tw-rounded-full tw-px-5 tw-py-2 tw-mt-2 tw-cursor-pointer tw-font-bold" style="font-size: 1.5vw;" (click)="navegarAEnvioDinero()">Enviar Dinero</button>
     </div>
   </div>
-
   <!-- Servicios Destacados -->
-  <div class="services">
-    <div class="service">
-      <h2>Transferencias Internacionales</h2>
-      <img src="assets/international-trade.png" alt="Transferencias Internacionales" class="icon">
-      <p>Envía dinero a cualquier parte del mundo de manera rápida y económica.</p>
+  <div class="tw-flex tw-flex-wrap tw-justify-around tw-my-4 tw-bg-blue-200 tw-rounded-lg">
+    <!-- Transferencias Internacionales -->
+    <div class="tw-text-center tw-mb-8">
+      <h2 class="tw-text-2xl">Países con clientes</h2>
+      <div class="tw-flex tw-flex-col tw-items-center">
+        <img src="assets/international-trade.png" alt="Transferencias Internacionales" class="tw-w-16 tw-h-16">
+        <span *ngIf="paisesConClientes !== undefined" class="tw-text-3xl tw-font-bold">{{ paisesConClientes }}</span>
+      </div>
+      <p>Envía dinero a cualquier parte del mundo de manera rápida y económica. Estamos presentes en {{ paisesConClientes || '...' }} países distintos.</p>
     </div>
-    <div class="service">
-      <h2>Transferencias Nacionales</h2>
-      <img src="assets/save-money.png" alt="Transferencias Nacionales" class="icon">
-      <p>Transfiere dinero dentro del país con tarifas bajas y tiempos de entrega rápidos.</p>
+
+    <!-- Transacciones en los últimos 10 años -->
+    <div class="tw-text-center tw-mb-8">
+      <h2 class="tw-text-2xl">Transacciones en los últimos 10 años</h2>
+      <div class="tw-flex tw-flex-col tw-items-center">
+        <img src="assets/save-money.png" alt="Transacciones en los últimos 10 años" class="tw-w-16 tw-h-16">
+        <span *ngIf="transaccionesUltimos10Anios !== undefined" class="tw-text-3xl tw-font-bold">{{ transaccionesUltimos10Anios }}</span>
+      </div>
+      <p>Hemos procesado {{ transaccionesUltimos10Anios || '...' }} transacciones en los últimos 10 años con tarifas bajas y tiempos de entrega rápidos.</p>
     </div>
   </div>
 
   <!-- Beneficios y Características -->
-  <div class="benefits">
-    <h2 class="section-title">¿Porqué elegir Clean Cash Courier?</h2>
-    <div class="benefit">
-      <h2>Seguridad de Primer Nivel</h2>
-      <img src="assets/cyber-security.png" alt="Seguridad" class="icon">
-      <p>Protegemos tus transacciones con tecnología de cifrado de última generación.</p>
-    </div>
-    <div class="benefit">
-      <h2>Tarifas Transparentes</h2>
-      <img src="assets/bill.png" alt="Tarifas" class="icon">
-      <p>Sin cargos ocultos. Conoce nuestras tarifas antes de enviar.</p>
-    </div>
-    <div class="benefit">
-      <h2>Velocidad</h2>
-      <img src="assets/deadline.png" alt="Velocidad" class="icon">
-      <p>Entregas rápidas y confiables en cuestión de minutos a la mayoría de los destinos.</p>
-    </div>
-    <div class="benefit">
-      <h2>Atención al Cliente 24/7</h2>
-      <img src="assets/technical-support.png" alt="Atención al Cliente" class="icon">
-      <p>Nuestro equipo de soporte está disponible las 24 horas del día, los 7 días de la semana.</p>
+  <div class="tw-flex tw-flex-wrap tw-justify-around tw-my-4 tw-bg-green-200 tw-rounded-lg">
+    <h2 class="tw-text-3xl tw-text-center tw-mb-8">¿Porqué elegir Clean Cash Courier?</h2>
+    <div class="tw-flex tw-flex-wrap tw-justify-around">
+      <div class="tw-text-center tw-mb-8">
+        <h2 class="tw-text-2xl">Seguridad de Primer Nivel</h2>
+        <img src="assets/cyber-security.png" alt="Seguridad" class="tw-w-16 tw-h-16 tw-mx-auto">
+        <p>Protegemos tus transacciones con tecnología de cifrado de última generación.</p>
+      </div>
+      <div class="tw-text-center tw-mb-8">
+        <h2 class="tw-text-2xl">Tarifas Transparentes</h2>
+        <img src="assets/bill.png" alt="Tarifas" class="tw-w-16 tw-h-16 tw-mx-auto">
+        <p>Sin cargos ocultos. Conoce nuestras tarifas antes de enviar.</p>
+      </div>
+      <div class="tw-text-center tw-mb-8">
+        <h2 class="tw-text-2xl">Velocidad</h2>
+        <img src="assets/deadline.png" alt="Velocidad" class="tw-w-16 tw-h-16 tw-mx-auto">
+        <p>Entregas rápidas y confiables en cuestión de minutos a la mayoría de los destinos.</p>
+      </div>
+      <div class="tw-text-center tw-mb-8">
+        <h2 class="tw-text-2xl">Atención al Cliente 24/7</h2>
+        <img src="assets/technical-support.png" alt="Atención al Cliente" class="tw-w-16 tw-h-16 tw-mx-auto">
+        <p>Nuestro equipo de soporte está disponible las 24 horas del día, los 7 días de la semana.</p>
+      </div>
+      <div class="tw-text-center tw-mb-8">
+        <h2 class="tw-text-2xl">Facilidad de Uso</h2>
+        <img src="assets/easy.png" alt="Facilidad de Uso" class="tw-w-16 tw-h-16 tw-mx-auto">
+        <p>Nuestra plataforma intuitiva te permite realizar transferencias en pocos clics.</p>
+      </div>
+      <div class="tw-text-center tw-mb-8">
+        <h2 class="tw-text-2xl">Cobertura Global</h2>
+        <img src="assets/global-network.png" alt="Cobertura Global" class="tw-w-16 tw-h-16 tw-mx-auto">
+        <p>Con presencia en más de 100 países, puedes enviar dinero a casi cualquier lugar del mundo.</p>
+      </div>
     </div>
   </div>
-
   <!-- Testimonios de Clientes -->
-  <div class="testimonials">
-    <h2>Testimonios de Clientes</h2>
-    <div class="testimonial-columns">
-      <div class="testimonial">
-        <img src="assets/man.png" alt="Juan P." class="testimonial-image">
+  <div class="tw-flex tw-flex-wrap tw-justify-around tw-my-4 tw-bg-yellow-200 tw-rounded-lg">
+    <h2 class="tw-w-full tw-text-3xl tw-text-center tw-mb-8">Testimonios de Clientes</h2>
+    <div class="tw-flex tw-flex-wrap tw-justify-around">
+      <div class="tw-text-center tw-mb-8">
+        <img src="assets/man.png" alt="Juan P." class="tw-w-16 tw-h-16 tw-mx-auto">
         <p>"He usado Clean Cash Courier para enviar dinero a mi familia y nunca he tenido un problema. Son rápidos y confiables." - Juan P.</p>
       </div>
-      <div class="testimonial">
-        <img src="assets/woman.png" alt="María G." class="testimonial-image">
+      <div class="tw-text-center tw-mb-8">
+        <img src="assets/woman.png" alt="María G." class="tw-w-16 tw-h-16 tw-mx-auto">
         <p>"Las tarifas son muy bajas y el servicio es excelente. Muy recomendable." - María G.</p>
       </div>
     </div>
+
   </div>
 
-
 </div>
+<a href="https://www.flaticon.com/free-icons/networking" title="networking icons">Networking icons created by Freepik - Flaticon</a>

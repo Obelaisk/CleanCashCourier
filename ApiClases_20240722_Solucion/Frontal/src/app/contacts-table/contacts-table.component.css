@@ -35,7 +35,27 @@
   margin-left: auto;
 }
 
-.btn-link {
-  color: #007bff;
-  text-decoration: none;
+
+.send-button {
+  background-color: #1EA4D9;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  .send-button:hover {
+    background-color: #16303B;
+  }
+
+.container {
+  display: flex;
+  justify-content: flex-start; /* Alinea los elementos a la izquierda */
+  gap: 1rem; /* Espacio entre los elementos */
+}
+
+.item {
+  flex: 0 1 auto; /* Ajusta el tamaño de los elementos según su contenido */
 }

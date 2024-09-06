@@ -38,8 +38,6 @@ export class ContactsTableComponent implements OnInit {
       }
     );
   }
-
-
   aniadirContacto(): void {
     this.contactService.aniadirContacto(this.nombreNuevoContacto.trim(), localStorage['token']).pipe(
       switchMap(() => this.contactService.getListaContactosPorToken(localStorage['token']))

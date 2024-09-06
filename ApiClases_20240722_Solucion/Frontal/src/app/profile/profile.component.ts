@@ -6,7 +6,7 @@ import { IPais, PaisService } from '../servicios/pais.service';
 import { Subscription } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CabeceraComponent } from '../cabecera/cabecera.component';
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode }  from 'jwt-decode';
 import { ActualizarPerfilCliente } from '../interfaces/registroCliente';
 
 @Component({
@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
     pais: false,
     trabajo: false
   };
-
+  
   trabajos: string[] = [];
   subPaises!: Subscription;
   subClientes!: Subscription;
@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
   nombre!: string;
 
   isLoading: boolean = true;
-  constructor(private fb: FormBuilder, private clienteService: ClienteService, private paisService: PaisService, private datosService: DatosService) { }
+  constructor(private fb: FormBuilder, private clienteService: ClienteService,private paisService:PaisService, private datosService: DatosService) { }
   showDropdownPais() {
     this.isDropdownPaisesVisible = true;
   }
@@ -63,12 +63,11 @@ export class ProfileComponent implements OnInit {
     this.isDropdownEmpleosVisible = false;
   }
   ngOnInit(): void {
-
     this.token = localStorage['token'];
 
     this.subClientes = this.clienteService.getCliente(this.token).subscribe({
       next: (data) => {
-        this.cliente = data
+        this.cliente = data;
         this.isLoading = false;
         this.perfilForm = this.fb.group({
           Nombre: [this.cliente.nombre, [Validators.required, Validators.minLength(3)]],
@@ -77,10 +76,9 @@ export class ProfileComponent implements OnInit {
           Contraseña: ['', [Validators.required, Validators.minLength(6)]],
           Contraseña2: ['', [Validators.required]],
           Rol: ['Client', Validators.required],
-          PaisNombre: ['', Validators.required],
-          Empleo: [''],
+          PaisNombre: [this.cliente.nombrePais, Validators.required], // Mostrar el país actual
+          Empleo: [this.cliente.trabajo], // Mostrar el empleo actual
           FechaNac: [this.cliente.fechaNacimiento, Validators.required]
-        }, {
         });
       },
       error: (err) => {
@@ -90,18 +88,17 @@ export class ProfileComponent implements OnInit {
     });
 
     this.subPaises = this.paisService.getPaises().subscribe({
-      next: paises => {
+      next: (paises) => {
         this.paises = paises;
         this.paisesFiltrado = paises;
       },
-      error: err => this.errorMessage = err
+      error: (err) => (this.errorMessage = err),
     });
+
     this.empleos = this.datosService.getTrabajos();
     this.empleosFiltrados = this.datosService.getTrabajos();
-
-    this.trabajos = this.datosService.getTrabajos();
-
   }
+
 
   enableEdit(field: keyof ICliente): void {
     if (field in this.isEditing) {
@@ -128,14 +125,15 @@ export class ProfileComponent implements OnInit {
       Id: this.cliente.id
 
     }
-    this.clienteService.updateCliente(this.cliente.id, clieteActualizar).subscribe({
-      next: (data) => {
-        //this.cliente = data;
-        alert('Cambios guardados exitosamente.');
-      },
-      error: (err) => console.error(err)
-    });
 
+    this.clienteService.updateCliente(this.cliente.id, clieteActualizar).subscribe({
+        next: (data) => {
+          //this.cliente = data;
+          alert('Cambios guardados exitosamente.');
+        },
+        error: (err) => console.error(err)
+      });
+    
   }
   selectPais(paisNombre: string) {
     this.perfilForm.patchValue({ PaisNombre: paisNombre })
