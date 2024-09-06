@@ -40,8 +40,8 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 builder.Services.AddSingleton<SignalRServicio>(provider =>
 {
     var serviceScopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
-    //var hubUrl = "https://localhost:7040/SimuladorHub"; // Reemplaza con la URL de tu hub de SignalR -- para probar en simuladorservicio
-    var hubUrl = "https://chachibackend-cudsb0anfdcncddp.spaincentral-01.azurewebsites.net/notificationHub"; // Reemplaza con la URL de tu hub de SignalR
+    var hubUrl = "https://localhost:7040/SimuladorHub"; // Reemplaza con la URL de tu hub de SignalR -- para probar en simuladorservicio
+    //var hubUrl = "https://chachibackend-cudsb0anfdcncddp.spaincentral-01.azurewebsites.net/notificationHub"; // Reemplaza con la URL de tu hub de SignalR
     return new SignalRServicio(hubUrl, serviceScopeFactory);
 });
 
@@ -94,10 +94,24 @@ builder.Services.AddCors(options =>
 
     //options.AddPolicy("AllowAzureHost",
     //    builder => builder
-    //        .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net")  // Permite solicitudes desde el host de Azure.
+    //        .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net")  // Permite solicitudes desde el host de Front Azure.
     //        .AllowAnyHeader()  // Permite cualquier encabezado.
     //        .AllowAnyMethod()  // Permite cualquier método HTTP.
     //        .AllowCredentials());  // Permite el uso de credenciales.
+    options.AddPolicy("AllowAzureHost",
+        builder => builder
+        .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net") // Permite solicitudes desde el host de Azure.
+        .AllowAnyHeader() // Permite cualquier encabezado.
+        .AllowAnyMethod() // Permite cualquier mï¿½todo HTTP.
+        .AllowCredentials()); // Permite el uso de credenciales.
+
+    options.AddPolicy("AllowTrans",
+        builder => builder
+        .WithOrigins("http://localhost:4200", "http://172.30.137.232", "http://68.221.89.0", "https://wonderful-meadow-07530fe03.5.azurestaticapps.net", "https://proud-stone-092ce9d03.5.azurestaticapps.net") // Permite solicitudes desde localhost y la IP 172.30.137.232
+        .AllowAnyHeader() // Permite cualquier encabezado.
+        .AllowAnyMethod() // Permite cualquier método HTTP.
+        .AllowCredentials()); // Permite el uso de credenciales.
+
     options.AddPolicy("AllowAllOrigins",
         builder =>
         {
@@ -151,7 +165,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     // Allow Production
-    app.UseCors("AllowAllOrigins");
+    app.UseCors("AllowTrans");
     //app.UseCors("AllowAzureHost");
 
 }
