@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations.Internal;
+﻿using ApiClases_20270722_Proyecto.SignalRServicio;
+using Microsoft.EntityFrameworkCore.Migrations.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,29 @@ builder.Services.AddDbContext<Contexto>(options =>
 builder.Services.AddIdentity<UsuarioAplicacion, IdentityRole>()
     .AddEntityFrameworkStores<Contexto>()
     .AddDefaultTokenProviders();
+
+// Configurar MediatR
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+
+// Registra SignalRServicio
+builder.Services.AddSingleton<SignalRServicio>(provider =>
+{
+    var serviceScopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
+    //var hubUrl = "https://localhost:7040/SimuladorHub"; // Reemplaza con la URL de tu hub de SignalR -- para probar en simuladorservicio
+    var hubUrl = "https://chachibackend-cudsb0anfdcncddp.spaincentral-01.azurewebsites.net/notificationHub"; // Reemplaza con la URL de tu hub de SignalR
+    return new SignalRServicio(hubUrl, serviceScopeFactory);
+});
+
+
+// Registra IRequestHandler
+builder.Services.AddTransient<IRequestHandler<SignalRRequest, string>, SignalRRequestHandler>();
+
+
+// Configurar SignalR
+builder.Services.AddSignalR();
+
+
 
 // Configurar JWT
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
@@ -86,6 +110,17 @@ builder.Services.AddCors(options =>
 
 // Agregar servicios a la aplicación
 var app = builder.Build();
+
+
+
+app.MapHub<SignalRHubNotificacion>("/signalrhubnotificacion"); //_enlace_azure/signalrhubnotifacion
+
+
+// Iniciar el cliente SignalR
+var signalRServicio = app.Services.GetRequiredService<SignalRServicio>();
+await signalRServicio.StartListeningAsync();
+
+
 
 // Aplica las migraciones de base de datos.
 ApplyMigrations(app);
