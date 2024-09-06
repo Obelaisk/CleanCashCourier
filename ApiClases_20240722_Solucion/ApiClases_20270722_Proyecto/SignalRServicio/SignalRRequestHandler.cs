@@ -71,7 +71,7 @@ namespace ApiClases_20270722_Proyecto.SignalRServicio
 
                     CosteTransaccion = transaccion.CosteTransaccion // Incluimos el campo CosteTransaccion
 
-                }
+                };
 
                 await _signalRServicio.SendMessageAsync("", Newtonsoft.Json.JsonConvert.SerializeObject(transaccionData));
                 request.MandamosTransaccion = null;
