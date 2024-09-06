@@ -1,4 +1,5 @@
 ﻿
+using ApiClases_20270722_Proyecto.SignalRServicio;
 using Microsoft.AspNetCore.Cors;
 
 namespace ApiClases_20270722_Proyecto.Controllers;
@@ -14,12 +15,12 @@ public class TransaccionesController : ControllerBase
     private readonly IMediator _mediator;
     public TransaccionesController(
             IRepositorioGenerico<Transaccion> repositorio,
-            IMapper mapper/*,
-            IMediator mediator*/)
+            IMapper mapper,
+            IMediator mediator)
     {
         _repositorio = repositorio;
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        //_mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
     }
 
 
@@ -70,11 +71,11 @@ public class TransaccionesController : ControllerBase
             var transaccionDto = _mapper.Map<TransaccionPostDto>(transaccionEntidad);
 
             // Enviar los datos de la transacción utilizando el mediador. SignalR.
-            //var resultado = await _mediator.Send(new SignalRRequest
-            //{
-            //    MandamosTransaccion = transaccionDto,
-            //    TipoAcceso = "Transaccion",
-            //});
+            var resultado = await _mediator.Send(new SignalRRequest
+            {
+                MandamosTransaccion = transaccionDto,
+                TipoAcceso = "Transaccion",
+            });
 
             return CreatedAtAction(
                 nameof(Get),
