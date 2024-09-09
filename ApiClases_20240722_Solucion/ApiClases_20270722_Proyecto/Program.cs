@@ -160,7 +160,8 @@ if (app.Environment.IsDevelopment())
         }
     });
     // Allow Development
-    app.UseCors("AllowLocalhost");
+    //app.UseCors("AllowLocalhost");
+    app.UseCors("AllowTrans");
 }
 else
 {
