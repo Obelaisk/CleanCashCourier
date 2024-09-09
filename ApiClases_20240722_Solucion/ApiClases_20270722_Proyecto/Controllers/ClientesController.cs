@@ -2,6 +2,7 @@
 using ApiClases_20270722_Proyecto.Entidades;
 using ApiClases_20270722_Proyecto.Modelos.Clientes;
 using ApiClases_20270722_Proyecto.Repositorios;
+using ApiClases_20270722_Proyecto.SignalRServicio;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace ApiClases_20270722_Proyecto.Controllers
