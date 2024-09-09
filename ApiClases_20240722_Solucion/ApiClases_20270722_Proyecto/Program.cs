@@ -107,7 +107,7 @@ builder.Services.AddCors(options =>
 
     options.AddPolicy("AllowTrans",
         builder => builder
-        .WithOrigins("http://localhost:4200", "http://172.30.137.232", "http://68.221.89.0", "https://wonderful-meadow-07530fe03.5.azurestaticapps.net", "https://proud-stone-092ce9d03.5.azurestaticapps.net") // Permite solicitudes desde localhost y la IP 172.30.137.232
+        .WithOrigins("http://localhost:4200", "http://172.30.137.232", "http://172.30.137.207", "http://68.221.89.0", "https://wonderful-meadow-07530fe03.5.azurestaticapps.net", "https://proud-stone-092ce9d03.5.azurestaticapps.net") // Permite las solicitudes para pruebas en local y los repos de app estatica de azure
         .AllowAnyHeader() // Permite cualquier encabezado.
         .AllowAnyMethod() // Permite cualquier método HTTP.
         .AllowCredentials()); // Permite el uso de credenciales.

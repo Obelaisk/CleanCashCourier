@@ -1,7 +1,7 @@
 ﻿
+using ApiClases_20270722_Proyecto.Entidades;
 using ApiClases_20270722_Proyecto.Modelos.Clientes;
 using ApiClases_20270722_Proyecto.Repositorios;
-using ApiClases_20270722_Proyecto.SignalRServicio;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace ApiClases_20270722_Proyecto.Controllers
@@ -17,7 +17,8 @@ namespace ApiClases_20270722_Proyecto.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<UsuarioAplicacion> _userManager;
         private readonly SignInManager<UsuarioAplicacion> _signInManager;
-        private readonly IMediator _mediator;
+        private readonly IHubContext<SignalRHubNotificacion> _hubContext;
+        //private readonly IMediator _mediator;
 
         public ClientesController(
             IRepositorioGenerico<Cliente> clienteRepositorio,
@@ -27,7 +28,8 @@ namespace ApiClases_20270722_Proyecto.Controllers
             IMapper mapper,
             UserManager<UsuarioAplicacion> userManager,
             SignInManager<UsuarioAplicacion> signInManager,
-            IMediator mediator)
+            IHubContext<SignalRHubNotificacion> hubContext
+            /*IMediator mediator*/)
         {
             _clienteRepositorio = clienteRepositorio;
             _paisRepositorio = paisRepositorio;
@@ -36,7 +38,8 @@ namespace ApiClases_20270722_Proyecto.Controllers
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _userManager = userManager;
             _signInManager = signInManager;
-            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            //_mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _hubContext = hubContext;
         }
 
         [HttpGet]
@@ -114,19 +117,16 @@ namespace ApiClases_20270722_Proyecto.Controllers
                     return NotFound("Cliente no encontrado.");
                 }
 
-                // Enviar los datos del cliente utilizando el mediador
-                var resultado = await _mediator.Send(new SignalRRequest
+                // Enviar los datos del cliente utilizando el Hub
+                await _hubContext.Clients.All.SendAsync("newlogin", new
                 {
-                    MandamosCliente = new ClienteBaseDto
-                    {
-                        Nombre = cliente.Nombre,
-                        Apellido = cliente.Apellido,
-                        FechaNacimiento = cliente.FechaNacimiento,
-                        Empleo = cliente.Empleo,
-                        PaisId = cliente.PaisId,
-                        Email = cliente.Email
-                    },
-                    TipoAcceso = "Login"
+                    Message = "Nuevo inicio sesion",
+                    cliente.Nombre,
+                    cliente.Apellido,
+                    cliente.FechaNacimiento,
+                    cliente.Empleo,
+                    cliente.PaisId,
+                    cliente.Email
                 });
 
                 return Ok(new { Token = token });
@@ -198,20 +198,16 @@ namespace ApiClases_20270722_Proyecto.Controllers
             }
 
             var token = _servicioToken.GenerateJwtToken(usuario);
-
-            var resultado = await _mediator.Send(new SignalRRequest
+            // Informamos de un nuevo registro
+            await _hubContext.Clients.All.SendAsync("newregister", new
             {
-                MandamosCliente = new ClienteBaseDto
-                {
-                    Nombre = usuario.Nombre,
-                    Apellido = usuario.Apellido,
-                    Usuario = usuario.UserName,
-                    Email = usuario.Email,
-                    FechaNacimiento = usuario.FechaNacimiento,
-                    Empleo = usuario.Empleo,
-                    PaisId = usuario.PaisId
-                },
-                TipoAcceso = "Registro"
+                Message = "Nuevo registro",
+                cliente.Nombre,
+                cliente.Apellido,
+                cliente.FechaNacimiento,
+                cliente.Empleo,
+                cliente.PaisId,
+                cliente.Email
             });
 
             // Obtener el Id del cliente recién creado

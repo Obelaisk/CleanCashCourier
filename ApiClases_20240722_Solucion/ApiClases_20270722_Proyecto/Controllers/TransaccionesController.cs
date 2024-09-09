@@ -11,16 +11,23 @@ public class TransaccionesController : ControllerBase
 {
 
     public readonly IRepositorioGenerico<Transaccion> _repositorio;
+    public readonly IRepositorioGenerico<Cliente> _clienteRepositorio;
+
     private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
+    //private readonly IMediator _mediator;
+    private readonly IHubContext<SignalRHubNotificacion> _hubContext;
     public TransaccionesController(
             IRepositorioGenerico<Transaccion> repositorio,
             IMapper mapper,
-            IMediator mediator)
+            IHubContext<SignalRHubNotificacion> hubcontext,
+            IRepositorioGenerico<Cliente> clienteRepositorio
+            /*IMediator mediator*/)
     {
         _repositorio = repositorio;
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        //_mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        _hubContext = hubcontext ?? throw new ArgumentNullException(nameof(hubcontext));
+        _clienteRepositorio = clienteRepositorio;
     }
 
 
@@ -59,6 +66,8 @@ public class TransaccionesController : ControllerBase
         return finalTransaccionGetDto == null ? NotFound() : Ok(finalTransaccionGetDto);
     }
 
+
+
     [EnableCors("AllowAllOrigins")]
     [HttpPost]
     public async Task<ActionResult<TransaccionPostDto>> Post(TransaccionPostDto transaccion)
@@ -71,10 +80,22 @@ public class TransaccionesController : ControllerBase
             var transaccionDto = _mapper.Map<TransaccionPostDto>(transaccionEntidad);
 
             // Enviar los datos de la transacción utilizando el mediador. SignalR.
-            var resultado = await _mediator.Send(new SignalRRequest
+            // Obtener datos de los clientes desde la base de datos
+            var clienteEnvia = _clienteRepositorio.ObtenerPorId(transaccion.IdEnvia);
+            var clienteRecibe = _clienteRepositorio.ObtenerPorId(transaccion.IdRecibe);
+            await _hubContext.Clients.All.SendAsync("newtransaction", new
             {
-                MandamosTransaccion = transaccionDto,
-                TipoAcceso = "Transaccion",
+                Message = "Nueva Transaccion",
+                PaisOrigen = clienteEnvia.PaisId,
+                PaisDestino = clienteRecibe.PaisId,
+                ClienteOrigen = clienteEnvia.Usuario,
+                ClienteDestino = clienteRecibe.Usuario,
+                ClienteOrigenId = transaccion.IdEnvia,
+                ClienteDestinoId = transaccion.IdRecibe,
+                ValorOrigen = transaccion.CantidadEnvia,
+                ValorDestino = transaccion.CantidadRecibe,
+                Timestamp = transaccion.Fecha,
+                transaccion.CosteTransaccion // Incluimos el campo CosteTransaccion
             });
 
             return CreatedAtAction(
@@ -87,6 +108,9 @@ public class TransaccionesController : ControllerBase
         {
             return BadRequest();
         }
+
     }
+
+
     // No usamos ni Put ni Delete
 }
