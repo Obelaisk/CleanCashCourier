@@ -40,8 +40,8 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 builder.Services.AddSingleton<SignalRServicio>(provider =>
 {
     var serviceScopeFactory = provider.GetRequiredService<IServiceScopeFactory>();
-    var hubUrl = "https://localhost:7040/SimuladorHub"; // Reemplaza con la URL de tu hub de SignalR -- para probar en simuladorservicio
-    //var hubUrl = "https://chachibackend-cudsb0anfdcncddp.spaincentral-01.azurewebsites.net/notificationHub"; // Reemplaza con la URL de tu hub de SignalR
+    //var hubUrl = "https://localhost:7040/SimuladorHub"; // Reemplaza con la URL de tu hub de SignalR -- para probar en simuladorservicio
+    var hubUrl = "https://chachibackend-cudsb0anfdcncddp.spaincentral-01.azurewebsites.net/notificationHub"; // Reemplaza con la URL de tu hub de SignalR
     return new SignalRServicio(hubUrl, serviceScopeFactory);
 });
 
@@ -94,6 +94,7 @@ builder.Services.AddCors(options =>
 
     //options.AddPolicy("AllowAzureHost",
     //    builder => builder
+    //https://proud-stone-092ce9d03.5.azurestaticapps.net/º
     //        .WithOrigins("https://proud-stone-092ce9d03.5.azurestaticapps.net")  // Permite solicitudes desde el host de Front Azure.
     //        .AllowAnyHeader()  // Permite cualquier encabezado.
     //        .AllowAnyMethod()  // Permite cualquier método HTTP.
@@ -143,33 +144,34 @@ ApplyMigrations(app);
 await CreateRoles(app);
 
 // Comprobar si el entorno es de desarrollo
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();  // Habilita Swagger en desarrollo.
-    app.UseSwaggerUI();  // Habilita la interfaz de usuario de Swagger.
-    // Redirect to Swagger UI automatically
-    app.Use(async (context, next) =>
-    {
-        if (context.Request.Path == "/")
-        {
-            context.Response.Redirect("/swagger");
-        }
-        else
-        {
-            await next();
-        }
-    });
-    // Allow Development
-    //app.UseCors("AllowLocalhost");
-    app.UseCors("AllowTrans");
-}
-else
-{
-    // Allow Production
-    app.UseCors("AllowTrans");
-    //app.UseCors("AllowAzureHost");
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();  // Habilita Swagger en desarrollo.
+//    app.UseSwaggerUI();  // Habilita la interfaz de usuario de Swagger.
+//    // Redirect to Swagger UI automatically
+//    app.Use(async (context, next) =>
+//    {
+//        if (context.Request.Path == "/")
+//        {
+//            context.Response.Redirect("/swagger");
+//        }
+//        else
+//        {
+//            await next();
+//        }
+//    });
+//    // Allow Development
+//    //app.UseCors("AllowLocalhost");
+//    app.UseCors("AllowTrans");
+//}
+//else
+//{
+//    // Allow Production
+//    app.UseCors("AllowTrans");
+//    //app.UseCors("AllowAzureHost");
 
-}
+//}
+app.UseCors("AllowTrans");
 
 // Redirección a https
 app.UseHttpsRedirection();
