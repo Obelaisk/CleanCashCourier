@@ -2,7 +2,7 @@
 
 namespace ApiClases_20270722_Proyecto.Migrations
 {
-    public partial class paises_changed
+    public partial class for_despliegue
     {
         public void ProcedimientosAlmacenados(MigrationBuilder migrationBuilder)
         {
