@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ApiClases_20270722_Proyecto.Entidades;
 
-
 namespace ApiClases_20240722_Proyecto.Test.Entidades
 {
     public class PaisDeberia
@@ -30,7 +29,7 @@ namespace ApiClases_20240722_Proyecto.Test.Entidades
         public void DeberiaRetornarErrorParaNombreInvalido(string nombre)
         {
             // Arrange
-            var pais = new Pais { Nombre = nombre, Divisa = "USD", Iso3 = "USA" };
+            var pais = new Pais { Nombre = nombre, Divisa = "USD", Iso3Pais = "USA", Iso3Divisa = "USD" };
 
             // Act
             var resultados = ValidarModelo(pais);
@@ -46,7 +45,7 @@ namespace ApiClases_20240722_Proyecto.Test.Entidades
         public void DeberiaRetornarErrorParaDivisaInvalida(string divisa)
         {
             // Arrange
-            var pais = new Pais { Nombre = "Estados Unidos", Divisa = divisa, Iso3 = "USA" };
+            var pais = new Pais { Nombre = "Estados Unidos", Divisa = divisa, Iso3Pais = "USA", Iso3Divisa = "USD" };
 
             // Act
             var resultados = ValidarModelo(pais);
@@ -56,27 +55,44 @@ namespace ApiClases_20240722_Proyecto.Test.Entidades
         }
 
         [Theory]
-        [InlineData(null)]  // Iso3 nulo
-        [InlineData("")]    // Iso3 vacío
-        [InlineData("US")]  // Iso3 demasiado corto
-        [InlineData("USA1")] // Iso3 demasiado largo
-        public void DeberiaRetornarErrorParaIso3Invalido(string iso3)
+        [InlineData(null)]  // Iso3Pais nulo
+        [InlineData("")]    // Iso3Pais vacío
+        [InlineData("US")]  // Iso3Pais demasiado corto
+        [InlineData("USA1")] // Iso3Pais demasiado largo
+        public void DeberiaRetornarErrorParaIso3PaisInvalido(string iso3Pais)
         {
             // Arrange
-            var pais = new Pais { Nombre = "Estados Unidos", Divisa = "USD", Iso3 = iso3 };
+            var pais = new Pais { Nombre = "Estados Unidos", Divisa = "USD", Iso3Pais = iso3Pais, Iso3Divisa = "USD" };
 
             // Act
             var resultados = ValidarModelo(pais);
 
             // Assert
-            Assert.Contains(resultados, r => r.MemberNames.Contains(nameof(Pais.Iso3)));
+            Assert.Contains(resultados, r => r.MemberNames.Contains(nameof(Pais.Iso3Pais)));
+        }
+
+        [Theory]
+        [InlineData(null)]  // Iso3Divisa nulo
+        [InlineData("")]    // Iso3Divisa vacío
+        [InlineData("US")]  // Iso3Divisa demasiado corto
+        [InlineData("USD1")] // Iso3Divisa demasiado largo
+        public void DeberiaRetornarErrorParaIso3DivisaInvalido(string iso3Divisa)
+        {
+            // Arrange
+            var pais = new Pais { Nombre = "Estados Unidos", Divisa = "USD", Iso3Pais = "USA", Iso3Divisa = iso3Divisa };
+
+            // Act
+            var resultados = ValidarModelo(pais);
+
+            // Assert
+            Assert.Contains(resultados, r => r.MemberNames.Contains(nameof(Pais.Iso3Divisa)));
         }
 
         [Fact]
         public void DeberiaSerValidoCuandoPropiedadesSonCorrectas()
         {
             // Arrange
-            var pais = new Pais { Nombre = "Estados Unidos", Divisa = "USD", Iso3 = "USA" };
+            var pais = new Pais { Nombre = "Estados Unidos", Divisa = "USD", Iso3Pais = "USA", Iso3Divisa = "USD" };
 
             // Act
             var resultados = ValidarModelo(pais);
@@ -86,3 +102,4 @@ namespace ApiClases_20240722_Proyecto.Test.Entidades
         }
     }
 }
+
