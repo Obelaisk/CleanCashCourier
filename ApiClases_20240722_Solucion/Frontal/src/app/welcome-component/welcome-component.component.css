@@ -111,9 +111,24 @@
   align-items: center;
 }
 
-  .icon-with-number .number {
-    margin-left: 10px;
-    font-size: 50px;
-    color: black;
-    font-weight: bold;
-  }
+.icon-with-number .number {
+  margin-left: 10px;
+  font-size: 50px; 
+  color: black;
+  font-weight: bold;
+}
+
+.action-button {
+  background-color: #1EA4D9;
+  color: #FFFFFF; /* Color blanco */
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-family: Arial, sans-serif; /* Fuente Arial */
+  font-weight: bold; /* Texto en negrita */
+  margin-top: 10px;
+}
+
+.action-button:hover {
+  background-color: #1e9bd9;
+}

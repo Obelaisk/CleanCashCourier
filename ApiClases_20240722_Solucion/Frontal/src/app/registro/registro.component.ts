@@ -1,9 +1,11 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { RegistroCliente } from '../interfaces/registroCliente';
 import { Router } from '@angular/router';
 import { IPais, PaisService } from '../servicios/pais.service';
 import { ClienteService } from '../servicios/cliente.service';
+import { Observable, of, delay, map } from 'rxjs';
+import { DatosService } from '../servicios/datos.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,23 +15,36 @@ import { ClienteService } from '../servicios/cliente.service';
 export class RegistroComponent implements OnInit {
   @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
   @ViewChildren('paisItem') paisItems!: QueryList<ElementRef>;
+  @ViewChild('empleoDropdownMenu') empleoDropdownMenu!: ElementRef;
+  @ViewChildren('empleoItem') empleoItems!: QueryList<ElementRef>;
+
 
   registroForm!: FormGroup;
   errorMessage: string | null = null; // Mensaje de error general
   paises: IPais[] = [];
   paisesFiltrado: IPais[] = [];
+  empleos: string[] = []; 
+  empleosFiltrado: string[] = [];
   paisSeleccionado: number = -1;
   isDropdownVisible = false;
+  isEmpleoDropdownVisible = false;
 
 
-
-  constructor(private fb: FormBuilder, private clienteService: ClienteService, private paisService: PaisService, private router: Router) { }
+  constructor(private fb: FormBuilder,private datosService:DatosService ,private clienteService: ClienteService, private paisService: PaisService, private router: Router) { }
   showDropdown() {
     this.isDropdownVisible = true;
   }
 
   hideDropdown() {
     this.isDropdownVisible = false;
+  }
+
+  showEmpleoDropdown() {
+    this.isEmpleoDropdownVisible = true;
+  }
+
+  hideEmpleoDropdown() {
+    this.isEmpleoDropdownVisible = false;
   }
   ngOnInit(): void {
     this.paisSeleccionado = 1;
@@ -42,7 +57,7 @@ export class RegistroComponent implements OnInit {
       Rol: ['Client', Validators.required],
       PaisNombre: ['', Validators.required],
       Empleo: [''],
-      FechaNac: ['', Validators.required]
+      FechaNac: ['', Validators.required,this.mayorDeEdadValidator()]
     }, {
       validator: this.passwordMatchValidator('Contraseña', 'Contraseña2')
     });
@@ -53,6 +68,8 @@ export class RegistroComponent implements OnInit {
       },
       error: err => this.errorMessage = err
     });
+    this.empleos = this.datosService.getTrabajos();
+    this.empleosFiltrado = this.empleos;
   }
 
   passwordMatchValidator(password: string, confirmPassword: string) {
@@ -119,7 +136,7 @@ export class RegistroComponent implements OnInit {
           alert('Error en el proceso de registro: ' + error.message);
         }
       },
-
+      
     );
   }
 
@@ -144,6 +161,9 @@ export class RegistroComponent implements OnInit {
             if (control.errors['passwordMismatch']) {
               errorMessage += `- Las contraseñas no coinciden.\n`;
             }
+            if (control.errors['menorDeEdad']) {
+              errorMessage += `- Debes ser mayor de edad para registrarte.\n`;
+            }
           }
         }
       }
@@ -156,7 +176,7 @@ export class RegistroComponent implements OnInit {
     alert(errorMessage);
   }
 
-
+  
 
   selectPais(paisNombre: string) {
     this.registroForm.patchValue({ PaisNombre: paisNombre })
@@ -192,5 +212,56 @@ export class RegistroComponent implements OnInit {
         }
       }, 0);
     }
+  }
+  selectEmpleo(empleoNombre: string) {
+    this.registroForm.patchValue({ Empleo: empleoNombre });
+
+    // No necesitas buscar un ID ya que los empleos son strings
+    this.hideEmpleoDropdown();
+  }
+
+  filterEmpleos(event: Event) {
+    const query = (event.target as HTMLInputElement).value;
+    this.empleosFiltrado = this.empleos.filter(empleo =>
+      empleo.toLowerCase().startsWith(query.toLowerCase())
+    );
+
+    if (this.empleosFiltrado.length == 1) { // Para que, al autorrellenar
+      setTimeout(() => {
+        if (query === this.empleosFiltrado[0]) {
+          this.hideEmpleoDropdown();
+        }
+      }, 0);
+    } else if (this.empleosFiltrado.length > 1) {
+      setTimeout(() => {
+        const firstMatch = this.empleoItems.first;
+        if (firstMatch) {
+          firstMatch.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 0);
+    }
+  }
+
+ 
+
+  mayorDeEdadValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      const fechaNac = new Date(control.value);
+      const hoy = new Date();
+      let edad = hoy.getFullYear() - fechaNac.getFullYear();
+      const mes = hoy.getMonth() - fechaNac.getMonth();
+      const dia = hoy.getDate() - fechaNac.getDate();
+
+      if (mes < 0 || (mes === 0 && dia < 0)) {
+        edad--;
+      }
+
+      return of(edad).pipe(
+        delay(1000), // Simula una llamada asíncrona
+        map(() => {
+          return edad >= 18 ? null : { menorDeEdad: true };
+        })
+      );
+    };
   }
 }

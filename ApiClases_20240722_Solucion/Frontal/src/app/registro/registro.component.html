@@ -77,10 +77,20 @@
       </div>
 
 
-      <div>
+      <div class="tw-relative tw-w-full tw-max-w-sm">
         <label for="empleo" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Empleo</label>
-        <input id="empleo" name="empleo" type="text" formControlName="Empleo" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu ocupacion" />
+        <input id="empleo" name="empleo" type="text" formControlName="Empleo" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Introduce tu ocupación" (focus)="showEmpleoDropdown()" (input)="filterEmpleos($event)" />
+        <ul *ngIf="isEmpleoDropdownVisible" id="empleoDropdownMenu"
+            class='tw-absolute tw-block tw-shadow-lg tw-bg-white tw-py-2 tw-px-2 tw-z-[1000] tw-min-w-full tw-w-max tw-rounded tw-max-h-96 tw-overflow-auto'>
+          <li *ngFor="let empleo of empleosFiltrado; let i = index" [attr.data-index]="i"
+              class='tw-py-2.5 tw-px-4 hover:tw-bg-blue-50 tw-rounded tw-text-black tw-text-sm tw-cursor-pointer' (click)="selectEmpleo(empleo)">
+            <div class="tw-flex tw-items-center" #empleoItem>
+              {{ empleo}}
+            </div>
+          </li>
+        </ul>
       </div>
+
       <div>
         <label for="fecha" class="tw-text-gray-800 tw-text-sm tw-mb-2 tw-block">Fecha de nacimiento</label>
         <input id="fecha" name="fecha" type="date" formControlName="FechaNac" class="tw-bg-gray-100 tw-w-full tw-text-gray-800 tw-text-sm tw-px-4 tw-py-3.5 tw-rounded-md focus:tw-bg-transparent tw-outline-blue-500 tw-transition-all" placeholder="Enter date of birth" />

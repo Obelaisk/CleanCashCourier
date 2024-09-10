@@ -13,6 +13,11 @@ namespace ApiClases_20270722_Proyecto.Entidades
         public string Nombre { get; set; }
 
         [Required]
+        [StringLength(3)] // Limita la longitud de la cadena para la divisa
+        [RegularExpression(@"^[A-Z]{3}$", ErrorMessage = "Iso3 debe tener exactamente 3 letras mayúsculas.")]
+        public string Iso3Pais { get; set; }
+
+        [Required]
         [StringLength(50)] 
         public string Divisa { get; set; }
 
@@ -20,7 +25,7 @@ namespace ApiClases_20270722_Proyecto.Entidades
         [Required]
         [StringLength(3)] // Limita la longitud de la cadena para la divisa
         [RegularExpression(@"^[A-Z]{3}$", ErrorMessage = "Iso3 debe tener exactamente 3 letras mayúsculas.")]
-        public string Iso3 { get; set; }
+        public string Iso3Divisa { get; set; }
 
     }
 }

@@ -33,15 +33,14 @@ select {
 
 .action-button {
   background-color: #1EA4D9;
-  color: #FFFFFF;
-  border: 2px solid white;
+  color: #FFFFFF; /* Color blanco */
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
-  font-family: Arial, sans-serif;
-  font-weight: bold;
+  font-family: Arial, sans-serif; /* Fuente Arial */
+  font-weight: bold; /* Texto en negrita */
 }
 
-  .action-button:hover {
-    background-color: #1e9bd9;
-  }
+.action-button:hover {
+  background-color: #1e9bd9;
+}

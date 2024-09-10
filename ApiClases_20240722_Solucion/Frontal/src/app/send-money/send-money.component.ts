@@ -53,7 +53,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
         this.identificadorClienteEnvia = cliente.id;
         this.subPais = this.paisService.getPaisId(cliente.paisId).subscribe({
           next: pais => {
-            this.currencyEnviada = pais.iso3;
+            this.currencyEnviada = pais.iso3Divisa;
           },
           error: err => this.errorMessage = err
         });
@@ -89,7 +89,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
                 this.identificadorClienteRecibe = cliente.id;
                 this.subTransaccion = this.paisService.getPaisId(cliente.paisId).subscribe({
                   next: pais => {
-                    this.currencyRecibida = pais.iso3;
+                    this.currencyRecibida = pais.iso3Divisa;
                     this.subTransaccion = this.transaccionService.hacerConversion(this.currencyEnviada, this.currencyRecibida).subscribe({
                       next: factor => {
                         this.factorConversion = factor;

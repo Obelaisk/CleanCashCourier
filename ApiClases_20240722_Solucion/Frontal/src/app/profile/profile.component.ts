@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CabeceraComponent } from '../cabecera/cabecera.component';
 import { jwtDecode }  from 'jwt-decode';
 import { ActualizarPerfilCliente } from '../interfaces/registroCliente';
-
+declare var bootstrap: any;
 @Component({
   selector: 'pm-profile-component',
   templateUrl: './profile.component.html',
@@ -64,39 +64,33 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit(): void {
     this.token = localStorage['token'];
-
-    this.subClientes = this.clienteService.getCliente(this.token).subscribe({
-      next: (data) => {
-        this.cliente = data;
-        this.isLoading = false;
-        this.perfilForm = this.fb.group({
-          Nombre: [this.cliente.nombre, [Validators.required, Validators.minLength(3)]],
-          Apellido: [this.cliente.apellido, [Validators.required, Validators.minLength(3)]],
-          Correo: [this.cliente.email, [Validators.required, Validators.email]],
-          Contraseña: ['', [Validators.required, Validators.minLength(6)]],
-          Contraseña2: ['', [Validators.required]],
-          Rol: ['Client', Validators.required],
-          PaisNombre: [this.cliente.nombrePais, Validators.required], // Mostrar el país actual
-          Empleo: [this.cliente.trabajo], // Mostrar el empleo actual
-          FechaNac: [this.cliente.fechaNacimiento, Validators.required]
-        });
-      },
-      error: (err) => {
-        console.error(err);
-        this.isLoading = false;
-      }
-    });
-
     this.subPaises = this.paisService.getPaises().subscribe({
       next: (paises) => {
         this.paises = paises;
-        this.paisesFiltrado = paises;
+   
+        this.subClientes = this.clienteService.getCliente(this.token).subscribe({
+          next: (data) => {
+            this.cliente = data;
+            this.isLoading = false;
+            this.perfilForm = this.fb.group({
+              Nombre: [this.cliente.nombre, [Validators.required, Validators.minLength(3)]],
+              Apellido: [this.cliente.apellido, [Validators.required, Validators.minLength(3)]],
+              Correo: [this.cliente.email, [Validators.required, Validators.email]],
+              PaisNombre: [this.selectPaisById(this.cliente.paisId), Validators.required], // Mostrar el país actual
+              Empleo: [this.cliente.empleo], // Mostrar el empleo actual
+              FechaNac: [this.cliente.fechaNacimiento, Validators.required]
+            });
+          },
+          error: (err) => {
+            console.error(err);
+            this.isLoading = false;
+          }
+        });
       },
       error: (err) => (this.errorMessage = err),
     });
-
     this.empleos = this.datosService.getTrabajos();
-    this.empleosFiltrados = this.datosService.getTrabajos();
+    
   }
 
 
@@ -118,7 +112,7 @@ export class ProfileComponent implements OnInit {
       Apellido: this.perfilForm.value.Apellido,
       Email: this.perfilForm.value.Correo,
       Contrasena: this.perfilForm.value.Contraseña,
-      PaisId: this.paisSeleccionado,
+      PaisId: this.selectPais(this.perfilForm.value.PaisNombre),
       Empleo: this.perfilForm.value.Empleo,
       NombrePais: this.perfilForm.value.PaisNombre,
       FechaNacimiento: new Date(this.perfilForm.value.FechaNac),
@@ -127,58 +121,27 @@ export class ProfileComponent implements OnInit {
     }
 
     this.clienteService.updateCliente(this.cliente.id, clieteActualizar).subscribe({
-        next: (data) => {
-          //this.cliente = data;
-          alert('Cambios guardados exitosamente.');
+      next: (data) => {
+        this.modal();
         },
         error: (err) => console.error(err)
       });
     
   }
-  selectPais(paisNombre: string) {
+  selectPais(paisNombre: string):number {
     this.perfilForm.patchValue({ PaisNombre: paisNombre })
 
     var resultado = this.paises.find(pais => pais.nombre === paisNombre)?.id;
-    if (resultado != undefined) {
-      this.paisSeleccionado = resultado;
-      this.hideDropdownPais();
-    }
+    return resultado == undefined ? -1 : resultado;
   }
-  selectEmpleo(empleoNombre: string) {
-    this.perfilForm.patchValue({ Empleo: empleoNombre });
-    this.hideDropdownEmpleo();
+  selectPaisById(id: number): string {
+    var resultado = this.paises.find(pais => pais.id === id)?.nombre;
+    return resultado == undefined ? '' : resultado;
   }
 
-  filterPaises(event: Event) {
-    const query = (event.target as HTMLInputElement).value.toLowerCase();
-    this.paisesFiltrado = this.paises.filter(pais =>
-      pais.nombre.toLowerCase().startsWith(query)
-    );
-
-    if (this.paisesFiltrado.length > 0) {
-      setTimeout(() => {
-        const firstMatch = this.paisItems.first;
-        if (firstMatch) {
-          firstMatch.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      }, 0);
-    }
-
-  }
-
-  filterEmpleos(event: Event) {
-    const query = (event.target as HTMLInputElement).value.toLowerCase();
-    this.empleosFiltrados = this.empleos.filter(empleo =>
-      empleo.toLowerCase().startsWith(query)
-    );
-
-    if (this.empleosFiltrados.length > 0) {
-      setTimeout(() => {
-        const firstMatch = this.empleoItems.first;
-        if (firstMatch) {
-          firstMatch.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      }, 0);
-    }
+  modal() {
+    const modalElement = document.getElementById('modal');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
   }
 }

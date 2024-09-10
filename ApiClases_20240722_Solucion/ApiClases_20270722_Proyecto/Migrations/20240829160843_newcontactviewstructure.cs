@@ -662,7 +662,6 @@ namespace ApiClases_20270722_Proyecto.Migrations
                 name: "IX_Contactos_ClienteOrigenId",
                 table: "Contactos",
                 column: "ClienteOrigenId");
-            CrearVistas(migrationBuilder);
         }
 
         /// <inheritdoc />
@@ -703,8 +702,6 @@ namespace ApiClases_20270722_Proyecto.Migrations
 
             migrationBuilder.DropTable(
                 name: "Paises");
-            EliminarVistas(migrationBuilder);
-            
         }
     }
 }

@@ -12,6 +12,8 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 50px; /* Mayor separación entre el formulario y el resumen */
+  margin-left: 40px; /* Márgenes a la izquierda */
+  margin-right: 40px; /* Márgenes a la derecha */
 }
 
 form {
@@ -77,17 +79,16 @@ form {
 
 .send-button {
   background-color: #1EA4D9;
-  color: white;
-  border: none;
+  color: #FFFFFF; /* Color blanco */
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
-  margin-top: 20px;
+  font-family: Arial, sans-serif; /* Fuente Arial */
+  font-weight: bold; /* Texto en negrita */
 }
 
   .send-button:hover {
-    background-color: #16303B;
+    background-color: #1e9bd9;
   }
 
 /* Estilo personalizado para el botón de cerrar */
@@ -95,16 +96,16 @@ form {
   background-color: red; /* Cambia esto al color que prefieras */
 }
 
-  .btn-close:hover {
-    background-color: darkred; /* Cambia esto al color que prefieras */
-  }
+.btn-close:hover {
+  background-color: darkred; /* Cambia esto al color que prefieras */
+}
 
-  .btn-close:focus {
-    box-shadow: none;
-  }
+.btn-close:focus {
+  box-shadow: none;
+}
 
 .btn-secondary {
-  background-color: #84BF49;
+  background-color: #28c45c;
   color: white;
   border: none;
   border-radius: 20px;

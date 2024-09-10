@@ -1,12 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TransaccionService } from '../servicios/transaccion.service';
 import { Transaccion, TransaccionTabla } from '../interfaces/transaccion';
-import { ICliente } from '../interfaces/cliente';
 import { ClienteService } from '../servicios/cliente.service';
 import { format } from 'date-fns';
-import { CabeceraComponent } from '../cabecera/cabecera.component'
 import { Subscription } from 'rxjs';
-import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'pm-transaccion',
@@ -23,14 +20,11 @@ export class TransaccionComponent implements OnInit, OnDestroy {
 
   subcliente!: Subscription;
   subTransaccion!: Subscription;
-
-  cuantas: number = 0;
-  constructor(private transaccionService: TransaccionService, private clienteService: ClienteService) { }
-
   identificaciorCliente!: number;
   errorMessage: string = '';
   token!: string;
-  nombre!: string;
+
+  constructor(private transaccionService: TransaccionService, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     this.token = localStorage['token'];
@@ -44,7 +38,9 @@ export class TransaccionComponent implements OnInit, OnDestroy {
             await Promise.all(this.transacciones.map(async (transaccion) => {
               const transaccionTabla = new TransaccionTabla();
               transaccionTabla.nombre = await this.obtenerIdUsuario(transaccion);
-              transaccionTabla.cantidad = this.obtenerCantidad(transaccion);
+              transaccionTabla.monto = this.obtenerMonto(transaccion); // Calcula el monto
+              transaccionTabla.moneda = this.obtenerMoneda(transaccion); // Calcula la moneda
+              transaccionTabla.costeTransaccion = this.obtenerCosteTransaccion(transaccion); // Calcula el coste de transacción
               transaccionTabla.fecha = this.obtenerFecha(transaccion);
               transaccionTabla.tipo = this.obtenerTipoTransaccion(transaccion);
               this.transaccionesTabla.push(transaccionTabla);
@@ -52,20 +48,18 @@ export class TransaccionComponent implements OnInit, OnDestroy {
           },
           error => console.error(error)
         );
-
       },
       error: err => this.errorMessage = err
     });
   }
+
   ngOnDestroy(): void {
     this.subcliente?.unsubscribe();
     this.subTransaccion?.unsubscribe();
   }
 
-
-
   obtenerIdUsuario(transaccion: Transaccion): Promise<string> {
-    var clienteIdAux = transaccion.idRecibe === this.identificaciorCliente ? transaccion.idEnvia : transaccion.idRecibe;
+    const clienteIdAux = transaccion.idRecibe === this.identificaciorCliente ? transaccion.idEnvia : transaccion.idRecibe;
     return new Promise((resolve, reject) => {
       this.subcliente = this.clienteService.getClienteById(clienteIdAux).subscribe({
         next: cliente => {
@@ -73,23 +67,33 @@ export class TransaccionComponent implements OnInit, OnDestroy {
         },
         error: err => {
           this.errorMessage = err;
-          reject('Unknow');
+          reject('Desconocido');
         }
       });
     });
-
   }
 
-  obtenerCantidad(transaccion: Transaccion): number {
-    return transaccion.idEnvia === 1 ? transaccion.cantidadEnvia : transaccion.cantidadRecibe;
+  obtenerMonto(transaccion: Transaccion): number {
+    // Si la transacción fue enviada, el monto es la cantidad enviada, si fue recibida, es la cantidad recibida
+    return transaccion.idEnvia === this.identificaciorCliente ? transaccion.cantidadEnvia : transaccion.cantidadRecibe;
   }
 
-  obtenerTipoTransaccion(transaccion: Transaccion): string {
-    return transaccion.idEnvia === this.identificaciorCliente ? 'Enviada' : 'Recibida';
+  obtenerMoneda(transaccion: Transaccion): string {
+    // Si la transacción fue enviada, la moneda es la moneda de origen, si fue recibida, es la moneda de destino
+    return transaccion.idEnvia === this.identificaciorCliente ? transaccion.monedaOrigen : transaccion.monedaDestino;
+  }
+
+  obtenerCosteTransaccion(transaccion: Transaccion): number | null {
+    // Solo devuelve el coste de la transacción si fue enviada, de lo contrario no aplica
+    return transaccion.idEnvia === this.identificaciorCliente ? transaccion.costeTransaccion : null;
   }
 
   obtenerFecha(transaccion: Transaccion): string {
     return format(new Date(transaccion.fecha), 'dd/MM/yyyy');
+  }
+
+  obtenerTipoTransaccion(transaccion: Transaccion): string {
+    return transaccion.idEnvia === this.identificaciorCliente ? 'Enviada' : 'Recibida';
   }
 
   actualizarFechaInicio(event: any): void {
@@ -123,6 +127,7 @@ export class TransaccionComponent implements OnInit, OnDestroy {
       cantidadMaxElement.value = '';
     }
   }
+
   filtrarTransacciones(): void {
     this.subTransaccion = this.transaccionService.getTransaccionesFiltradas({
       fechaInicio: this.fechaInicio,
@@ -135,7 +140,9 @@ export class TransaccionComponent implements OnInit, OnDestroy {
         await Promise.all(data.map(async (transaccion) => {
           const transaccionTabla = new TransaccionTabla();
           transaccionTabla.nombre = await this.obtenerIdUsuario(transaccion);
-          transaccionTabla.cantidad = this.obtenerCantidad(transaccion);
+          transaccionTabla.monto = this.obtenerMonto(transaccion);
+          transaccionTabla.moneda = this.obtenerMoneda(transaccion);
+          transaccionTabla.costeTransaccion = this.obtenerCosteTransaccion(transaccion);
           transaccionTabla.fecha = this.obtenerFecha(transaccion);
           transaccionTabla.tipo = this.obtenerTipoTransaccion(transaccion);
           this.transaccionesTabla.push(transaccionTabla);
@@ -144,8 +151,4 @@ export class TransaccionComponent implements OnInit, OnDestroy {
       error => console.error(error)
     );
   }
-
-
-
-
 }

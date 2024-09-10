@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace ApiClases_20270722_Proyecto.ContextoCarpeta;
 
@@ -51,7 +52,7 @@ public class Contexto: IdentityDbContext<UsuarioAplicacion>{
                 .ToView("VContactos");
         });
         base.OnModelCreating(modelBuilder); // para el identity
-        modelBuilder.Entity<Pais>().HasData(
+        /*modelBuilder.Entity<Pais>().HasData(
                 new Pais { Id = 1, Nombre = "Afganistán", Divisa = "Afgani", Iso3 = "AFN" },
                 new Pais { Id = 2, Nombre = "Albania", Divisa = "Lek", Iso3 = "ALL" },
                 new Pais { Id = 3, Nombre = "Alemania", Divisa = "Euro", Iso3 = "EUR" },
@@ -225,6 +226,8 @@ public class Contexto: IdentityDbContext<UsuarioAplicacion>{
                 new Pais { Id = 171, Nombre = "Zambia", Divisa = "Kwacha zambiano", Iso3 = "ZMW" },
                 new Pais { Id = 172, Nombre = "Zimbabue", Divisa = "Dólar zimbabuense", Iso3 = "ZWL" }
             );
+        */
+        modelBuilder.Entity<Pais>().HasData(LoadPaisesJson("./data/listapaises.json"));
 
         // Agregar tres paises por defecto a la base de datos
         modelBuilder.Entity<Cliente>().HasData(
@@ -388,4 +391,14 @@ public class Contexto: IdentityDbContext<UsuarioAplicacion>{
         modelBuilder.Entity<ConteoResult>().HasNoKey();
 
     }
+    // Método para cargar los países desde un archivo JSON
+    private List<Pais> LoadPaisesJson(string filePath)
+    {
+        var jsonString = File.ReadAllText(filePath);
+        var paises = JsonSerializer.Deserialize<List<Pais>>(jsonString);
+        return paises;
+    }
 }
+
+
+

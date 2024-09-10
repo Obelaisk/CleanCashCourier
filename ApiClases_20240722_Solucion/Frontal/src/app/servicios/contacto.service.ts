@@ -7,19 +7,20 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ContactoService {
-  private url = environment.apiContactos;
+export class ContactoService{
+  
   //private url = 'https://localhost:7138/api/Contactos';
+  private url = environment.apiContactos;
   constructor(private http: HttpClient) { }
 
   checkIfExists(token: string, nombreClienteABuscar: string): Observable<any> {
-    const modelo: ModeloBusquedaContacto = {
-      tokenCliente: token,
-      NombreUsuarioClienteABuscar: nombreClienteABuscar
-    }
+  const modelo : ModeloBusquedaContacto = {
+    tokenCliente: token,
+    NombreUsuarioClienteABuscar: nombreClienteABuscar
+  }
     return this.http.post<any>(`${this.url}/checkIfExists`, modelo);
   }
-  getListaContactosPorToken(token: string): Observable<Contacto[]> {
+  getListaContactosPorToken(token: string): Observable<Contacto[]>{
     return this.http.get<Contacto[]>(`${this.url}/${token}`).pipe(
       tap(data => console.log(data)),
       catchError(this.handleError)
@@ -45,8 +46,8 @@ export class ContactoService {
   aniadirContacto(nombreNuevoContacto: string, token: string) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
 
-    const body = { nombreNuevoContacto, token };
-    return this.http.post<void>(this.url, body, { headers }).pipe(
+    const body = { nombreNuevoContacto,token };
+    return this.http.post<void>(this.url, body, {headers}).pipe(
       tap(() => console.log(`Contacto añadido: ${nombreNuevoContacto}`)),
       catchError(this.handleError)
     );

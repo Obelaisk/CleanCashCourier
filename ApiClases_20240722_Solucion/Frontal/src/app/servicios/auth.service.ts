@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  constructor(private router:Router) {}
 
   // Método para verificar si el usuario está autenticado
   isLoggedIn(): boolean {

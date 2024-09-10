@@ -36,7 +36,7 @@ public class Cliente
     public int PaisId { get; set; }
 
     [ForeignKey(nameof(PaisId))]
-    public Pais Pais { get; set; }
+    public Pais Pais { get; set; }  
     [Required]
     [StringLength(256)]
     [EmailAddress(ErrorMessage = "El campo Email debe ser una dirección de correo electrónico válida.")]

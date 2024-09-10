@@ -38,16 +38,16 @@
 
 .send-button {
   background-color: #1EA4D9;
-  color: white;
-  border: none;
+  color: #FFFFFF; /* Color blanco */
   border-radius: 20px;
   padding: 10px 20px;
-  font-size: 16px;
   cursor: pointer;
+  font-family: Arial, sans-serif; /* Fuente Arial */
+  font-weight: bold; /* Texto en negrita */
 }
 
   .send-button:hover {
-    background-color: #16303B;
+    background-color: #1e9bd9;
   }
 
 .container {
@@ -59,3 +59,5 @@
 .item {
   flex: 0 1 auto; /* Ajusta el tamaño de los elementos según su contenido */
 }
+
+

@@ -1,51 +1,55 @@
 <cabecera></cabecera>
 <div class="container">
-  <h2 class="text-center">Historial de transacciones</h2>
-
+  <h2 class="page-title">Historial de transacciones</h2> <!-- Añadido font-bold -->
   <!-- Filtros -->
-  <div class="d-flex justify-content-between align-items-center my-4">
+  <div class="d-flex justify-content-between align-items-end my-4">
+    <!-- align-items-end asegura que todos los elementos estén alineados abajo -->
     <div class="d-flex flex-wrap gap-3">
       <!-- Selector de Fecha Inicio -->
-      <div>
+      <div class="d-flex flex-column">
         <label for="fechaInicio">Fecha mínima:</label>
         <input type="date" id="fechaInicio" class="form-control" (change)="actualizarFechaInicio($event)">
       </div>
 
       <!-- Selector de Fecha Fin -->
-      <div>
+      <div class="d-flex flex-column">
         <label for="fechaFin">Fecha máxima:</label>
         <input type="date" id="fechaFin" class="form-control" (change)="actualizarFechaFin($event)">
       </div>
 
       <!-- Selector de Cantidad Mínima -->
-      <div>
+      <div class="d-flex flex-column">
         <label for="cantidadMin">Cantidad mínima:</label>
-        <select id="cantidadMin" class="form-control" (change)="actualizarCantidadMin($event)">
-          <option value="0">Sin límite</option>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-        </select>
-        <button class="btn btn-sm btn-link" (click)="borrarCantidadMin()">Borrar</button>
+        <div class="d-flex">
+          <select id="cantidadMin" class="form-control" (change)="actualizarCantidadMin($event)">
+            <option value="0">Sin límite</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+          <button class="btn btn-sm btn-link align-self-end ml-2" (click)="borrarCantidadMin()">Borrar</button> <!-- Botón alineado abajo -->
+        </div>
       </div>
 
       <!-- Selector de Cantidad Máxima -->
-      <div>
+      <div class="d-flex flex-column">
         <label for="cantidadMax">Cantidad máxima:</label>
-        <select id="cantidadMax" class="form-control" (change)="actualizarCantidadMax($event)">
-          <option value="Infinity">Sin límite</option>
-          <option value="50">50</option>
-          <option value="100">100</option>
-          <option value="500">500</option>
-          <option value="1000">1000</option>
-        </select>
-        <button class="btn btn-sm btn-link" (click)="borrarCantidadMax()">Borrar</button>
+        <div class="d-flex">
+          <select id="cantidadMax" class="form-control" (change)="actualizarCantidadMax($event)">
+            <option value="Infinity">Sin límite</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+          </select>
+          <button class="btn btn-sm btn-link align-self-end ml-2" (click)="borrarCantidadMax()">Borrar</button> <!-- Botón alineado abajo -->
+        </div>
       </div>
     </div>
 
     <!-- Botón de Filtrar alineado a la derecha -->
-    <button class="btn btn-primary ms-auto" (click)="filtrarTransacciones()">Filtrar</button>
+    <button class="action-button align-self-end" (click)="filtrarTransacciones()">Filtrar</button> <!-- Botón alineado con los selectores -->
   </div>
 
   <!-- Tabla de transacciones -->
@@ -53,15 +57,19 @@
     <thead>
       <tr>
         <th>Usuario</th>
-        <th>Cantidad</th>
+        <th>Monto</th>
+        <th>Moneda</th>
+        <th>Coste Transacción</th>
         <th>Fecha</th>
         <th>Tipo</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let transaccion of transaccionesTabla">
-        <td>{{ transaccion.nombre}}</td>
-        <td>{{ transaccion.cantidad}}</td>
+        <td>{{ transaccion.nombre }}</td>
+        <td>{{ transaccion.monto }}</td> <!-- Columna Monto -->
+        <td>{{ transaccion.moneda }}</td> <!-- Columna Moneda -->
+        <td>{{ transaccion.costeTransaccion || 'N/A' }}</td> <!-- Columna Coste Transacción -->
         <td>{{ transaccion.fecha }}</td>
         <td>{{ transaccion.tipo }}</td>
       </tr>

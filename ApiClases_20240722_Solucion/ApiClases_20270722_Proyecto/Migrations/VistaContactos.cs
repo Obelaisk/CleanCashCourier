@@ -2,7 +2,7 @@
 
 namespace ApiClases_20270722_Proyecto.Migrations
 {
-    public partial class newcontactviewstructure
+    public partial class paises_changed
     {
         public void CrearVistas(MigrationBuilder migrationBuilder)
         {

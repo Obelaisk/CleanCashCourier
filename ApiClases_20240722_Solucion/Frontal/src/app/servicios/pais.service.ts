@@ -9,17 +9,8 @@ import { environment } from '../../environments/environment';
 export class PaisService {
 
   // private clientesUrl = 'api/clientes/clientes.json';
-
-  // Teneis que actualizar vuestras referencias al back para que usen las variables de entorno de environment:
-  // Antes:
   //private url = 'https://localhost:7138/api/Paises';
-  // Después:
   private url = environment.apiPaises;
-  //private url = `${this.apiUrl}/Paises`;
-
-  // Fin de ejemplo
-
-  
   constructor(private http: HttpClient) { }
 
   getPaisId(id: number): Observable<IPais> {
@@ -56,6 +47,7 @@ export interface IPais {
   constructor(): void;
   id: number;
   nombre: string;
+  iso3Pais: string;
   divisa: string;
-  iso3: string;
+  iso3Divisa: string;
 }

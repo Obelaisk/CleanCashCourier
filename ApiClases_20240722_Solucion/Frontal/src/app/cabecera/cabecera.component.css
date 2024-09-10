@@ -69,3 +69,14 @@ body {
   .tw-section h2 {
     @apply tw-mt-5;
   }
+.tw-nav-item:hover {
+  @apply tw-font-bold tw-text-lg tw-border-b-2 tw-border-blue-900; /* Cambia el texto a negrita y agrégale un borde */
+}
+
+.tw-nav-item {
+  @apply tw-transition-all tw-duration-300 tw-ease-in-out; /* Transición suave */
+}
+
+  .tw-nav-item:hover {
+    @apply tw-text-gray-900; /* Cambia el color al pasar el cursor */
+  }

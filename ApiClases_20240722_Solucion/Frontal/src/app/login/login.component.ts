@@ -10,15 +10,28 @@ declare var bootstrap: any;
 })
 export class LoginComponent {
   email: string = '';
-
   contrase: string = '';
   password: any;
   username: any;
 
   constructor(private clienteService: ClienteService, private route: Router) { }
 
+  ngOnInit() {
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordInput = document.querySelector('#passwordInput');
+
+    if (togglePassword && passwordInput) {
+      togglePassword.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.classList.toggle('fa-eye-slash');
+      });
+    }
+  }
+
+
   authentication() {
-    this.clienteService.autenticarUsuario(this.email, this.contrase, true).subscribe(
+    this.clienteService.autenticarUsuario(this.obtenerPrimeraParte(this.email), this.contrase, true).subscribe(
       response => {
         if (response && response.token) {
           localStorage.setItem('token', response.token);
@@ -30,11 +43,9 @@ export class LoginComponent {
       },
       error => {
         if (error.status === 404) {
-          //alert('No existe el usuario');
-          this.showUserDoesntExistModal();
+          this.showModal();
         } else if (error.status === 401) {
-          this.showIncorrectPasswordModal();
-          //alert('Contraseña incorrecta');
+          this.showModal();
         } else if (error.status === 0) {
           alert('No se pudo conectar al servidor.');
         } else {
@@ -44,14 +55,16 @@ export class LoginComponent {
       });
   }
 
-  showUserDoesntExistModal() {
-    const modalElement = document.getElementById('userNoExists');
+  showModal() {
+    const modalElement = document.getElementById('modal');
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
   }
-  showIncorrectPasswordModal() {
-    const modalElement = document.getElementById('incorrectPassword');
-    const modal = new bootstrap.Modal(modalElement);
-    modal.show();
+
+  obtenerPrimeraParte(cadena:string) :string{
+    if (cadena.includes('@')) {
+      return cadena.split('@')[0];
+    }
+    return cadena;
   }
 }

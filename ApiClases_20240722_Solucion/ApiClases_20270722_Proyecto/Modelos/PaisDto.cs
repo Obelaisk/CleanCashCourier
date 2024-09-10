@@ -7,6 +7,9 @@
         [Required]
         [StringLength(100)]
         public string Nombre { get; set; }
+        [Required]
+        [StringLength(3)]
+        public string Iso3Pais { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -14,6 +17,6 @@
 
         [Required]
         [StringLength(3)]
-        public string Iso3 { get; set; }
+        public string Iso3Divisa { get; set; }
     }
 }

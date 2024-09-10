@@ -1,0 +1,1227 @@
+﻿[
+  {
+    "Id": 1,
+    "Nombre": "Afganistán",
+    "Iso3Pais": "AFG",
+    "Divisa": "Afghan Afghani",
+    "Iso3Divisa": "AFN"
+  },
+  {
+    "Id": 2,
+    "Nombre": "Albania",
+    "Iso3Pais": "ALB",
+    "Divisa": "Albanian Lek",
+    "Iso3Divisa": "ALL"
+  },
+  {
+    "Id": 3,
+    "Nombre": "Alemania",
+    "Iso3Pais": "DEU",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 4,
+    "Nombre": "Andorra",
+    "Iso3Pais": "AND",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 5,
+    "Nombre": "Angola",
+    "Iso3Pais": "AGO",
+    "Divisa": "Angolan Kwanza",
+    "Iso3Divisa": "AOA"
+  },
+  {
+    "Id": 6,
+    "Nombre": "Antigua y Barbuda",
+    "Iso3Pais": "ATG",
+    "Divisa": "East Caribbean Dollar",
+    "Iso3Divisa": "XCD"
+  },
+  {
+    "Id": 7,
+    "Nombre": "Arabia Saudita",
+    "Iso3Pais": "SAU",
+    "Divisa": "Saudi Riyal",
+    "Iso3Divisa": "SAR"
+  },
+  {
+    "Id": 8,
+    "Nombre": "Argelia",
+    "Iso3Pais": "DZA",
+    "Divisa": "Algerian Dinar",
+    "Iso3Divisa": "DZD"
+  },
+  {
+    "Id": 9,
+    "Nombre": "Argentina",
+    "Iso3Pais": "ARG",
+    "Divisa": "Argentine Peso",
+    "Iso3Divisa": "ARS"
+  },
+  {
+    "Id": 10,
+    "Nombre": "Armenia",
+    "Iso3Pais": "ARM",
+    "Divisa": "Armenian Dram",
+    "Iso3Divisa": "AMD"
+  },
+  {
+    "Id": 11,
+    "Nombre": "Australia",
+    "Iso3Pais": "AUS",
+    "Divisa": "Australian Dollar",
+    "Iso3Divisa": "AUD"
+  },
+  {
+    "Id": 12,
+    "Nombre": "Austria",
+    "Iso3Pais": "AUT",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 13,
+    "Nombre": "Azerbaiyán",
+    "Iso3Pais": "AZE",
+    "Divisa": "Azerbaijani Manat",
+    "Iso3Divisa": "AZN"
+  },
+  {
+    "Id": 14,
+    "Nombre": "Bahamas",
+    "Iso3Pais": "BHS",
+    "Divisa": "Bahamian Dollar",
+    "Iso3Divisa": "BSD"
+  },
+  {
+    "Id": 15,
+    "Nombre": "Baréin",
+    "Iso3Pais": "BHR",
+    "Divisa": "Bahraini Dinar",
+    "Iso3Divisa": "BHD"
+  },
+  {
+    "Id": 16,
+    "Nombre": "Bangladés",
+    "Iso3Pais": "BGD",
+    "Divisa": "Bangladeshi Taka",
+    "Iso3Divisa": "BDT"
+  },
+  {
+    "Id": 17,
+    "Nombre": "Barbados",
+    "Iso3Pais": "BRB",
+    "Divisa": "Barbadian Dollar",
+    "Iso3Divisa": "BBD"
+  },
+  {
+    "Id": 18,
+    "Nombre": "Belice",
+    "Iso3Pais": "BLZ",
+    "Divisa": "Belize Dollar",
+    "Iso3Divisa": "BZD"
+  },
+  {
+    "Id": 19,
+    "Nombre": "Benín",
+    "Iso3Pais": "BEN",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 20,
+    "Nombre": "Bhután",
+    "Iso3Pais": "BTN",
+    "Divisa": "Indian Rupee",
+    "Iso3Divisa": "INR"
+  },
+  {
+    "Id": 21,
+    "Nombre": "Bolivia",
+    "Iso3Pais": "BOL",
+    "Divisa": "Bolivian Boliviano",
+    "Iso3Divisa": "BOB"
+  },
+  {
+    "Id": 22,
+    "Nombre": "Bosnia y Herzegovina",
+    "Iso3Pais": "BIH",
+    "Divisa": "Bosnia-Herzegovina Convertible Mark",
+    "Iso3Divisa": "BAM"
+  },
+  {
+    "Id": 23,
+    "Nombre": "Botswana",
+    "Iso3Pais": "BWA",
+    "Divisa": "Botswana Pula",
+    "Iso3Divisa": "BWP"
+  },
+  {
+    "Id": 24,
+    "Nombre": "Brasil",
+    "Iso3Pais": "BRA",
+    "Divisa": "Brazilian Real",
+    "Iso3Divisa": "BRL"
+  },
+  {
+    "Id": 25,
+    "Nombre": "Brunéi",
+    "Iso3Pais": "BRN",
+    "Divisa": "Brunei Dollar",
+    "Iso3Divisa": "BND"
+  },
+  {
+    "Id": 26,
+    "Nombre": "Bulgaria",
+    "Iso3Pais": "BGR",
+    "Divisa": "Bulgarian Lev",
+    "Iso3Divisa": "BGN"
+  },
+  {
+    "Id": 27,
+    "Nombre": "Burkina Faso",
+    "Iso3Pais": "BFA",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 28,
+    "Nombre": "Burundi",
+    "Iso3Pais": "BDI",
+    "Divisa": "Burundian Franc",
+    "Iso3Divisa": "BIF"
+  },
+  {
+    "Id": 29,
+    "Nombre": "Bután",
+    "Iso3Pais": "BTN",
+    "Divisa": "Indian Rupee",
+    "Iso3Divisa": "INR"
+  },
+  {
+    "Id": 30,
+    "Nombre": "Cabo Verde",
+    "Iso3Pais": "CPV",
+    "Divisa": "Cape Verdean Escudo",
+    "Iso3Divisa": "CVE"
+  },
+  {
+    "Id": 31,
+    "Nombre": "Camboya",
+    "Iso3Pais": "KHM",
+    "Divisa": "Cambodian Riel",
+    "Iso3Divisa": "KHR"
+  },
+  {
+    "Id": 32,
+    "Nombre": "Camerún",
+    "Iso3Pais": "CMR",
+    "Divisa": "Central African CFA Franc",
+    "Iso3Divisa": "XAF"
+  },
+  {
+    "Id": 33,
+    "Nombre": "Canadá",
+    "Iso3Pais": "CAN",
+    "Divisa": "Canadian Dollar",
+    "Iso3Divisa": "CAD"
+  },
+  {
+    "Id": 34,
+    "Nombre": "Chad",
+    "Iso3Pais": "TCD",
+    "Divisa": "Central African CFA Franc",
+    "Iso3Divisa": "XAF"
+  },
+  {
+    "Id": 35,
+    "Nombre": "Chile",
+    "Iso3Pais": "CHL",
+    "Divisa": "Chilean Peso",
+    "Iso3Divisa": "CLP"
+  },
+  {
+    "Id": 36,
+    "Nombre": "China",
+    "Iso3Pais": "CHN",
+    "Divisa": "Chinese Yuan",
+    "Iso3Divisa": "CNY"
+  },
+  {
+    "Id": 37,
+    "Nombre": "Colombia",
+    "Iso3Pais": "COL",
+    "Divisa": "Colombian Peso",
+    "Iso3Divisa": "COP"
+  },
+  {
+    "Id": 38,
+    "Nombre": "Comoras",
+    "Iso3Pais": "COM",
+    "Divisa": "Comorian Franc",
+    "Iso3Divisa": "KMF"
+  },
+  {
+    "Id": 39,
+    "Nombre": "Congo",
+    "Iso3Pais": "COG",
+    "Divisa": "Central African CFA Franc",
+    "Iso3Divisa": "XAF"
+  },
+  {
+    "Id": 40,
+    "Nombre": "Costa Rica",
+    "Iso3Pais": "CRI",
+    "Divisa": "Costa Rican Colón",
+    "Iso3Divisa": "CRC"
+  },
+  {
+    "Id": 41,
+    "Nombre": "Croacia",
+    "Iso3Pais": "HRV",
+    "Divisa": "Croatian Kuna",
+    "Iso3Divisa": "HRK"
+  },
+  {
+    "Id": 42,
+    "Nombre": "Cuba",
+    "Iso3Pais": "CUB",
+    "Divisa": "Cuban Peso",
+    "Iso3Divisa": "CUP"
+  },
+  {
+    "Id": 43,
+    "Nombre": "Chipre",
+    "Iso3Pais": "CYP",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 44,
+    "Nombre": "Dinamarca",
+    "Iso3Pais": "DNK",
+    "Divisa": "Danish Krone",
+    "Iso3Divisa": "DKK"
+  },
+  {
+    "Id": 45,
+    "Nombre": "Dominica",
+    "Iso3Pais": "DMA",
+    "Divisa": "East Caribbean Dollar",
+    "Iso3Divisa": "XCD"
+  },
+  {
+    "Id": 46,
+    "Nombre": "Egipto",
+    "Iso3Pais": "EGY",
+    "Divisa": "Egyptian Pound",
+    "Iso3Divisa": "EGP"
+  },
+  {
+    "Id": 47,
+    "Nombre": "El Salvador",
+    "Iso3Pais": "SLV",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 48,
+    "Nombre": "Emiratos Árabes Unidos",
+    "Iso3Pais": "ARE",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "AED"
+  },
+  {
+    "Id": 49,
+    "Nombre": "Ecuador",
+    "Iso3Pais": "ECU",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 50,
+    "Nombre": "Eritrea",
+    "Iso3Pais": "ERI",
+    "Divisa": "Eritrean Nakfa",
+    "Iso3Divisa": "ERN"
+  },
+  {
+    "Id": 51,
+    "Nombre": "Eslovaquia",
+    "Iso3Pais": "SVK",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 52,
+    "Nombre": "Eslovenia",
+    "Iso3Pais": "SVN",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 53,
+    "Nombre": "España",
+    "Iso3Pais": "ESP",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 54,
+    "Nombre": "Estados Unidos",
+    "Iso3Pais": "USA",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 55,
+    "Nombre": "Estonia",
+    "Iso3Pais": "EST",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 56,
+    "Nombre": "Etiopía",
+    "Iso3Pais": "ETH",
+    "Divisa": "Ethiopian Birr",
+    "Iso3Divisa": "ETB"
+  },
+  {
+    "Id": 57,
+    "Nombre": "Fiji",
+    "Iso3Pais": "FJI",
+    "Divisa": "Fijian Dollar",
+    "Iso3Divisa": "FJD"
+  },
+  {
+    "Id": 58,
+    "Nombre": "Filipinas",
+    "Iso3Pais": "PHL",
+    "Divisa": "Philippine Peso",
+    "Iso3Divisa": "PHP"
+  },
+  {
+    "Id": 59,
+    "Nombre": "Finlandia",
+    "Iso3Pais": "FIN",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 60,
+    "Nombre": "Francia",
+    "Iso3Pais": "FRA",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 61,
+    "Nombre": "Gabón",
+    "Iso3Pais": "GAB",
+    "Divisa": "Central African CFA Franc",
+    "Iso3Divisa": "XAF"
+  },
+  {
+    "Id": 62,
+    "Nombre": "Gambia",
+    "Iso3Pais": "GMB",
+    "Divisa": "Gambian Dalasi",
+    "Iso3Divisa": "GMD"
+  },
+  {
+    "Id": 63,
+    "Nombre": "Georgia",
+    "Iso3Pais": "GEO",
+    "Divisa": "Georgian Lari",
+    "Iso3Divisa": "GEL"
+  },
+  {
+    "Id": 64,
+    "Nombre": "Ghana",
+    "Iso3Pais": "GHA",
+    "Divisa": "Ghanaian Cedi",
+    "Iso3Divisa": "GHS"
+  },
+  {
+    "Id": 65,
+    "Nombre": "Granada",
+    "Iso3Pais": "GRD",
+    "Divisa": "East Caribbean Dollar",
+    "Iso3Divisa": "XCD"
+  },
+  {
+    "Id": 66,
+    "Nombre": "Grecia",
+    "Iso3Pais": "GRC",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 67,
+    "Nombre": "Guatemala",
+    "Iso3Pais": "GTM",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "GTQ"
+  },
+  {
+    "Id": 68,
+    "Nombre": "Guinea",
+    "Iso3Pais": "GIN",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "GNF"
+  },
+  {
+    "Id": 69,
+    "Nombre": "Guinea-Bisáu",
+    "Iso3Pais": "GNB",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 70,
+    "Nombre": "Guyana",
+    "Iso3Pais": "GUY",
+    "Divisa": "Guyanese Dollar",
+    "Iso3Divisa": "GYD"
+  },
+  {
+    "Id": 71,
+    "Nombre": "Haití",
+    "Iso3Pais": "HTI",
+    "Divisa": "Haitian Gourde",
+    "Iso3Divisa": "HTG"
+  },
+  {
+    "Id": 72,
+    "Nombre": "Honduras",
+    "Iso3Pais": "HND",
+    "Divisa": "Honduran Lempira",
+    "Iso3Divisa": "HNL"
+  },
+  {
+    "Id": 73,
+    "Nombre": "Hungría",
+    "Iso3Pais": "HUN",
+    "Divisa": "Hungarian Forint",
+    "Iso3Divisa": "HUF"
+  },
+  {
+    "Id": 74,
+    "Nombre": "India",
+    "Iso3Pais": "IND",
+    "Divisa": "Indian Rupee",
+    "Iso3Divisa": "INR"
+  },
+  {
+    "Id": 75,
+    "Nombre": "Indonesia",
+    "Iso3Pais": "IDN",
+    "Divisa": "Indonesian Rupiah",
+    "Iso3Divisa": "IDR"
+  },
+  {
+    "Id": 76,
+    "Nombre": "Irak",
+    "Iso3Pais": "IRQ",
+    "Divisa": "Iraqi Dinar",
+    "Iso3Divisa": "IQD"
+  },
+  {
+    "Id": 77,
+    "Nombre": "Irán",
+    "Iso3Pais": "IRN",
+    "Divisa": "Iranian Rial",
+    "Iso3Divisa": "IRR"
+  },
+  {
+    "Id": 78,
+    "Nombre": "Irlanda",
+    "Iso3Pais": "IRL",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 79,
+    "Nombre": "Islandia",
+    "Iso3Pais": "ISL",
+    "Divisa": "Icelandic Króna",
+    "Iso3Divisa": "ISK"
+  },
+  {
+    "Id": 80,
+    "Nombre": "Islas Marshall",
+    "Iso3Pais": "MHL",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 81,
+    "Nombre": "Islas Salomón",
+    "Iso3Pais": "SLB",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "SBD"
+  },
+  {
+    "Id": 82,
+    "Nombre": "Islas Vírgenes Británicas",
+    "Iso3Pais": "VGB",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 83,
+    "Nombre": "Islas Vírgenes de los Estados Unidos",
+    "Iso3Pais": "VIR",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 84,
+    "Nombre": "Italia",
+    "Iso3Pais": "ITA",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 85,
+    "Nombre": "Jamaica",
+    "Iso3Pais": "JAM",
+    "Divisa": "Jamaican Dollar",
+    "Iso3Divisa": "JMD"
+  },
+  {
+    "Id": 86,
+    "Nombre": "Japón",
+    "Iso3Pais": "JPN",
+    "Divisa": "Japanese Yen",
+    "Iso3Divisa": "JPY"
+  },
+  {
+    "Id": 87,
+    "Nombre": "Jordania",
+    "Iso3Pais": "JOR",
+    "Divisa": "Jordanian Dinar",
+    "Iso3Divisa": "JOD"
+  },
+  {
+    "Id": 88,
+    "Nombre": "Kazajistán",
+    "Iso3Pais": "KAZ",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "KZT"
+  },
+  {
+    "Id": 89,
+    "Nombre": "Kenia",
+    "Iso3Pais": "KEN",
+    "Divisa": "Kenyan Shilling",
+    "Iso3Divisa": "KES"
+  },
+  {
+    "Id": 90,
+    "Nombre": "Kirguistán",
+    "Iso3Pais": "KGZ",
+    "Divisa": "Kyrgyzstani Som",
+    "Iso3Divisa": "KGS"
+  },
+  {
+    "Id": 91,
+    "Nombre": "Kiribati",
+    "Iso3Pais": "KIR",
+    "Divisa": "Australian Dollar",
+    "Iso3Divisa": "AUD"
+  },
+  {
+    "Id": 92,
+    "Nombre": "Kuwait",
+    "Iso3Pais": "KWT",
+    "Divisa": "Kuwaiti Dinar",
+    "Iso3Divisa": "KWD"
+  },
+  {
+    "Id": 93,
+    "Nombre": "Laos",
+    "Iso3Pais": "LAO",
+    "Divisa": "Lao Kip",
+    "Iso3Divisa": "LAK"
+  },
+  {
+    "Id": 94,
+    "Nombre": "Latvia",
+    "Iso3Pais": "LVA",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 95,
+    "Nombre": "Líbano",
+    "Iso3Pais": "LBN",
+    "Divisa": "Lebanese Pound",
+    "Iso3Divisa": "LBP"
+  },
+  {
+    "Id": 96,
+    "Nombre": "Liberia",
+    "Iso3Pais": "LBR",
+    "Divisa": "Liberian Dollar",
+    "Iso3Divisa": "LRD"
+  },
+  {
+    "Id": 97,
+    "Nombre": "Libia",
+    "Iso3Pais": "LBY",
+    "Divisa": "Libyan Dinar",
+    "Iso3Divisa": "LYD"
+  },
+  {
+    "Id": 98,
+    "Nombre": "Liechtenstein",
+    "Iso3Pais": "LIE",
+    "Divisa": "Swiss Franc",
+    "Iso3Divisa": "CHF"
+  },
+  {
+    "Id": 99,
+    "Nombre": "Lituania",
+    "Iso3Pais": "LTU",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 100,
+    "Nombre": "Luxemburgo",
+    "Iso3Pais": "LUX",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 101,
+    "Nombre": "Madagascar",
+    "Iso3Pais": "MDG",
+    "Divisa": "Malagasy Ariary",
+    "Iso3Divisa": "MGA"
+  },
+  {
+    "Id": 102,
+    "Nombre": "Malasia",
+    "Iso3Pais": "MYS",
+    "Divisa": "Malaysian Ringgit",
+    "Iso3Divisa": "MYR"
+  },
+  {
+    "Id": 103,
+    "Nombre": "Malawi",
+    "Iso3Pais": "MWI",
+    "Divisa": "Malawian Kwacha",
+    "Iso3Divisa": "MWK"
+  },
+  {
+    "Id": 104,
+    "Nombre": "Maldivas",
+    "Iso3Pais": "MDV",
+    "Divisa": "Maldivian Rufiyaa",
+    "Iso3Divisa": "MVR"
+  },
+  {
+    "Id": 105,
+    "Nombre": "Malí",
+    "Iso3Pais": "MLI",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 106,
+    "Nombre": "Malta",
+    "Iso3Pais": "MLT",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 107,
+    "Nombre": "Marruecos",
+    "Iso3Pais": "MAR",
+    "Divisa": "Moroccan Dirham",
+    "Iso3Divisa": "MAD"
+  },
+  {
+    "Id": 108,
+    "Nombre": "Mauricio",
+    "Iso3Pais": "MUS",
+    "Divisa": "Mauritian Rupee",
+    "Iso3Divisa": "MUR"
+  },
+  {
+    "Id": 109,
+    "Nombre": "Mauritania",
+    "Iso3Pais": "MRT",
+    "Divisa": "Mauritanian Ouguiya",
+    "Iso3Divisa": "MRU"
+  },
+  {
+    "Id": 110,
+    "Nombre": "México",
+    "Iso3Pais": "MEX",
+    "Divisa": "Mexican Peso",
+    "Iso3Divisa": "MXN"
+  },
+  {
+    "Id": 111,
+    "Nombre": "Micronesia",
+    "Iso3Pais": "FSM",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 112,
+    "Nombre": "Moldavia",
+    "Iso3Pais": "MDA",
+    "Divisa": "Moldovan Leu",
+    "Iso3Divisa": "MDL"
+  },
+  {
+    "Id": 113,
+    "Nombre": "Mónaco",
+    "Iso3Pais": "MCO",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 114,
+    "Nombre": "Mongolia",
+    "Iso3Pais": "MNG",
+    "Divisa": "Mongolian Tögrög",
+    "Iso3Divisa": "MNT"
+  },
+  {
+    "Id": 115,
+    "Nombre": "Montenegro",
+    "Iso3Pais": "MNE",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 116,
+    "Nombre": "Moravia",
+    "Iso3Pais": "CZE",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "CZK"
+  },
+  {
+    "Id": 117,
+    "Nombre": "Mozambique",
+    "Iso3Pais": "MOZ",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "MZN"
+  },
+  {
+    "Id": 118,
+    "Nombre": "Namibia",
+    "Iso3Pais": "NAM",
+    "Divisa": "Namibian Dollar",
+    "Iso3Divisa": "NAD"
+  },
+  {
+    "Id": 119,
+    "Nombre": "Nauru",
+    "Iso3Pais": "NRU",
+    "Divisa": "Australian Dollar",
+    "Iso3Divisa": "AUD"
+  },
+  {
+    "Id": 120,
+    "Nombre": "Nepal",
+    "Iso3Pais": "NPL",
+    "Divisa": "Nepalese Rupee",
+    "Iso3Divisa": "NPR"
+  },
+  {
+    "Id": 121,
+    "Nombre": "Nicaragua",
+    "Iso3Pais": "NIC",
+    "Divisa": "Nicaraguan Córdoba",
+    "Iso3Divisa": "NIO"
+  },
+  {
+    "Id": 122,
+    "Nombre": "Níger",
+    "Iso3Pais": "NER",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 123,
+    "Nombre": "Nigeria",
+    "Iso3Pais": "NGA",
+    "Divisa": "Nigerian Naira",
+    "Iso3Divisa": "NGN"
+  },
+  {
+    "Id": 124,
+    "Nombre": "Noruega",
+    "Iso3Pais": "NOR",
+    "Divisa": "Norwegian Krone",
+    "Iso3Divisa": "NOK"
+  },
+  {
+    "Id": 125,
+    "Nombre": "Nueva Zelanda",
+    "Iso3Pais": "NZL",
+    "Divisa": "New Zealand Dollar",
+    "Iso3Divisa": "NZD"
+  },
+  {
+    "Id": 126,
+    "Nombre": "Omán",
+    "Iso3Pais": "OMN",
+    "Divisa": "Omani Rial",
+    "Iso3Divisa": "OMR"
+  },
+  {
+    "Id": 127,
+    "Nombre": "Países Bajos",
+    "Iso3Pais": "NLD",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 128,
+    "Nombre": "Pakistán",
+    "Iso3Pais": "PAK",
+    "Divisa": "Pakistani Rupee",
+    "Iso3Divisa": "PKR"
+  },
+  {
+    "Id": 129,
+    "Nombre": "Palau",
+    "Iso3Pais": "PLW",
+    "Divisa": "United States Dollar",
+    "Iso3Divisa": "USD"
+  },
+  {
+    "Id": 130,
+    "Nombre": "Panamá",
+    "Iso3Pais": "PAN",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "PAB"
+  },
+  {
+    "Id": 131,
+    "Nombre": "Papúa Nueva Guinea",
+    "Iso3Pais": "PNG",
+    "Divisa": "Papua New Guinean Kina",
+    "Iso3Divisa": "PGK"
+  },
+  {
+    "Id": 132,
+    "Nombre": "Paraguay",
+    "Iso3Pais": "PRY",
+    "Divisa": "Paraguayan Guarani",
+    "Iso3Divisa": "PYG"
+  },
+  {
+    "Id": 133,
+    "Nombre": "Perú",
+    "Iso3Pais": "PER",
+    "Divisa": "Peruvian Sol",
+    "Iso3Divisa": "PEN"
+  },
+  {
+    "Id": 134,
+    "Nombre": "Polonia",
+    "Iso3Pais": "POL",
+    "Divisa": "Polish Zloty",
+    "Iso3Divisa": "PLN"
+  },
+  {
+    "Id": 135,
+    "Nombre": "Portugal",
+    "Iso3Pais": "PRT",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 136,
+    "Nombre": "Qatar",
+    "Iso3Pais": "QAT",
+    "Divisa": "Qatari Rial",
+    "Iso3Divisa": "QAR"
+  },
+  {
+    "Id": 137,
+    "Nombre": "Rumanía",
+    "Iso3Pais": "ROU",
+    "Divisa": "Romanian Leu",
+    "Iso3Divisa": "RON"
+  },
+  {
+    "Id": 138,
+    "Nombre": "Rusia",
+    "Iso3Pais": "RUS",
+    "Divisa": "Russian Ruble",
+    "Iso3Divisa": "RUB"
+  },
+  {
+    "Id": 139,
+    "Nombre": "Rwanda",
+    "Iso3Pais": "RWA",
+    "Divisa": "Rwandan Franc",
+    "Iso3Divisa": "RWF"
+  },
+  {
+    "Id": 140,
+    "Nombre": "San Cristóbal y Nieves",
+    "Iso3Pais": "KNA",
+    "Divisa": "East Caribbean Dollar",
+    "Iso3Divisa": "XCD"
+  },
+  {
+    "Id": 141,
+    "Nombre": "San Marino",
+    "Iso3Pais": "SMR",
+    "Divisa": "Euro",
+    "Iso3Divisa": "EUR"
+  },
+  {
+    "Id": 142,
+    "Nombre": "Santo Tomé y Príncipe",
+    "Iso3Pais": "STP",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "STN"
+  },
+  {
+    "Id": 143,
+    "Nombre": "Senegal",
+    "Iso3Pais": "SEN",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 144,
+    "Nombre": "Serbia",
+    "Iso3Pais": "SRB",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "RSD"
+  },
+  {
+    "Id": 145,
+    "Nombre": "Seychelles",
+    "Iso3Pais": "SYC",
+    "Divisa": "Seychellois Rupee",
+    "Iso3Divisa": "SCR"
+  },
+  {
+    "Id": 146,
+    "Nombre": "Sierra Leona",
+    "Iso3Pais": "SLE",
+    "Divisa": "Sierra Leonean Leone",
+    "Iso3Divisa": "SLL"
+  },
+  {
+    "Id": 147,
+    "Nombre": "Singapur",
+    "Iso3Pais": "SGP",
+    "Divisa": "Singapore Dollar",
+    "Iso3Divisa": "SGD"
+  },
+  {
+    "Id": 148,
+    "Nombre": "Siria",
+    "Iso3Pais": "SYR",
+    "Divisa": "Syrian Pound",
+    "Iso3Divisa": "SYP"
+  },
+  {
+    "Id": 149,
+    "Nombre": "Somalia",
+    "Iso3Pais": "SOM",
+    "Divisa": "Somali Shilling",
+    "Iso3Divisa": "SOS"
+  },
+  {
+    "Id": 150,
+    "Nombre": "Sri Lanka",
+    "Iso3Pais": "LKA",
+    "Divisa": "Sri Lankan Rupee",
+    "Iso3Divisa": "LKR"
+  },
+  {
+    "Id": 151,
+    "Nombre": "Sudán",
+    "Iso3Pais": "SDN",
+    "Divisa": "Sudanese Pound",
+    "Iso3Divisa": "SDG"
+  },
+  {
+    "Id": 152,
+    "Nombre": "Sudán del Sur",
+    "Iso3Pais": "SSD",
+    "Divisa": "South Sudanese Pound",
+    "Iso3Divisa": "SSP"
+  },
+  {
+    "Id": 153,
+    "Nombre": "Suecia",
+    "Iso3Pais": "SWE",
+    "Divisa": "Swedish Krona",
+    "Iso3Divisa": "SEK"
+  },
+  {
+    "Id": 154,
+    "Nombre": "Suiza",
+    "Iso3Pais": "CHE",
+    "Divisa": "Swiss Franc",
+    "Iso3Divisa": "CHF"
+  },
+  {
+    "Id": 155,
+    "Nombre": "Santo Tomé y Príncipe",
+    "Iso3Pais": "STP",
+    "Divisa": "Unknown",
+    "Iso3Divisa": "STN"
+  },
+  {
+    "Id": 156,
+    "Nombre": "Tailandia",
+    "Iso3Pais": "THA",
+    "Divisa": "Thai Baht",
+    "Iso3Divisa": "THB"
+  },
+  {
+    "Id": 157,
+    "Nombre": "Taiwán",
+    "Iso3Pais": "TWN",
+    "Divisa": "New Taiwan Dollar",
+    "Iso3Divisa": "TWD"
+  },
+  {
+    "Id": 158,
+    "Nombre": "Tanzania",
+    "Iso3Pais": "TZA",
+    "Divisa": "Tanzanian Shilling",
+    "Iso3Divisa": "TZS"
+  },
+  {
+    "Id": 159,
+    "Nombre": "Togo",
+    "Iso3Pais": "TGO",
+    "Divisa": "West African CFA Franc",
+    "Iso3Divisa": "XOF"
+  },
+  {
+    "Id": 160,
+    "Nombre": "Tonga",
+    "Iso3Pais": "TON",
+    "Divisa": "Tongan Paʻanga",
+    "Iso3Divisa": "TOP"
+  },
+  {
+    "Id": 161,
+    "Nombre": "Trinidad y Tobago",
+    "Iso3Pais": "TTO",
+    "Divisa": "Trinidad and Tobago Dollar",
+    "Iso3Divisa": "TTD"
+  },
+  {
+    "Id": 162,
+    "Nombre": "Túnez",
+    "Iso3Pais": "TUN",
+    "Divisa": "Tunisian Dinar",
+    "Iso3Divisa": "TND"
+  },
+  {
+    "Id": 163,
+    "Nombre": "Turkmenistán",
+    "Iso3Pais": "TKM",
+    "Divisa": "Turkmenistani Manat",
+    "Iso3Divisa": "TMT"
+  },
+  {
+    "Id": 164,
+    "Nombre": "Turquía",
+    "Iso3Pais": "TUR",
+    "Divisa": "Turkish Lira",
+    "Iso3Divisa": "TRY"
+  },
+  {
+    "Id": 165,
+    "Nombre": "Tuvalu",
+    "Iso3Pais": "TUV",
+    "Divisa": "Australian Dollar",
+    "Iso3Divisa": "AUD"
+  },
+  {
+    "Id": 166,
+    "Nombre": "Ucrania",
+    "Iso3Pais": "UKR",
+    "Divisa": "Ukrainian Hryvnia",
+    "Iso3Divisa": "UAH"
+  },
+  {
+    "Id": 167,
+    "Nombre": "Uganda",
+    "Iso3Pais": "UGA",
+    "Divisa": "Ugandan Shilling",
+    "Iso3Divisa": "UGX"
+  },
+  {
+    "Id": 168,
+    "Nombre": "Uruguay",
+    "Iso3Pais": "URY",
+    "Divisa": "Uruguayan Peso",
+    "Iso3Divisa": "UYU"
+  },
+  {
+    "Id": 169,
+    "Nombre": "Uzbekistán",
+    "Iso3Pais": "UZB",
+    "Divisa": "Uzbekistani So'm",
+    "Iso3Divisa": "UZS"
+  },
+  {
+    "Id": 170,
+    "Nombre": "Vanuatu",
+    "Iso3Pais": "VUT",
+    "Divisa": "Vanuatu Vatu",
+    "Iso3Divisa": "VUV"
+  },
+  {
+    "Id": 171,
+    "Nombre": "Venezuela",
+    "Iso3Pais": "VEN",
+    "Divisa": "Venezuelan Bolívar Soberano",
+    "Iso3Divisa": "VES"
+  },
+  {
+    "Id": 172,
+    "Nombre": "Vietnam",
+    "Iso3Pais": "VNM",
+    "Divisa": "Vietnamese Dong",
+    "Iso3Divisa": "VND"
+  },
+  {
+    "Id": 173,
+    "Nombre": "Yemen",
+    "Iso3Pais": "YEM",
+    "Divisa": "Yemeni Rial",
+    "Iso3Divisa": "YER"
+  },
+  {
+    "Id": 174,
+    "Nombre": "Zambia",
+    "Iso3Pais": "ZMB",
+    "Divisa": "Zambian Kwacha",
+    "Iso3Divisa": "ZMW"
+  },
+  {
+    "Id": 175,
+    "Nombre": "Zimbabue",
+    "Iso3Pais": "ZWE",
+    "Divisa": "Zimbabwean Dollar",
+    "Iso3Divisa": "ZWL"
+  }
+]

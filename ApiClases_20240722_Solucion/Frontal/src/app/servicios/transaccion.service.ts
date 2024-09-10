@@ -9,17 +9,9 @@ import { environment } from "../../environments/environment";
 })
 export class TransaccionService {
   // private clientesUrl = 'api/clientes/clientes.json';
-
-  // Teneis que actualizar vuestras referencias al back para que usen las variables de entorno de environment:
-  // Antes:
-   //private url = 'https://localhost:7138/api/Clientes';
-  // Después:
-  private apiUrl = environment.apiUrl;
-  //private url = `${this.apiUrl}/Clientes`;
-  private url = environment.apiClientes; //luego se le añade el id del cliente respectivo y "Transaccion"
-
-  // Fin de ejemplo
- 
+  //private url = 'https://localhost:7138/api/Clientes';
+  private url = environment.apiClientes;
+  
   private urlConversor = 'https://api.getgeoapi.com/v2/currency/convert?api_key=fa412676602886da01c7aab7dc3ffc8645840ace&from='
   constructor(private http: HttpClient) { }
 
@@ -90,4 +82,4 @@ export class TransaccionService {
     console.error(errorMessage);
     return throwError(() => errorMessage);
   }
-  }
+}

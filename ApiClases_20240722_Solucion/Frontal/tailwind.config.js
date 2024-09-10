@@ -2,6 +2,6 @@
 export const prefix = 'tw-';
 export const content = ["./src/**/*.html"];
 export const theme = {
-  extend: {},
+    extend: {},
 };
 export const plugins = [];

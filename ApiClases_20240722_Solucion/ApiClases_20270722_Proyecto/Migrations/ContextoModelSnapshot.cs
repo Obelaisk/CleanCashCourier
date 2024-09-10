@@ -936,7 +936,12 @@ namespace ApiClases_20270722_Proyecto.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Iso3")
+                    b.Property<string>("Iso3Divisa")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("Iso3Pais")
                         .IsRequired()
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
@@ -954,1205 +959,1401 @@ namespace ApiClases_20270722_Proyecto.Migrations
                         new
                         {
                             Id = 1,
-                            Divisa = "Afgani",
-                            Iso3 = "AFN",
+                            Divisa = "Afghan Afghani",
+                            Iso3Divisa = "AFN",
+                            Iso3Pais = "AFG",
                             Nombre = "Afganistán"
                         },
                         new
                         {
                             Id = 2,
-                            Divisa = "Lek",
-                            Iso3 = "ALL",
+                            Divisa = "Albanian Lek",
+                            Iso3Divisa = "ALL",
+                            Iso3Pais = "ALB",
                             Nombre = "Albania"
                         },
                         new
                         {
                             Id = 3,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "DEU",
                             Nombre = "Alemania"
                         },
                         new
                         {
                             Id = 4,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "AND",
                             Nombre = "Andorra"
                         },
                         new
                         {
                             Id = 5,
-                            Divisa = "Kwanza",
-                            Iso3 = "AOA",
+                            Divisa = "Angolan Kwanza",
+                            Iso3Divisa = "AOA",
+                            Iso3Pais = "AGO",
                             Nombre = "Angola"
                         },
                         new
                         {
                             Id = 6,
-                            Divisa = "Dólar del Caribe Oriental",
-                            Iso3 = "XCD",
+                            Divisa = "East Caribbean Dollar",
+                            Iso3Divisa = "XCD",
+                            Iso3Pais = "ATG",
                             Nombre = "Antigua y Barbuda"
                         },
                         new
                         {
                             Id = 7,
-                            Divisa = "Peso argentino",
-                            Iso3 = "ARS",
-                            Nombre = "Argentina"
+                            Divisa = "Saudi Riyal",
+                            Iso3Divisa = "SAR",
+                            Iso3Pais = "SAU",
+                            Nombre = "Arabia Saudita"
                         },
                         new
                         {
                             Id = 8,
-                            Divisa = "Dram",
-                            Iso3 = "AMD",
-                            Nombre = "Armenia"
+                            Divisa = "Algerian Dinar",
+                            Iso3Divisa = "DZD",
+                            Iso3Pais = "DZA",
+                            Nombre = "Argelia"
                         },
                         new
                         {
                             Id = 9,
-                            Divisa = "Dólar australiano",
-                            Iso3 = "AUD",
-                            Nombre = "Australia"
+                            Divisa = "Argentine Peso",
+                            Iso3Divisa = "ARS",
+                            Iso3Pais = "ARG",
+                            Nombre = "Argentina"
                         },
                         new
                         {
                             Id = 10,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Austria"
+                            Divisa = "Armenian Dram",
+                            Iso3Divisa = "AMD",
+                            Iso3Pais = "ARM",
+                            Nombre = "Armenia"
                         },
                         new
                         {
                             Id = 11,
-                            Divisa = "Manat azerí",
-                            Iso3 = "AZN",
-                            Nombre = "Azerbaiyán"
+                            Divisa = "Australian Dollar",
+                            Iso3Divisa = "AUD",
+                            Iso3Pais = "AUS",
+                            Nombre = "Australia"
                         },
                         new
                         {
                             Id = 12,
-                            Divisa = "Dólar bahameño",
-                            Iso3 = "BSD",
-                            Nombre = "Bahamas"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "AUT",
+                            Nombre = "Austria"
                         },
                         new
                         {
                             Id = 13,
-                            Divisa = "Dinar bareiní",
-                            Iso3 = "BHD",
-                            Nombre = "Bahréin"
+                            Divisa = "Azerbaijani Manat",
+                            Iso3Divisa = "AZN",
+                            Iso3Pais = "AZE",
+                            Nombre = "Azerbaiyán"
                         },
                         new
                         {
                             Id = 14,
-                            Divisa = "Taka",
-                            Iso3 = "BDT",
-                            Nombre = "Bangladesh"
+                            Divisa = "Bahamian Dollar",
+                            Iso3Divisa = "BSD",
+                            Iso3Pais = "BHS",
+                            Nombre = "Bahamas"
                         },
                         new
                         {
                             Id = 15,
-                            Divisa = "Dólar de Barbados",
-                            Iso3 = "BBD",
-                            Nombre = "Barbados"
+                            Divisa = "Bahraini Dinar",
+                            Iso3Divisa = "BHD",
+                            Iso3Pais = "BHR",
+                            Nombre = "Baréin"
                         },
                         new
                         {
                             Id = 16,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Bélgica"
+                            Divisa = "Bangladeshi Taka",
+                            Iso3Divisa = "BDT",
+                            Iso3Pais = "BGD",
+                            Nombre = "Bangladés"
                         },
                         new
                         {
                             Id = 17,
-                            Divisa = "Dólar beliceño",
-                            Iso3 = "BZD",
-                            Nombre = "Belice"
+                            Divisa = "Barbadian Dollar",
+                            Iso3Divisa = "BBD",
+                            Iso3Pais = "BRB",
+                            Nombre = "Barbados"
                         },
                         new
                         {
                             Id = 18,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Benín"
+                            Divisa = "Belize Dollar",
+                            Iso3Divisa = "BZD",
+                            Iso3Pais = "BLZ",
+                            Nombre = "Belice"
                         },
                         new
                         {
                             Id = 19,
-                            Divisa = "Boliviano",
-                            Iso3 = "BOB",
-                            Nombre = "Bolivia"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "BEN",
+                            Nombre = "Benín"
                         },
                         new
                         {
                             Id = 20,
-                            Divisa = "Marco convertible",
-                            Iso3 = "BAM",
-                            Nombre = "Bosnia y Herzegovina"
+                            Divisa = "Indian Rupee",
+                            Iso3Divisa = "INR",
+                            Iso3Pais = "BTN",
+                            Nombre = "Bhután"
                         },
                         new
                         {
                             Id = 21,
-                            Divisa = "Pula",
-                            Iso3 = "BWP",
-                            Nombre = "Botsuana"
+                            Divisa = "Bolivian Boliviano",
+                            Iso3Divisa = "BOB",
+                            Iso3Pais = "BOL",
+                            Nombre = "Bolivia"
                         },
                         new
                         {
                             Id = 22,
-                            Divisa = "Real",
-                            Iso3 = "BRL",
-                            Nombre = "Brasil"
+                            Divisa = "Bosnia-Herzegovina Convertible Mark",
+                            Iso3Divisa = "BAM",
+                            Iso3Pais = "BIH",
+                            Nombre = "Bosnia y Herzegovina"
                         },
                         new
                         {
                             Id = 23,
-                            Divisa = "Dólar de Brunei",
-                            Iso3 = "BND",
-                            Nombre = "Brunei"
+                            Divisa = "Botswana Pula",
+                            Iso3Divisa = "BWP",
+                            Iso3Pais = "BWA",
+                            Nombre = "Botswana"
                         },
                         new
                         {
                             Id = 24,
-                            Divisa = "Lev búlgaro",
-                            Iso3 = "BGN",
-                            Nombre = "Bulgaria"
+                            Divisa = "Brazilian Real",
+                            Iso3Divisa = "BRL",
+                            Iso3Pais = "BRA",
+                            Nombre = "Brasil"
                         },
                         new
                         {
                             Id = 25,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Burkina Faso"
+                            Divisa = "Brunei Dollar",
+                            Iso3Divisa = "BND",
+                            Iso3Pais = "BRN",
+                            Nombre = "Brunéi"
                         },
                         new
                         {
                             Id = 26,
-                            Divisa = "Franco burundés",
-                            Iso3 = "BIF",
-                            Nombre = "Burundi"
+                            Divisa = "Bulgarian Lev",
+                            Iso3Divisa = "BGN",
+                            Iso3Pais = "BGR",
+                            Nombre = "Bulgaria"
                         },
                         new
                         {
                             Id = 27,
-                            Divisa = "Ngultrum",
-                            Iso3 = "BTN",
-                            Nombre = "Bután"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "BFA",
+                            Nombre = "Burkina Faso"
                         },
                         new
                         {
                             Id = 28,
-                            Divisa = "Escudo caboverdiano",
-                            Iso3 = "CVE",
-                            Nombre = "Cabo Verde"
+                            Divisa = "Burundian Franc",
+                            Iso3Divisa = "BIF",
+                            Iso3Pais = "BDI",
+                            Nombre = "Burundi"
                         },
                         new
                         {
                             Id = 29,
-                            Divisa = "Riel",
-                            Iso3 = "KHR",
-                            Nombre = "Camboya"
+                            Divisa = "Indian Rupee",
+                            Iso3Divisa = "INR",
+                            Iso3Pais = "BTN",
+                            Nombre = "Bután"
                         },
                         new
                         {
                             Id = 30,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XAF",
-                            Nombre = "Camerún"
+                            Divisa = "Cape Verdean Escudo",
+                            Iso3Divisa = "CVE",
+                            Iso3Pais = "CPV",
+                            Nombre = "Cabo Verde"
                         },
                         new
                         {
                             Id = 31,
-                            Divisa = "Dólar canadiense",
-                            Iso3 = "CAD",
-                            Nombre = "Canadá"
+                            Divisa = "Cambodian Riel",
+                            Iso3Divisa = "KHR",
+                            Iso3Pais = "KHM",
+                            Nombre = "Camboya"
                         },
                         new
                         {
                             Id = 32,
-                            Divisa = "Riyal catarí",
-                            Iso3 = "QAR",
-                            Nombre = "Catar"
+                            Divisa = "Central African CFA Franc",
+                            Iso3Divisa = "XAF",
+                            Iso3Pais = "CMR",
+                            Nombre = "Camerún"
                         },
                         new
                         {
                             Id = 33,
-                            Divisa = "Peso colombiano",
-                            Iso3 = "COP",
-                            Nombre = "Colombia"
+                            Divisa = "Canadian Dollar",
+                            Iso3Divisa = "CAD",
+                            Iso3Pais = "CAN",
+                            Nombre = "Canadá"
                         },
                         new
                         {
                             Id = 34,
-                            Divisa = "Franco comorense",
-                            Iso3 = "KMF",
-                            Nombre = "Comoras"
+                            Divisa = "Central African CFA Franc",
+                            Iso3Divisa = "XAF",
+                            Iso3Pais = "TCD",
+                            Nombre = "Chad"
                         },
                         new
                         {
                             Id = 35,
-                            Divisa = "Franco congoleño",
-                            Iso3 = "CDF",
-                            Nombre = "Congo, República Democrática del"
+                            Divisa = "Chilean Peso",
+                            Iso3Divisa = "CLP",
+                            Iso3Pais = "CHL",
+                            Nombre = "Chile"
                         },
                         new
                         {
                             Id = 36,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XAF",
-                            Nombre = "Congo, República del"
+                            Divisa = "Chinese Yuan",
+                            Iso3Divisa = "CNY",
+                            Iso3Pais = "CHN",
+                            Nombre = "China"
                         },
                         new
                         {
                             Id = 37,
-                            Divisa = "Won norcoreano",
-                            Iso3 = "KPW",
-                            Nombre = "Corea del Norte"
+                            Divisa = "Colombian Peso",
+                            Iso3Divisa = "COP",
+                            Iso3Pais = "COL",
+                            Nombre = "Colombia"
                         },
                         new
                         {
                             Id = 38,
-                            Divisa = "Won surcoreano",
-                            Iso3 = "KRW",
-                            Nombre = "Corea del Sur"
+                            Divisa = "Comorian Franc",
+                            Iso3Divisa = "KMF",
+                            Iso3Pais = "COM",
+                            Nombre = "Comoras"
                         },
                         new
                         {
                             Id = 39,
-                            Divisa = "Colón costarricense",
-                            Iso3 = "CRC",
-                            Nombre = "Costa Rica"
+                            Divisa = "Central African CFA Franc",
+                            Iso3Divisa = "XAF",
+                            Iso3Pais = "COG",
+                            Nombre = "Congo"
                         },
                         new
                         {
                             Id = 40,
-                            Divisa = "Kuna",
-                            Iso3 = "HRK",
-                            Nombre = "Croacia"
+                            Divisa = "Costa Rican Colón",
+                            Iso3Divisa = "CRC",
+                            Iso3Pais = "CRI",
+                            Nombre = "Costa Rica"
                         },
                         new
                         {
                             Id = 41,
-                            Divisa = "Peso cubano",
-                            Iso3 = "CUP",
-                            Nombre = "Cuba"
+                            Divisa = "Croatian Kuna",
+                            Iso3Divisa = "HRK",
+                            Iso3Pais = "HRV",
+                            Nombre = "Croacia"
                         },
                         new
                         {
                             Id = 42,
-                            Divisa = "Corona danesa",
-                            Iso3 = "DKK",
-                            Nombre = "Dinamarca"
+                            Divisa = "Cuban Peso",
+                            Iso3Divisa = "CUP",
+                            Iso3Pais = "CUB",
+                            Nombre = "Cuba"
                         },
                         new
                         {
                             Id = 43,
-                            Divisa = "Franco yibutiano",
-                            Iso3 = "DJF",
-                            Nombre = "Djibouti"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "CYP",
+                            Nombre = "Chipre"
                         },
                         new
                         {
                             Id = 44,
-                            Divisa = "Dólar del Caribe Oriental",
-                            Iso3 = "XCD",
-                            Nombre = "Dominica"
+                            Divisa = "Danish Krone",
+                            Iso3Divisa = "DKK",
+                            Iso3Pais = "DNK",
+                            Nombre = "Dinamarca"
                         },
                         new
                         {
                             Id = 45,
-                            Divisa = "Libra egipcia",
-                            Iso3 = "EGP",
-                            Nombre = "Egipto"
+                            Divisa = "East Caribbean Dollar",
+                            Iso3Divisa = "XCD",
+                            Iso3Pais = "DMA",
+                            Nombre = "Dominica"
                         },
                         new
                         {
                             Id = 46,
-                            Divisa = "Dólar estadounidense",
-                            Iso3 = "USD",
-                            Nombre = "El Salvador"
+                            Divisa = "Egyptian Pound",
+                            Iso3Divisa = "EGP",
+                            Iso3Pais = "EGY",
+                            Nombre = "Egipto"
                         },
                         new
                         {
                             Id = 47,
-                            Divisa = "Dirham de los Emiratos Árabes Unidos",
-                            Iso3 = "AED",
-                            Nombre = "Emiratos Árabes Unidos"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "SLV",
+                            Nombre = "El Salvador"
                         },
                         new
                         {
                             Id = 48,
-                            Divisa = "Nakfa",
-                            Iso3 = "ERN",
-                            Nombre = "Eritrea"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "AED",
+                            Iso3Pais = "ARE",
+                            Nombre = "Emiratos Árabes Unidos"
                         },
                         new
                         {
                             Id = 49,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Eslovaquia"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "ECU",
+                            Nombre = "Ecuador"
                         },
                         new
                         {
                             Id = 50,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Eslovenia"
+                            Divisa = "Eritrean Nakfa",
+                            Iso3Divisa = "ERN",
+                            Iso3Pais = "ERI",
+                            Nombre = "Eritrea"
                         },
                         new
                         {
                             Id = 51,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "España"
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "SVK",
+                            Nombre = "Eslovaquia"
                         },
                         new
                         {
                             Id = 52,
-                            Divisa = "Dólar estadounidense",
-                            Iso3 = "USD",
-                            Nombre = "Estados Unidos"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "SVN",
+                            Nombre = "Eslovenia"
                         },
                         new
                         {
                             Id = 53,
-                            Divisa = "Lilangeni",
-                            Iso3 = "SZL",
-                            Nombre = "Esuatini"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "ESP",
+                            Nombre = "España"
                         },
                         new
                         {
                             Id = 54,
-                            Divisa = "Birr",
-                            Iso3 = "ETB",
-                            Nombre = "Etiopía"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "USA",
+                            Nombre = "Estados Unidos"
                         },
                         new
                         {
                             Id = 55,
-                            Divisa = "Dólar fiyiano",
-                            Iso3 = "FJD",
-                            Nombre = "Fiyi"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "EST",
+                            Nombre = "Estonia"
                         },
                         new
                         {
                             Id = 56,
-                            Divisa = "Peso filipino",
-                            Iso3 = "PHP",
-                            Nombre = "Filipinas"
+                            Divisa = "Ethiopian Birr",
+                            Iso3Divisa = "ETB",
+                            Iso3Pais = "ETH",
+                            Nombre = "Etiopía"
                         },
                         new
                         {
                             Id = 57,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Finlandia"
+                            Divisa = "Fijian Dollar",
+                            Iso3Divisa = "FJD",
+                            Iso3Pais = "FJI",
+                            Nombre = "Fiji"
                         },
                         new
                         {
                             Id = 58,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Francia"
+                            Divisa = "Philippine Peso",
+                            Iso3Divisa = "PHP",
+                            Iso3Pais = "PHL",
+                            Nombre = "Filipinas"
                         },
                         new
                         {
                             Id = 59,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XAF",
-                            Nombre = "Gabón"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "FIN",
+                            Nombre = "Finlandia"
                         },
                         new
                         {
                             Id = 60,
-                            Divisa = "Dalasi",
-                            Iso3 = "GMD",
-                            Nombre = "Gambia"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "FRA",
+                            Nombre = "Francia"
                         },
                         new
                         {
                             Id = 61,
-                            Divisa = "Lari",
-                            Iso3 = "GEL",
-                            Nombre = "Georgia"
+                            Divisa = "Central African CFA Franc",
+                            Iso3Divisa = "XAF",
+                            Iso3Pais = "GAB",
+                            Nombre = "Gabón"
                         },
                         new
                         {
                             Id = 62,
-                            Divisa = "Cedi",
-                            Iso3 = "GHS",
-                            Nombre = "Ghana"
+                            Divisa = "Gambian Dalasi",
+                            Iso3Divisa = "GMD",
+                            Iso3Pais = "GMB",
+                            Nombre = "Gambia"
                         },
                         new
                         {
                             Id = 63,
-                            Divisa = "Dólar del Caribe Oriental",
-                            Iso3 = "XCD",
-                            Nombre = "Granada"
+                            Divisa = "Georgian Lari",
+                            Iso3Divisa = "GEL",
+                            Iso3Pais = "GEO",
+                            Nombre = "Georgia"
                         },
                         new
                         {
                             Id = 64,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Grecia"
+                            Divisa = "Ghanaian Cedi",
+                            Iso3Divisa = "GHS",
+                            Iso3Pais = "GHA",
+                            Nombre = "Ghana"
                         },
                         new
                         {
                             Id = 65,
-                            Divisa = "Quetzal",
-                            Iso3 = "GTQ",
-                            Nombre = "Guatemala"
+                            Divisa = "East Caribbean Dollar",
+                            Iso3Divisa = "XCD",
+                            Iso3Pais = "GRD",
+                            Nombre = "Granada"
                         },
                         new
                         {
                             Id = 66,
-                            Divisa = "Franco guineano",
-                            Iso3 = "GNF",
-                            Nombre = "Guinea"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "GRC",
+                            Nombre = "Grecia"
                         },
                         new
                         {
                             Id = 67,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Guinea-Bisáu"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "GTQ",
+                            Iso3Pais = "GTM",
+                            Nombre = "Guatemala"
                         },
                         new
                         {
                             Id = 68,
-                            Divisa = "Dólar guyanés",
-                            Iso3 = "GYD",
-                            Nombre = "Guyana"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "GNF",
+                            Iso3Pais = "GIN",
+                            Nombre = "Guinea"
                         },
                         new
                         {
                             Id = 69,
-                            Divisa = "Gourde",
-                            Iso3 = "HTG",
-                            Nombre = "Haití"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "GNB",
+                            Nombre = "Guinea-Bisáu"
                         },
                         new
                         {
                             Id = 70,
-                            Divisa = "Lempira",
-                            Iso3 = "HNL",
-                            Nombre = "Honduras"
+                            Divisa = "Guyanese Dollar",
+                            Iso3Divisa = "GYD",
+                            Iso3Pais = "GUY",
+                            Nombre = "Guyana"
                         },
                         new
                         {
                             Id = 71,
-                            Divisa = "Forinto",
-                            Iso3 = "HUF",
-                            Nombre = "Hungría"
+                            Divisa = "Haitian Gourde",
+                            Iso3Divisa = "HTG",
+                            Iso3Pais = "HTI",
+                            Nombre = "Haití"
                         },
                         new
                         {
                             Id = 72,
-                            Divisa = "Rupia india",
-                            Iso3 = "INR",
-                            Nombre = "India"
+                            Divisa = "Honduran Lempira",
+                            Iso3Divisa = "HNL",
+                            Iso3Pais = "HND",
+                            Nombre = "Honduras"
                         },
                         new
                         {
                             Id = 73,
-                            Divisa = "Rupia indonesia",
-                            Iso3 = "IDR",
-                            Nombre = "Indonesia"
+                            Divisa = "Hungarian Forint",
+                            Iso3Divisa = "HUF",
+                            Iso3Pais = "HUN",
+                            Nombre = "Hungría"
                         },
                         new
                         {
                             Id = 74,
-                            Divisa = "Rial iraní",
-                            Iso3 = "IRR",
-                            Nombre = "Irán"
+                            Divisa = "Indian Rupee",
+                            Iso3Divisa = "INR",
+                            Iso3Pais = "IND",
+                            Nombre = "India"
                         },
                         new
                         {
                             Id = 75,
-                            Divisa = "Dinar iraquí",
-                            Iso3 = "IQD",
-                            Nombre = "Irak"
+                            Divisa = "Indonesian Rupiah",
+                            Iso3Divisa = "IDR",
+                            Iso3Pais = "IDN",
+                            Nombre = "Indonesia"
                         },
                         new
                         {
                             Id = 76,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Irlanda"
+                            Divisa = "Iraqi Dinar",
+                            Iso3Divisa = "IQD",
+                            Iso3Pais = "IRQ",
+                            Nombre = "Irak"
                         },
                         new
                         {
                             Id = 77,
-                            Divisa = "Nuevo shekel israelí",
-                            Iso3 = "ILS",
-                            Nombre = "Israel"
+                            Divisa = "Iranian Rial",
+                            Iso3Divisa = "IRR",
+                            Iso3Pais = "IRN",
+                            Nombre = "Irán"
                         },
                         new
                         {
                             Id = 78,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Italia"
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "IRL",
+                            Nombre = "Irlanda"
                         },
                         new
                         {
                             Id = 79,
-                            Divisa = "Dólar jamaiquino",
-                            Iso3 = "JMD",
-                            Nombre = "Jamaica"
+                            Divisa = "Icelandic Króna",
+                            Iso3Divisa = "ISK",
+                            Iso3Pais = "ISL",
+                            Nombre = "Islandia"
                         },
                         new
                         {
                             Id = 80,
-                            Divisa = "Yen japonés",
-                            Iso3 = "JPY",
-                            Nombre = "Japón"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "MHL",
+                            Nombre = "Islas Marshall"
                         },
                         new
                         {
                             Id = 81,
-                            Divisa = "Dinar jordano",
-                            Iso3 = "JOD",
-                            Nombre = "Jordania"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "SBD",
+                            Iso3Pais = "SLB",
+                            Nombre = "Islas Salomón"
                         },
                         new
                         {
                             Id = 82,
-                            Divisa = "Tenge",
-                            Iso3 = "KZT",
-                            Nombre = "Kazajistán"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "VGB",
+                            Nombre = "Islas Vírgenes Británicas"
                         },
                         new
                         {
                             Id = 83,
-                            Divisa = "Chelín keniano",
-                            Iso3 = "KES",
-                            Nombre = "Kenia"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "VIR",
+                            Nombre = "Islas Vírgenes de los Estados Unidos"
                         },
                         new
                         {
                             Id = 84,
-                            Divisa = "Som",
-                            Iso3 = "KGS",
-                            Nombre = "Kirguistán"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "ITA",
+                            Nombre = "Italia"
                         },
                         new
                         {
                             Id = 85,
-                            Divisa = "Dólar australiano",
-                            Iso3 = "AUD",
-                            Nombre = "Kiribati"
+                            Divisa = "Jamaican Dollar",
+                            Iso3Divisa = "JMD",
+                            Iso3Pais = "JAM",
+                            Nombre = "Jamaica"
                         },
                         new
                         {
                             Id = 86,
-                            Divisa = "Kip",
-                            Iso3 = "LAK",
-                            Nombre = "Laos"
+                            Divisa = "Japanese Yen",
+                            Iso3Divisa = "JPY",
+                            Iso3Pais = "JPN",
+                            Nombre = "Japón"
                         },
                         new
                         {
                             Id = 87,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Letonia"
+                            Divisa = "Jordanian Dinar",
+                            Iso3Divisa = "JOD",
+                            Iso3Pais = "JOR",
+                            Nombre = "Jordania"
                         },
                         new
                         {
                             Id = 88,
-                            Divisa = "Libra libanesa",
-                            Iso3 = "LBP",
-                            Nombre = "Líbano"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "KZT",
+                            Iso3Pais = "KAZ",
+                            Nombre = "Kazajistán"
                         },
                         new
                         {
                             Id = 89,
-                            Divisa = "Dólar liberiano",
-                            Iso3 = "LRD",
-                            Nombre = "Liberia"
+                            Divisa = "Kenyan Shilling",
+                            Iso3Divisa = "KES",
+                            Iso3Pais = "KEN",
+                            Nombre = "Kenia"
                         },
                         new
                         {
                             Id = 90,
-                            Divisa = "Dinar libio",
-                            Iso3 = "LYD",
-                            Nombre = "Libia"
+                            Divisa = "Kyrgyzstani Som",
+                            Iso3Divisa = "KGS",
+                            Iso3Pais = "KGZ",
+                            Nombre = "Kirguistán"
                         },
                         new
                         {
                             Id = 91,
-                            Divisa = "Franco suizo",
-                            Iso3 = "CHF",
-                            Nombre = "Liechtenstein"
+                            Divisa = "Australian Dollar",
+                            Iso3Divisa = "AUD",
+                            Iso3Pais = "KIR",
+                            Nombre = "Kiribati"
                         },
                         new
                         {
                             Id = 92,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Lituania"
+                            Divisa = "Kuwaiti Dinar",
+                            Iso3Divisa = "KWD",
+                            Iso3Pais = "KWT",
+                            Nombre = "Kuwait"
                         },
                         new
                         {
                             Id = 93,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Luxemburgo"
+                            Divisa = "Lao Kip",
+                            Iso3Divisa = "LAK",
+                            Iso3Pais = "LAO",
+                            Nombre = "Laos"
                         },
                         new
                         {
                             Id = 94,
-                            Divisa = "Ariary",
-                            Iso3 = "MGA",
-                            Nombre = "Madagascar"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "LVA",
+                            Nombre = "Latvia"
                         },
                         new
                         {
                             Id = 95,
-                            Divisa = "Ringgit",
-                            Iso3 = "MYR",
-                            Nombre = "Malasia"
+                            Divisa = "Lebanese Pound",
+                            Iso3Divisa = "LBP",
+                            Iso3Pais = "LBN",
+                            Nombre = "Líbano"
                         },
                         new
                         {
                             Id = 96,
-                            Divisa = "Kwacha malawiano",
-                            Iso3 = "MWK",
-                            Nombre = "Malaui"
+                            Divisa = "Liberian Dollar",
+                            Iso3Divisa = "LRD",
+                            Iso3Pais = "LBR",
+                            Nombre = "Liberia"
                         },
                         new
                         {
                             Id = 97,
-                            Divisa = "Rufiyaa",
-                            Iso3 = "MVR",
-                            Nombre = "Maldivas"
+                            Divisa = "Libyan Dinar",
+                            Iso3Divisa = "LYD",
+                            Iso3Pais = "LBY",
+                            Nombre = "Libia"
                         },
                         new
                         {
                             Id = 98,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Mali"
+                            Divisa = "Swiss Franc",
+                            Iso3Divisa = "CHF",
+                            Iso3Pais = "LIE",
+                            Nombre = "Liechtenstein"
                         },
                         new
                         {
                             Id = 99,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Malta"
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "LTU",
+                            Nombre = "Lituania"
                         },
                         new
                         {
                             Id = 100,
-                            Divisa = "Dirham marroquí",
-                            Iso3 = "MAD",
-                            Nombre = "Marruecos"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "LUX",
+                            Nombre = "Luxemburgo"
                         },
                         new
                         {
                             Id = 101,
-                            Divisa = "Rupia mauriciana",
-                            Iso3 = "MUR",
-                            Nombre = "Mauricio"
+                            Divisa = "Malagasy Ariary",
+                            Iso3Divisa = "MGA",
+                            Iso3Pais = "MDG",
+                            Nombre = "Madagascar"
                         },
                         new
                         {
                             Id = 102,
-                            Divisa = "Ouguiya",
-                            Iso3 = "MRU",
-                            Nombre = "Mauritania"
+                            Divisa = "Malaysian Ringgit",
+                            Iso3Divisa = "MYR",
+                            Iso3Pais = "MYS",
+                            Nombre = "Malasia"
                         },
                         new
                         {
                             Id = 103,
-                            Divisa = "Peso mexicano",
-                            Iso3 = "MXN",
-                            Nombre = "México"
+                            Divisa = "Malawian Kwacha",
+                            Iso3Divisa = "MWK",
+                            Iso3Pais = "MWI",
+                            Nombre = "Malawi"
                         },
                         new
                         {
                             Id = 104,
-                            Divisa = "Dólar estadounidense",
-                            Iso3 = "USD",
-                            Nombre = "Micronesia"
+                            Divisa = "Maldivian Rufiyaa",
+                            Iso3Divisa = "MVR",
+                            Iso3Pais = "MDV",
+                            Nombre = "Maldivas"
                         },
                         new
                         {
                             Id = 105,
-                            Divisa = "Leu moldavo",
-                            Iso3 = "MDL",
-                            Nombre = "Moldova"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "MLI",
+                            Nombre = "Malí"
                         },
                         new
                         {
                             Id = 106,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Mónaco"
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "MLT",
+                            Nombre = "Malta"
                         },
                         new
                         {
                             Id = 107,
-                            Divisa = "Tugrik",
-                            Iso3 = "MNT",
-                            Nombre = "Mongolia"
+                            Divisa = "Moroccan Dirham",
+                            Iso3Divisa = "MAD",
+                            Iso3Pais = "MAR",
+                            Nombre = "Marruecos"
                         },
                         new
                         {
                             Id = 108,
-                            Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Montenegro"
+                            Divisa = "Mauritian Rupee",
+                            Iso3Divisa = "MUR",
+                            Iso3Pais = "MUS",
+                            Nombre = "Mauricio"
                         },
                         new
                         {
                             Id = 109,
-                            Divisa = "Metical",
-                            Iso3 = "MZN",
-                            Nombre = "Mozambique"
+                            Divisa = "Mauritanian Ouguiya",
+                            Iso3Divisa = "MRU",
+                            Iso3Pais = "MRT",
+                            Nombre = "Mauritania"
                         },
                         new
                         {
                             Id = 110,
-                            Divisa = "Kyat",
-                            Iso3 = "MMK",
-                            Nombre = "Myanmar"
+                            Divisa = "Mexican Peso",
+                            Iso3Divisa = "MXN",
+                            Iso3Pais = "MEX",
+                            Nombre = "México"
                         },
                         new
                         {
                             Id = 111,
-                            Divisa = "Dólar namibio",
-                            Iso3 = "NAD",
-                            Nombre = "Namibia"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "FSM",
+                            Nombre = "Micronesia"
                         },
                         new
                         {
                             Id = 112,
-                            Divisa = "Dólar australiano",
-                            Iso3 = "AUD",
-                            Nombre = "Nauru"
+                            Divisa = "Moldovan Leu",
+                            Iso3Divisa = "MDL",
+                            Iso3Pais = "MDA",
+                            Nombre = "Moldavia"
                         },
                         new
                         {
                             Id = 113,
-                            Divisa = "Rupia nepali",
-                            Iso3 = "NPR",
-                            Nombre = "Nepal"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "MCO",
+                            Nombre = "Mónaco"
                         },
                         new
                         {
                             Id = 114,
-                            Divisa = "Córdoba",
-                            Iso3 = "NIO",
-                            Nombre = "Nicaragua"
+                            Divisa = "Mongolian Tögrög",
+                            Iso3Divisa = "MNT",
+                            Iso3Pais = "MNG",
+                            Nombre = "Mongolia"
                         },
                         new
                         {
                             Id = 115,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Níger"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "MNE",
+                            Nombre = "Montenegro"
                         },
                         new
                         {
                             Id = 116,
-                            Divisa = "Naira",
-                            Iso3 = "NGN",
-                            Nombre = "Nigeria"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "CZK",
+                            Iso3Pais = "CZE",
+                            Nombre = "Moravia"
                         },
                         new
                         {
                             Id = 117,
-                            Divisa = "Corona noruega",
-                            Iso3 = "NOK",
-                            Nombre = "Noruega"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "MZN",
+                            Iso3Pais = "MOZ",
+                            Nombre = "Mozambique"
                         },
                         new
                         {
                             Id = 118,
-                            Divisa = "Dólar neozelandés",
-                            Iso3 = "NZD",
-                            Nombre = "Nueva Zelanda"
+                            Divisa = "Namibian Dollar",
+                            Iso3Divisa = "NAD",
+                            Iso3Pais = "NAM",
+                            Nombre = "Namibia"
                         },
                         new
                         {
                             Id = 119,
-                            Divisa = "Rial omaní",
-                            Iso3 = "OMR",
-                            Nombre = "Omán"
+                            Divisa = "Australian Dollar",
+                            Iso3Divisa = "AUD",
+                            Iso3Pais = "NRU",
+                            Nombre = "Nauru"
                         },
                         new
                         {
                             Id = 120,
-                            Divisa = "Rupia pakistaní",
-                            Iso3 = "PKR",
-                            Nombre = "Pakistán"
+                            Divisa = "Nepalese Rupee",
+                            Iso3Divisa = "NPR",
+                            Iso3Pais = "NPL",
+                            Nombre = "Nepal"
                         },
                         new
                         {
                             Id = 121,
-                            Divisa = "Dólar estadounidense",
-                            Iso3 = "USD",
-                            Nombre = "Palaos"
+                            Divisa = "Nicaraguan Córdoba",
+                            Iso3Divisa = "NIO",
+                            Iso3Pais = "NIC",
+                            Nombre = "Nicaragua"
                         },
                         new
                         {
                             Id = 122,
-                            Divisa = "Balboa / Dólar estadounidense",
-                            Iso3 = "PAB",
-                            Nombre = "Panamá"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "NER",
+                            Nombre = "Níger"
                         },
                         new
                         {
                             Id = 123,
-                            Divisa = "Kina",
-                            Iso3 = "PGK",
-                            Nombre = "Papúa Nueva Guinea"
+                            Divisa = "Nigerian Naira",
+                            Iso3Divisa = "NGN",
+                            Iso3Pais = "NGA",
+                            Nombre = "Nigeria"
                         },
                         new
                         {
                             Id = 124,
-                            Divisa = "Guaraní",
-                            Iso3 = "PYG",
-                            Nombre = "Paraguay"
+                            Divisa = "Norwegian Krone",
+                            Iso3Divisa = "NOK",
+                            Iso3Pais = "NOR",
+                            Nombre = "Noruega"
                         },
                         new
                         {
                             Id = 125,
-                            Divisa = "Sol",
-                            Iso3 = "PEN",
-                            Nombre = "Perú"
+                            Divisa = "New Zealand Dollar",
+                            Iso3Divisa = "NZD",
+                            Iso3Pais = "NZL",
+                            Nombre = "Nueva Zelanda"
                         },
                         new
                         {
                             Id = 126,
-                            Divisa = "Zloty",
-                            Iso3 = "PLN",
-                            Nombre = "Polonia"
+                            Divisa = "Omani Rial",
+                            Iso3Divisa = "OMR",
+                            Iso3Pais = "OMN",
+                            Nombre = "Omán"
                         },
                         new
                         {
                             Id = 127,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "Portugal"
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "NLD",
+                            Nombre = "Países Bajos"
                         },
                         new
                         {
                             Id = 128,
-                            Divisa = "Libra esterlina",
-                            Iso3 = "GBP",
-                            Nombre = "Reino Unido"
+                            Divisa = "Pakistani Rupee",
+                            Iso3Divisa = "PKR",
+                            Iso3Pais = "PAK",
+                            Nombre = "Pakistán"
                         },
                         new
                         {
                             Id = 129,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XAF",
-                            Nombre = "República Centroafricana"
+                            Divisa = "United States Dollar",
+                            Iso3Divisa = "USD",
+                            Iso3Pais = "PLW",
+                            Nombre = "Palau"
                         },
                         new
                         {
                             Id = 130,
-                            Divisa = "Peso dominicano",
-                            Iso3 = "DOP",
-                            Nombre = "República Dominicana"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "PAB",
+                            Iso3Pais = "PAN",
+                            Nombre = "Panamá"
                         },
                         new
                         {
                             Id = 131,
-                            Divisa = "Franco ruandés",
-                            Iso3 = "RWF",
-                            Nombre = "Ruanda"
+                            Divisa = "Papua New Guinean Kina",
+                            Iso3Divisa = "PGK",
+                            Iso3Pais = "PNG",
+                            Nombre = "Papúa Nueva Guinea"
                         },
                         new
                         {
                             Id = 132,
-                            Divisa = "Leu rumano",
-                            Iso3 = "RON",
-                            Nombre = "Rumania"
+                            Divisa = "Paraguayan Guarani",
+                            Iso3Divisa = "PYG",
+                            Iso3Pais = "PRY",
+                            Nombre = "Paraguay"
                         },
                         new
                         {
                             Id = 133,
-                            Divisa = "Rublo ruso",
-                            Iso3 = "RUB",
-                            Nombre = "Rusia"
+                            Divisa = "Peruvian Sol",
+                            Iso3Divisa = "PEN",
+                            Iso3Pais = "PER",
+                            Nombre = "Perú"
                         },
                         new
                         {
                             Id = 134,
-                            Divisa = "Dólar del Caribe Oriental",
-                            Iso3 = "XCD",
-                            Nombre = "San Cristóbal y Nieves"
+                            Divisa = "Polish Zloty",
+                            Iso3Divisa = "PLN",
+                            Iso3Pais = "POL",
+                            Nombre = "Polonia"
                         },
                         new
                         {
                             Id = 135,
                             Divisa = "Euro",
-                            Iso3 = "EUR",
-                            Nombre = "San Marino"
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "PRT",
+                            Nombre = "Portugal"
                         },
                         new
                         {
                             Id = 136,
-                            Divisa = "Dólar de Santo Tomé",
-                            Iso3 = "STN",
-                            Nombre = "Santo Tomé y Príncipe"
+                            Divisa = "Qatari Rial",
+                            Iso3Divisa = "QAR",
+                            Iso3Pais = "QAT",
+                            Nombre = "Qatar"
                         },
                         new
                         {
                             Id = 137,
-                            Divisa = "Riyal saudí",
-                            Iso3 = "SAR",
-                            Nombre = "Arabia Saudita"
+                            Divisa = "Romanian Leu",
+                            Iso3Divisa = "RON",
+                            Iso3Pais = "ROU",
+                            Nombre = "Rumanía"
                         },
                         new
                         {
                             Id = 138,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Senegal"
+                            Divisa = "Russian Ruble",
+                            Iso3Divisa = "RUB",
+                            Iso3Pais = "RUS",
+                            Nombre = "Rusia"
                         },
                         new
                         {
                             Id = 139,
-                            Divisa = "Dinar serbio",
-                            Iso3 = "RSD",
-                            Nombre = "Serbia"
+                            Divisa = "Rwandan Franc",
+                            Iso3Divisa = "RWF",
+                            Iso3Pais = "RWA",
+                            Nombre = "Rwanda"
                         },
                         new
                         {
                             Id = 140,
-                            Divisa = "Rupia de las Seychelles",
-                            Iso3 = "SCR",
-                            Nombre = "Seychelles"
+                            Divisa = "East Caribbean Dollar",
+                            Iso3Divisa = "XCD",
+                            Iso3Pais = "KNA",
+                            Nombre = "San Cristóbal y Nieves"
                         },
                         new
                         {
                             Id = 141,
-                            Divisa = "Leona",
-                            Iso3 = "SLL",
-                            Nombre = "Sierra Leona"
+                            Divisa = "Euro",
+                            Iso3Divisa = "EUR",
+                            Iso3Pais = "SMR",
+                            Nombre = "San Marino"
                         },
                         new
                         {
                             Id = 142,
-                            Divisa = "Dólar de Singapur",
-                            Iso3 = "SGD",
-                            Nombre = "Singapur"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "STN",
+                            Iso3Pais = "STP",
+                            Nombre = "Santo Tomé y Príncipe"
                         },
                         new
                         {
                             Id = 143,
-                            Divisa = "Libra siria",
-                            Iso3 = "SYP",
-                            Nombre = "Siria"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "SEN",
+                            Nombre = "Senegal"
                         },
                         new
                         {
                             Id = 144,
-                            Divisa = "Chelín somalí",
-                            Iso3 = "SOS",
-                            Nombre = "Somalia"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "RSD",
+                            Iso3Pais = "SRB",
+                            Nombre = "Serbia"
                         },
                         new
                         {
                             Id = 145,
-                            Divisa = "Rupia de Sri Lanka",
-                            Iso3 = "LKR",
-                            Nombre = "Sri Lanka"
+                            Divisa = "Seychellois Rupee",
+                            Iso3Divisa = "SCR",
+                            Iso3Pais = "SYC",
+                            Nombre = "Seychelles"
                         },
                         new
                         {
                             Id = 146,
-                            Divisa = "Lilangeni",
-                            Iso3 = "SZL",
-                            Nombre = "Esuatini"
+                            Divisa = "Sierra Leonean Leone",
+                            Iso3Divisa = "SLL",
+                            Iso3Pais = "SLE",
+                            Nombre = "Sierra Leona"
                         },
                         new
                         {
                             Id = 147,
-                            Divisa = "Rand",
-                            Iso3 = "ZAR",
-                            Nombre = "Sudáfrica"
+                            Divisa = "Singapore Dollar",
+                            Iso3Divisa = "SGD",
+                            Iso3Pais = "SGP",
+                            Nombre = "Singapur"
                         },
                         new
                         {
                             Id = 148,
-                            Divisa = "Libra sudanesa",
-                            Iso3 = "SDG",
-                            Nombre = "Sudán"
+                            Divisa = "Syrian Pound",
+                            Iso3Divisa = "SYP",
+                            Iso3Pais = "SYR",
+                            Nombre = "Siria"
                         },
                         new
                         {
                             Id = 149,
-                            Divisa = "Corona sueca",
-                            Iso3 = "SEK",
-                            Nombre = "Suecia"
+                            Divisa = "Somali Shilling",
+                            Iso3Divisa = "SOS",
+                            Iso3Pais = "SOM",
+                            Nombre = "Somalia"
                         },
                         new
                         {
                             Id = 150,
-                            Divisa = "Franco suizo",
-                            Iso3 = "CHF",
-                            Nombre = "Suiza"
+                            Divisa = "Sri Lankan Rupee",
+                            Iso3Divisa = "LKR",
+                            Iso3Pais = "LKA",
+                            Nombre = "Sri Lanka"
                         },
                         new
                         {
                             Id = 151,
-                            Divisa = "Dólar de Surinam",
-                            Iso3 = "SRD",
-                            Nombre = "Surinam"
+                            Divisa = "Sudanese Pound",
+                            Iso3Divisa = "SDG",
+                            Iso3Pais = "SDN",
+                            Nombre = "Sudán"
                         },
                         new
                         {
                             Id = 152,
-                            Divisa = "Nuevo dólar taiwanés",
-                            Iso3 = "TWD",
-                            Nombre = "Taiwán"
+                            Divisa = "South Sudanese Pound",
+                            Iso3Divisa = "SSP",
+                            Iso3Pais = "SSD",
+                            Nombre = "Sudán del Sur"
                         },
                         new
                         {
                             Id = 153,
-                            Divisa = "Chelín tanzano",
-                            Iso3 = "TZS",
-                            Nombre = "Tanzania"
+                            Divisa = "Swedish Krona",
+                            Iso3Divisa = "SEK",
+                            Iso3Pais = "SWE",
+                            Nombre = "Suecia"
                         },
                         new
                         {
                             Id = 154,
-                            Divisa = "Baht",
-                            Iso3 = "THB",
-                            Nombre = "Tailandia"
+                            Divisa = "Swiss Franc",
+                            Iso3Divisa = "CHF",
+                            Iso3Pais = "CHE",
+                            Nombre = "Suiza"
                         },
                         new
                         {
                             Id = 155,
-                            Divisa = "Dólar estadounidense",
-                            Iso3 = "USD",
-                            Nombre = "Timor Oriental"
+                            Divisa = "Unknown",
+                            Iso3Divisa = "STN",
+                            Iso3Pais = "STP",
+                            Nombre = "Santo Tomé y Príncipe"
                         },
                         new
                         {
                             Id = 156,
-                            Divisa = "Franco CFA",
-                            Iso3 = "XOF",
-                            Nombre = "Togo"
+                            Divisa = "Thai Baht",
+                            Iso3Divisa = "THB",
+                            Iso3Pais = "THA",
+                            Nombre = "Tailandia"
                         },
                         new
                         {
                             Id = 157,
-                            Divisa = "Paʻanga",
-                            Iso3 = "TOP",
-                            Nombre = "Tonga"
+                            Divisa = "New Taiwan Dollar",
+                            Iso3Divisa = "TWD",
+                            Iso3Pais = "TWN",
+                            Nombre = "Taiwán"
                         },
                         new
                         {
                             Id = 158,
-                            Divisa = "Dólar de Trinidad y Tobago",
-                            Iso3 = "TTD",
-                            Nombre = "Trinidad y Tobago"
+                            Divisa = "Tanzanian Shilling",
+                            Iso3Divisa = "TZS",
+                            Iso3Pais = "TZA",
+                            Nombre = "Tanzania"
                         },
                         new
                         {
                             Id = 159,
-                            Divisa = "Dinar tunecino",
-                            Iso3 = "TND",
-                            Nombre = "Túnez"
+                            Divisa = "West African CFA Franc",
+                            Iso3Divisa = "XOF",
+                            Iso3Pais = "TGO",
+                            Nombre = "Togo"
                         },
                         new
                         {
                             Id = 160,
-                            Divisa = "Lira turca",
-                            Iso3 = "TRY",
-                            Nombre = "Turquía"
+                            Divisa = "Tongan Paʻanga",
+                            Iso3Divisa = "TOP",
+                            Iso3Pais = "TON",
+                            Nombre = "Tonga"
                         },
                         new
                         {
                             Id = 161,
-                            Divisa = "Manat turcomano",
-                            Iso3 = "TMT",
-                            Nombre = "Turkmenistán"
+                            Divisa = "Trinidad and Tobago Dollar",
+                            Iso3Divisa = "TTD",
+                            Iso3Pais = "TTO",
+                            Nombre = "Trinidad y Tobago"
                         },
                         new
                         {
                             Id = 162,
-                            Divisa = "Dólar australiano",
-                            Iso3 = "AUD",
-                            Nombre = "Tuvalu"
+                            Divisa = "Tunisian Dinar",
+                            Iso3Divisa = "TND",
+                            Iso3Pais = "TUN",
+                            Nombre = "Túnez"
                         },
                         new
                         {
                             Id = 163,
-                            Divisa = "Chelín ugandés",
-                            Iso3 = "UGX",
-                            Nombre = "Uganda"
+                            Divisa = "Turkmenistani Manat",
+                            Iso3Divisa = "TMT",
+                            Iso3Pais = "TKM",
+                            Nombre = "Turkmenistán"
                         },
                         new
                         {
                             Id = 164,
-                            Divisa = "Hryvnia",
-                            Iso3 = "UAH",
-                            Nombre = "Ucrania"
+                            Divisa = "Turkish Lira",
+                            Iso3Divisa = "TRY",
+                            Iso3Pais = "TUR",
+                            Nombre = "Turquía"
                         },
                         new
                         {
                             Id = 165,
-                            Divisa = "Peso uruguayo",
-                            Iso3 = "UYU",
-                            Nombre = "Uruguay"
+                            Divisa = "Australian Dollar",
+                            Iso3Divisa = "AUD",
+                            Iso3Pais = "TUV",
+                            Nombre = "Tuvalu"
                         },
                         new
                         {
                             Id = 166,
-                            Divisa = "Som uzbeko",
-                            Iso3 = "UZS",
-                            Nombre = "Uzbekistán"
+                            Divisa = "Ukrainian Hryvnia",
+                            Iso3Divisa = "UAH",
+                            Iso3Pais = "UKR",
+                            Nombre = "Ucrania"
                         },
                         new
                         {
                             Id = 167,
-                            Divisa = "Vatu",
-                            Iso3 = "VUV",
-                            Nombre = "Vanuatu"
+                            Divisa = "Ugandan Shilling",
+                            Iso3Divisa = "UGX",
+                            Iso3Pais = "UGA",
+                            Nombre = "Uganda"
                         },
                         new
                         {
                             Id = 168,
-                            Divisa = "Bolívar venezolano",
-                            Iso3 = "VES",
-                            Nombre = "Venezuela"
+                            Divisa = "Uruguayan Peso",
+                            Iso3Divisa = "UYU",
+                            Iso3Pais = "URY",
+                            Nombre = "Uruguay"
                         },
                         new
                         {
                             Id = 169,
-                            Divisa = "Dong",
-                            Iso3 = "VND",
-                            Nombre = "Vietnam"
+                            Divisa = "Uzbekistani So'm",
+                            Iso3Divisa = "UZS",
+                            Iso3Pais = "UZB",
+                            Nombre = "Uzbekistán"
                         },
                         new
                         {
                             Id = 170,
-                            Divisa = "Rial yemení",
-                            Iso3 = "YER",
-                            Nombre = "Yemen"
+                            Divisa = "Vanuatu Vatu",
+                            Iso3Divisa = "VUV",
+                            Iso3Pais = "VUT",
+                            Nombre = "Vanuatu"
                         },
                         new
                         {
                             Id = 171,
-                            Divisa = "Kwacha zambiano",
-                            Iso3 = "ZMW",
-                            Nombre = "Zambia"
+                            Divisa = "Venezuelan Bolívar Soberano",
+                            Iso3Divisa = "VES",
+                            Iso3Pais = "VEN",
+                            Nombre = "Venezuela"
                         },
                         new
                         {
                             Id = 172,
-                            Divisa = "Dólar zimbabuense",
-                            Iso3 = "ZWL",
+                            Divisa = "Vietnamese Dong",
+                            Iso3Divisa = "VND",
+                            Iso3Pais = "VNM",
+                            Nombre = "Vietnam"
+                        },
+                        new
+                        {
+                            Id = 173,
+                            Divisa = "Yemeni Rial",
+                            Iso3Divisa = "YER",
+                            Iso3Pais = "YEM",
+                            Nombre = "Yemen"
+                        },
+                        new
+                        {
+                            Id = 174,
+                            Divisa = "Zambian Kwacha",
+                            Iso3Divisa = "ZMW",
+                            Iso3Pais = "ZMB",
+                            Nombre = "Zambia"
+                        },
+                        new
+                        {
+                            Id = 175,
+                            Divisa = "Zimbabwean Dollar",
+                            Iso3Divisa = "ZWL",
+                            Iso3Pais = "ZWE",
                             Nombre = "Zimbabue"
                         });
                 });

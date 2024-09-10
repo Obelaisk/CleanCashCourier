@@ -6,6 +6,6 @@ export interface ICliente {
   nombrePais: string;
   fechaNacimiento: Date;
   paisId: number;
-  trabajo: string;  
+  empleo: string;  
   email: string;  
 }

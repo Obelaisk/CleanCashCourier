@@ -126,8 +126,13 @@ namespace ApiClases_20270722_Proyecto.Controllers
             var jwtToken = handler.ReadJwtToken(request.token);
             nombre = jwtToken.Claims.First(claim => claim.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name").Value;
 
-            var idContactoNuevo = _clienteRepositorio.ObtenerPorNombre(request.nombreNuevoContacto).Id;
-            var idContactoRelacionado = _clienteRepositorio.ObtenerPorNombre(nombre).Id;
+            var contactoNuevo = _clienteRepositorio.ObtenerPorNombre(request.nombreNuevoContacto);
+            var contactoRelacionado = _clienteRepositorio.ObtenerPorNombre(nombre);
+            if(contactoNuevo == null || contactoRelacionado == null) {
+                return BadRequest();
+            }
+            var idContactoNuevo = contactoNuevo.Id;
+            var idContactoRelacionado = contactoRelacionado.Id;
 
             _contactosRepositorio.Agregar(new Contacto
             {

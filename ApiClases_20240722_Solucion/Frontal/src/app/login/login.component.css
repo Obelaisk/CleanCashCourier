@@ -9,25 +9,25 @@
   font-weight: bold; /* Texto en negrita */
 }
 
-  .action-button:hover {
-    background-color: #1e9bd9;
-  }
+.action-button:hover {
+  background-color: #1e9bd9;
+}
 
 /* Estilo personalizado para el botón de cerrar */
 .btn-close {
   background-color: red; /* Cambia esto al color que prefieras */
 }
 
-  .btn-close:hover {
-    background-color: darkred; /* Cambia esto al color que prefieras */
-  }
+.btn-close:hover {
+  background-color: darkred; /* Cambia esto al color que prefieras */
+}
 
-  .btn-close:focus {
-    box-shadow: none;
-  }
+.btn-close:focus {
+  box-shadow: none;
+}
 
 .btn-secondary {
-  background-color: #84BF49;
+  background-color: #28c45c;
   color: white;
   border: none;
   border-radius: 20px;
@@ -36,3 +36,4 @@
   cursor: pointer;
   margin-top: 20px;
 }
+
