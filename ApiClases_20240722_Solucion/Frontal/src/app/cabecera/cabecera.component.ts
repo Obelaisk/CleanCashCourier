@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrl: './cabecera.component.css',
   encapsulation: ViewEncapsulation.None
 })
-//comentario inespearado
+
 export class CabeceraComponent {
   constructor(private router: Router) { }
 
