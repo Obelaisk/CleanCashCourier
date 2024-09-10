@@ -2,7 +2,6 @@
 using ApiClases_20270722_Proyecto.Entidades;
 using ApiClases_20270722_Proyecto.Modelos.Clientes;
 using ApiClases_20270722_Proyecto.Repositorios;
-using ApiClases_20270722_Proyecto.SignalRServicio;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace ApiClases_20270722_Proyecto.Controllers
@@ -211,34 +210,7 @@ namespace ApiClases_20270722_Proyecto.Controllers
                 cliente.Email
             });
 
-            // Obtener el Id del cliente recién creado
-            var clienteRecienCreado = _clienteRepositorio.ObtenerPorNombre(cliente.Usuario);
-            if (clienteRecienCreado == null)
-            {
-                return BadRequest(new { Message = "Error al obtener el cliente recién creado" });
-            }
-
-            var numClientes = (await _clienteRepositorio.Obtener()).Count();
-            Random random = new Random();
-            for (var i = 0; i <= 6; i++)
-            {
-                var clienteDestinoId = random.Next(1, numClientes + 1);
-                var clienteDestino = _clienteRepositorio.ObtenerPorId(clienteDestinoId);
-                if (clienteDestino == null)
-                {
-                    continue; // Si el cliente destino no existe, saltar esta iteración
-                }
-
-                _contactoRepositorio.Agregar(new Contacto
-                {
-                    Id = 0,
-                    ClienteOrigenId = clienteRecienCreado.Id,
-                    ClienteDestinoId = clienteDestinoId,
-                });
-            }
-            await _contactoRepositorio.GuardarCambios();
-
-            return Ok(new { Token = token });
+            return Ok();
         }
 
 
