@@ -108,7 +108,7 @@ builder.Services.AddCors(options =>
 
     options.AddPolicy("AllowTrans",
         builder => builder
-        .WithOrigins( "http://172.30.000.000", "https://wonderful-meadow-07530fe03.5.azurestaticapps.net", "https://proud-stone-092ce9d03.5.azurestaticapps.net") // Permite las solicitudes para pruebas en local y los repos de app estatica de azure
+        .WithOrigins("http://192.168.0.00", "http://172.30.000.000", "https://wonderful-meadow-07530fe03.5.azurestaticapps.net", "https://proud-stone-092ce9d03.5.azurestaticapps.net") // Permite las solicitudes para pruebas en local y los repos de app estatica de azure
         .AllowAnyHeader() // Permite cualquier encabezado.
         .AllowAnyMethod() // Permite cualquier método HTTP.
         .AllowCredentials()); // Permite el uso de credenciales.
