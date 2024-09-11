@@ -69,7 +69,7 @@
           <li *ngFor="let pais of paisesFiltrado; let i = index" [attr.data-index]="i"
               class='tw-py-2.5 tw-px-4 hover:tw-bg-blue-50 tw-rounded tw-text-black tw-text-sm tw-cursor-pointer' (click)="selectPais(pais.nombre)">
             <div class="tw-flex tw-items-center" #paisItem>
-              <!--<img [src]="'https://flagcdn.com/16x12/' + pais.iso3 + '.png'" class="tw-w-6 tw-mr-3" />-->
+              <img [src]="'assets/flags/' + pais.iso3Pais + '.png'" alt="{{ pais.nombre }}" class="tw-w-6 tw-mr-3" />
               {{ pais.nombre }}
             </div>
           </li>

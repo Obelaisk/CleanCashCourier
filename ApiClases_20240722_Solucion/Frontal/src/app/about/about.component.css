@@ -1,23 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .tw-about-content {
-  @apply tw-p-8 tw-bg-white tw-text-gray-800;
+  @apply tw-px-8 tw-py-12 tw-bg-white tw-text-gray-800;
 }
 
   .tw-about-content h1 {
-    @apply tw-text-4xl tw-font-bold tw-mb-8;
+    @apply tw-text-5xl tw-font-extrabold tw-text-center tw-mb-12 tw-text-gray-900;
   }
 
   .tw-about-content .tw-section {
-    @apply tw-mb-8;
+    @apply tw-mb-12;
   }
 
     .tw-about-content .tw-section h2 {
-      @apply tw-text-2xl tw-font-semibold tw-mb-4;
+      @apply tw-text-3xl tw-font-bold tw-mb-4;
     }
 
     .tw-about-content .tw-section p {
-      @apply tw-mb-4;
+      @apply tw-text-lg tw-text-gray-700 tw-mb-4;
     }
+
+.tw-icon-placeholder {
+  @apply tw-w-12 tw-h-12 tw-bg-gray-300 tw-rounded-full;
+}

@@ -154,15 +154,45 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
       this.cantidadRecibida = value;
       this.cantidadEnviada = value ? (parseFloat(value) / this.factorConversion).toFixed(2) : '';
     }
-    this.tarifaTransferencia = parseFloat(this.calcularCosteAleatorio(1, 10));
+
+
+     // Aquí aplicamos el nuevo cálculo de la tarifa
+     const cantidad = parseFloat(this.cantidadEnviada);
+     this.tarifaTransferencia = this.calcularCosteTransaccion(cantidad);
+
+
     // Calcular el total de la transferencia
     this.totalTransferencia = (parseFloat(this.cantidadEnviada) + this.tarifaTransferencia).toFixed(2);
-
     input.value = value;
+
   }
-  calcularCosteAleatorio(min: number, max: number) {
-    return (Math.random() * (max - min) + min).toFixed();
-  }
+
+  calcularCosteTransaccion(cantidad: number): number {
+    let tarifa = 0;
+
+    if (cantidad <= 10) {
+      tarifa = 0.25;
+
+     } else if (cantidad > 10 && cantidad <= 25) {
+      tarifa = 0.5;
+
+     } else if (cantidad > 25 && cantidad <= 50) {      
+      tarifa = 1.5;
+
+     } else if (cantidad > 50 && cantidad <= 100) {      
+      tarifa = 2.5;
+
+    } else if (cantidad > 100 && cantidad <= 1000) {
+      tarifa = 2.00 + (cantidad * 0.02);
+
+    } else if (cantidad > 1000) {
+      tarifa = cantidad * 0.015;
+
+    }
+
+    // Retornar la tarifa calculada, redondeada a dos decimales
+    return parseFloat(tarifa.toFixed(2));
+  } 
 
   crearTransaccion() {
     this.transaccion = new Transaccion();

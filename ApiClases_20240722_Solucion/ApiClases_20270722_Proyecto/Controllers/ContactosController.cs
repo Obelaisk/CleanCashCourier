@@ -128,18 +128,25 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             var contactoNuevo = _clienteRepositorio.ObtenerPorNombre(request.nombreNuevoContacto);
             var contactoRelacionado = _clienteRepositorio.ObtenerPorNombre(nombre);
-            if(contactoNuevo == null || contactoRelacionado == null) {
+            if((contactoNuevo == null || contactoRelacionado == null) || (contactoNuevo.Id ==  contactoRelacionado.Id)) { //no hemos puesto bien el request o hemos puesto el mismo cliente dos veces
                 return BadRequest();
             }
             var idContactoNuevo = contactoNuevo.Id;
             var idContactoRelacionado = contactoRelacionado.Id;
-
-            _contactosRepositorio.Agregar(new Contacto
+            if (_contactosRepositorio.ObtenerPorIds(idContactoRelacionado, idContactoNuevo) == null)
             {
-                Id = 0,
-                ClienteOrigenId = idContactoRelacionado,
-                ClienteDestinoId = idContactoNuevo,
-            });
+                _contactosRepositorio.Agregar(new Contacto
+                {
+                    Id = 0,
+                    ClienteOrigenId = idContactoRelacionado,
+                    ClienteDestinoId = idContactoNuevo,
+                });
+            }
+            else
+            {
+                return Conflict();
+            }
+                
             var addContactoResult = await _contactosRepositorio.GuardarCambios();
 
             if(!addContactoResult)

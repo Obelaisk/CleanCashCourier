@@ -31,6 +31,10 @@ export class LoginComponent {
 
 
   authentication() {
+    if (this.email === '' || this.contrase === '') {
+      this.showUserOrPasswordRequired();
+      return;
+    }
     this.clienteService.autenticarUsuario(this.obtenerPrimeraParte(this.email), this.contrase, true).subscribe(
       response => {
         if (response && response.token) {
@@ -60,8 +64,13 @@ export class LoginComponent {
     const modal = new bootstrap.Modal(modalElement);
     modal.show();
   }
+  showUserOrPasswordRequired() {
+    const modalElement = document.getElementById('userOrPasswordRequired');
+    const modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
 
-  obtenerPrimeraParte(cadena:string) :string{
+  obtenerPrimeraParte(cadena: string): string {
     if (cadena.includes('@')) {
       return cadena.split('@')[0];
     }

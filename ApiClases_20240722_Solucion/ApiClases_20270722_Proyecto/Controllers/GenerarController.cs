@@ -6,14 +6,14 @@ public class GenerarController : Controller
 {
     public readonly IRepositorioGenerico<Transaccion> _transaccionRepositorio;
     public readonly IRepositorioGenerico<Cliente> _clientesRepositorio;
-    public readonly IRepositorioGenerico<Contacto> _contactoRepositorio;
+    public readonly ContactosRepositorioBBDD<Contacto> _contactoRepositorio;
     public readonly IRepositorioGenerico<Pais> _paisRepositorio;
     private readonly IMapper _mapper;
 
     public GenerarController(
         IRepositorioGenerico<Transaccion> transaccionRepositorio, 
         IRepositorioGenerico<Cliente> clientesRepositorio, 
-        IRepositorioGenerico<Contacto> contactoRepositorio, 
+        ContactosRepositorioBBDD<Contacto> contactoRepositorio, 
         IRepositorioGenerico<Pais> paisRepositorio, 
         IMapper mapper)
     {
@@ -36,13 +36,9 @@ public class GenerarController : Controller
             _clientesRepositorio.Agregar(nuevoCliente);
         }
         if (await _clientesRepositorio.GuardarCambios())
-        {
             return Ok();
-        }
         else
-        {
             return StatusCode(500); // Para debug
-        }
     }
     [HttpGet("generarTransacciones/{n_transacciones}")]
     public async Task<IActionResult> GenerarTransacciones(int n_transacciones)
@@ -61,39 +57,113 @@ public class GenerarController : Controller
             _transaccionRepositorio.Agregar(nuevaTransaccion);
         }
         if (await _transaccionRepositorio.GuardarCambios())
-        {
             return Ok();
-        }
         else
-        {
             return StatusCode(500); // Para debug
-        }
     }
     [HttpGet("generarContactos/{n_contactos}")]
     public async Task<IActionResult> GenerarContactos(int n_contactos)
     {
         var clientes = await _clientesRepositorio.Obtener();
         Random random = new Random((int)DateTime.Now.Ticks);
-        var clienteOrigenId = clientes[random.Next(clientes.Count)].Id;
-        var clienteDestinoId = clientes[random.Next(clientes.Count)].Id;
-        while (clienteDestinoId == clienteOrigenId)
+        for (int i = 0; i < n_contactos; i++)
         {
-            clienteDestinoId = clientes[random.Next(clientes.Count)].Id;
+            var clienteOrigenId = clientes[random.Next(clientes.Count)].Id;
+            var clienteDestinoId = clientes[random.Next(clientes.Count)].Id;
+            while (clienteDestinoId == clienteOrigenId)
+                clienteDestinoId = clientes[random.Next(clientes.Count)].Id;
+
+            if (_contactoRepositorio.ObtenerPorIds(clienteOrigenId, clienteDestinoId) == null)
+            {
+                _contactoRepositorio.Agregar(new Contacto
+                {
+                    Id = 0,
+                    ClienteOrigenId = clienteOrigenId,
+                    ClienteDestinoId = clienteDestinoId,
+                });
+            }
         }
-        _contactoRepositorio.Agregar(new Contacto
-        {
-            Id = 0,
-            ClienteOrigenId = clienteOrigenId,
-            ClienteDestinoId = clienteDestinoId,
-        });
 
         if (await _contactoRepositorio.GuardarCambios())
-        {
             return Ok();
+        else
+            return StatusCode(500); // Para debug
+    }
+    [HttpGet("generarContactosParaCliente")]
+    public async Task<IActionResult> generarContactosParaCliente([FromQuery]int n_contactos, [FromQuery] int? id_cliente, [FromQuery] string? username_cliente)
+    {
+        var clientes = await _clientesRepositorio.Obtener();
+        Random random = new Random((int)DateTime.Now.Ticks);
+        int clienteOrigenId = -1;
+        if(id_cliente != null)
+            clienteOrigenId = id_cliente.Value;
+        else if (username_cliente != null)
+        {
+            var cliente = _clientesRepositorio.ObtenerPorNombre(username_cliente);
+            if (cliente == null)
+                return BadRequest();
+            clienteOrigenId = cliente.Id;
         }
         else
+            BadRequest();
+        for (int i = 0; i < n_contactos; i++)
         {
-            return StatusCode(500); // Para debug
+            var clienteDestinoId = clientes[random.Next(clientes.Count)].Id;
+            while (clienteDestinoId == clienteOrigenId)
+                clienteDestinoId = clientes[random.Next(clientes.Count)].Id;
+            if (_contactoRepositorio.ObtenerPorIds(clienteOrigenId, clienteDestinoId) == null) // para no generar contactos repetidos
+            {
+                _contactoRepositorio.Agregar(new Contacto
+                {
+                    Id = 0,
+                    ClienteOrigenId = clienteOrigenId,
+                    ClienteDestinoId = clienteDestinoId,
+                });
+            }
         }
+        if (await _contactoRepositorio.GuardarCambios())
+            return Ok();
+        else
+            return StatusCode(500); // Para debug
+    }
+
+    [HttpGet("generarTransaccionesParaCliente")]
+    public async Task<IActionResult> GenerarTransaccionesParaCliente([FromQuery] int n_transacciones, [FromQuery] int? id_cliente, [FromQuery] string? username_cliente)
+    {
+        var clientes = await _clientesRepositorio.Obtener();
+        var paises = await _paisRepositorio.Obtener();
+        var contactos = await _contactoRepositorio.Obtener(); // Cuidado que puede ser que no haya contactos, revisar o generar clientes -> contactos -> transacciones
+        Random random = new Random((int)DateTime.Now.Ticks);
+        int clienteOrigenId = -1;
+
+        if (id_cliente != null)
+            clienteOrigenId = id_cliente.Value;
+        else if (username_cliente != null)
+        {
+            var cliente = _clientesRepositorio.ObtenerPorNombre(username_cliente);
+            if (cliente == null)
+                return BadRequest();
+            clienteOrigenId = cliente.Id;
+        }
+        else
+            BadRequest();
+        contactos = contactos.Where(c => c.ClienteOrigenId == clienteOrigenId).ToList();
+        for (int i = 0; i < n_transacciones; i++)
+        {
+            var contacto = contactos[random.Next(0, contactos.Count)];
+            var clienteOrigen = _clientesRepositorio.ObtenerPorId(clienteOrigenId);
+            var clienteDestino = _clientesRepositorio.ObtenerPorId(contacto.ClienteDestinoId);
+            var transaccionFaker = new TransaccionFaker(clienteOrigen, clienteDestino, paises);
+            var transaccionDto = transaccionFaker.Generate();
+            transaccionDto.CosteTransaccion = Math.Round(transaccionDto.CosteTransaccion, 2);
+            transaccionDto.CantidadEnvia = Math.Round(transaccionDto.CantidadEnvia, 2);
+            transaccionDto.CantidadRecibe = Math.Round(transaccionDto.CantidadRecibe, 2);
+            var nuevaTransaccion = _mapper.Map<Transaccion>(transaccionDto);
+            _transaccionRepositorio.Agregar(nuevaTransaccion);
+        }
+        if (await _transaccionRepositorio.GuardarCambios())
+            return Ok();
+        else
+            return StatusCode(500); // Para debug
     }
 }
