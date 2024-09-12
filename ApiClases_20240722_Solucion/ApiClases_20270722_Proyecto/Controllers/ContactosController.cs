@@ -128,8 +128,12 @@ namespace ApiClases_20270722_Proyecto.Controllers
 
             var contactoNuevo = _clienteRepositorio.ObtenerPorNombre(request.nombreNuevoContacto);
             var contactoRelacionado = _clienteRepositorio.ObtenerPorNombre(nombre);
-            if((contactoNuevo == null || contactoRelacionado == null) || (contactoNuevo.Id ==  contactoRelacionado.Id)) { //no hemos puesto bien el request o hemos puesto el mismo cliente dos veces
+            if((contactoNuevo == null || contactoRelacionado == null)) { //no hemos puesto bien el request o hemos puesto el mismo cliente dos veces
                 return BadRequest();
+            }
+            if(contactoNuevo.Id == contactoRelacionado.Id)
+            {
+                return BadRequest((new { Message = "Not yourself." }));
             }
             var idContactoNuevo = contactoNuevo.Id;
             var idContactoRelacionado = contactoRelacionado.Id;

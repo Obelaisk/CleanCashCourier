@@ -151,4 +151,38 @@ export class TransaccionComponent implements OnInit, OnDestroy {
       error => console.error(error)
     );
   }
+
+  evitarCaracteresNoPermitidos(event: KeyboardEvent): void {
+    // Evitar el ingreso del signo "-" y la "e" (para evitar notación científica)
+    if (event.key === '-' || event.key === 'e') {
+      event.preventDefault();  // Bloquear el evento si intenta escribir "-" o "e"
+    }
+  }
+
+  validarCantidad(event: any, tipo: string): void {
+    const input = event.target;
+    let valor = input.value;
+
+    // Validar si hay más de un punto decimal
+    const partes = valor.split('.');
+    if (partes.length > 1 && partes[1].length > 2) {
+      // Limitar a dos decimales
+      valor = `${partes[0]}.${partes[1].substring(0, 2)}`;
+      input.value = valor;
+    }
+
+    // Validar que el valor no sea negativo
+    const numero = parseFloat(valor);
+    if (numero < 0) {
+      input.value = '';
+      return;
+    }
+
+    // Actualizar los valores de cantidad mínima o máxima
+    if (tipo === 'min') {
+      this.cantidadMin = numero;
+    } else if (tipo === 'max') {
+      this.cantidadMax = numero;
+    }
+  }
 }

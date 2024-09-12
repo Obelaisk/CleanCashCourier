@@ -1,9 +1,9 @@
 <cabecera></cabecera>
 <div class="container">
-  <h2 class="page-title">Historial de transacciones</h2> <!-- Añadido font-bold -->
+  <h2 class="page-title">Historial de transacciones</h2>
+
   <!-- Filtros -->
   <div class="d-flex justify-content-between align-items-end my-4">
-    <!-- align-items-end asegura que todos los elementos estén alineados abajo -->
     <div class="d-flex flex-wrap gap-3">
       <!-- Selector de Fecha Inicio -->
       <div class="d-flex flex-column">
@@ -17,39 +17,27 @@
         <input type="date" id="fechaFin" class="form-control" (change)="actualizarFechaFin($event)">
       </div>
 
-      <!-- Selector de Cantidad Mínima -->
+      <!-- Cuadro de texto para Cantidad Mínima -->
       <div class="d-flex flex-column">
         <label for="cantidadMin">Cantidad mínima:</label>
-        <div class="d-flex">
-          <select id="cantidadMin" class="form-control" (change)="actualizarCantidadMin($event)">
-            <option value="0">Sin límite</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-          </select>
-          <button class="btn btn-sm btn-link align-self-end ml-2" (click)="borrarCantidadMin()">Borrar</button> <!-- Botón alineado abajo -->
+        <div class="d-flex gap-2">
+          <input id="cantidadMin" type="number" class="form-control" min="0" step="0.01" (input)="validarCantidad($event, 'min')" (keydown)="evitarCaracteresNoPermitidos($event)"  placeholder="Ingrese una cantidad mínima" />
+          <button class="btn btn-sm btn-link align-self-end" (click)="borrarCantidadMin()">Borrar</button>
         </div>
       </div>
 
-      <!-- Selector de Cantidad Máxima -->
+      <!-- Cuadro de texto para Cantidad Máxima -->
       <div class="d-flex flex-column">
         <label for="cantidadMax">Cantidad máxima:</label>
-        <div class="d-flex">
-          <select id="cantidadMax" class="form-control" (change)="actualizarCantidadMax($event)">
-            <option value="Infinity">Sin límite</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="500">500</option>
-            <option value="1000">1000</option>
-          </select>
-          <button class="btn btn-sm btn-link align-self-end ml-2" (click)="borrarCantidadMax()">Borrar</button> <!-- Botón alineado abajo -->
+        <div class="d-flex gap-2">
+          <input id="cantidadMax" type="number" class="form-control" min="0" step="0.01" (input)="validarCantidad($event, 'max')" (keydown)="evitarCaracteresNoPermitidos($event)"  placeholder="Ingrese una cantidad máxima" />
+          <button class="btn btn-sm btn-link align-self-end" (click)="borrarCantidadMax()">Borrar</button>
         </div>
       </div>
-    </div>
 
-    <!-- Botón de Filtrar alineado a la derecha -->
-    <button class="action-button align-self-end" (click)="filtrarTransacciones()">Filtrar</button> <!-- Botón alineado con los selectores -->
+      <!-- Botón de Filtrar alineado a la derecha -->
+      <button class="action-button align-self-end ms-auto" (click)="filtrarTransacciones()">Filtrar</button>
+    </div>
   </div>
 
   <!-- Tabla de transacciones -->
